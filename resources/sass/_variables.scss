@@ -1,0 +1,87 @@
+// Salevince POS / SND visual system tokens.
+// Bootstrap consumes these values during compilation; the CSS custom
+// properties are declared in app.scss so runtime components can share them.
+
+$body-bg: #f5f6fb;
+
+// SND uses Tailwind's default system font stack (its fonts.css is empty).
+$snd-font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-sans-serif: $snd-font-family;
+$font-family-base: $snd-font-family;
+$headings-font-family: $snd-font-family;
+$font-size-base: 0.875rem;
+$line-height-base: 1.55;
+
+// SND primary palette, retained as the Salevince POS accent.
+$pos-primary:       #9786ee;
+$pos-primary-dark:  #806fda;
+$pos-primary-deep:  #6758bd;
+$pos-primary-soft:  #f0edff;
+$pos-primary-glow:  rgba(151, 134, 238, 0.24);
+
+$pos-teal:          $pos-primary;
+$pos-teal-dark:     $pos-primary-dark;
+$pos-teal-deeper:   $pos-primary-deep;
+$pos-teal-light:    $pos-primary-soft;
+$pos-teal-glow:     $pos-primary-glow;
+$pos-purple:        $pos-primary;
+$pos-orange:        #ff9500;
+$pos-green:         #34c759;
+$pos-red:           #ff3b30;
+
+// SND shell.
+$sidebar-width:             208px;
+$sidebar-icon-only-width:   80px;
+$sidebar-bg:                #23242f;
+$sidebar-hover-bg:          rgba(255, 255, 255, 0.06);
+$sidebar-active-bg:         $pos-primary;
+$sidebar-text:              rgba(255, 255, 255, 0.64);
+$sidebar-text-active:       #ffffff;
+$sidebar-icon-size:         1rem;
+$sidebar-brand-bg:          #23242f;
+
+$navbar-height:    50px;
+$navbar-bg:        #ffffff;
+$navbar-border:    #edf0f7;
+$navbar-text:      #1a1a2e;
+$navbar-subtext:   #6d7185;
+
+$content-bg:       #f5f6fb;
+$card-bg:          rgba(255, 255, 255, 0.74);
+$card-border:      rgba(120, 130, 150, 0.15);
+$card-radius:      14px;
+$card-shadow:      0 10px 28px rgba(27, 31, 51, 0.045), 0 2px 6px rgba(27, 31, 51, 0.025);
+
+$header-accent:    $pos-primary;
+$table-head-bg:    rgba(247, 248, 252, 0.86);
+$table-head-color: #777b8f;
+$table-stripe-bg:  rgba(247, 248, 252, 0.52);
+$table-border:     rgba(120, 130, 150, 0.13);
+
+$btn-radius:       10px;
+
+// Bootstrap theme variables.
+$primary:   $pos-primary;
+$success:   $pos-green;
+$danger:    $pos-red;
+$warning:   $pos-orange;
+$info:      #5ac8fa;
+
+$blue:      $pos-primary;
+$indigo:    $pos-primary-deep;
+$purple:    $pos-primary;
+$pink:      #ff6b9d;
+$red:       $pos-red;
+$orange:    $pos-orange;
+$yellow:    #ffcc00;
+$green:     $pos-green;
+$teal:      $pos-primary;
+$cyan:      #5ac8fa;
+
+$border-radius:       10px;
+$border-radius-lg:    14px;
+$border-radius-sm:    7px;
+
+$input-border-color:       rgba(120, 130, 150, 0.2);
+$input-focus-border-color: $pos-primary;
+$input-focus-box-shadow:   0 0 0 3px $pos-primary-glow;
