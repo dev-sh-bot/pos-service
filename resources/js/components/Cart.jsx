@@ -35,35 +35,35 @@ const S = {
     },
     gateCard: {
         background: "#fff", borderRadius: "24px",
-        boxShadow: "0 16px 45px rgba(42, 105, 176, 0.12)",
+        boxShadow: "0 16px 45px rgba(103, 88, 189, 0.12)",
         padding: "42px 46px", textAlign: "center", maxWidth: "440px", width: "100%",
-        border: "1.5px solid #d0e4f5",
+        border: "1.5px solid #d9d4f5",
     },
     gateIcon: {
         width: "72px", height: "72px", borderRadius: "20px",
-        background: "#2a69b0",
+        background: "#6758bd",
         display: "flex", alignItems: "center", justifyContent: "center",
         margin: "0 auto 20px", fontSize: "1.9rem", color: "#fff",
-        boxShadow: "0 8px 24px rgba(42, 105, 176, 0.38)",
+        boxShadow: "0 8px 24px rgba(103, 88, 189, 0.38)",
     },
     gateTitle: { fontSize: "1.35rem", fontWeight: 800, color: "#1a1a1a", marginBottom: "6px", letterSpacing: "-0.02em" },
-    gateSubtitle: { fontSize: "0.85rem", color: "#1a3a5c", marginBottom: "26px", lineHeight: 1.5 },
+    gateSubtitle: { fontSize: "0.85rem", color: "#28243d", marginBottom: "26px", lineHeight: 1.5 },
     gateBranchBadge: {
         display: "inline-flex", alignItems: "center", gap: "6px",
-        background: "#f0f6ff", border: "1px solid #d0e4f5", borderRadius: "22px",
-        padding: "6px 16px", fontSize: "0.82rem", fontWeight: 700, color: "#2a69b0",
+        background: "#f0edff", border: "1px solid #d9d4f5", borderRadius: "22px",
+        padding: "6px 16px", fontSize: "0.82rem", fontWeight: 700, color: "#6758bd",
         marginBottom: "22px",
     },
     gateBtn: {
         width: "100%", padding: "14px 0", borderRadius: "14px",
         border: "none", fontSize: "0.95rem", fontWeight: 800, cursor: "pointer",
-        background: "#2a69b0", color: "#fff",
-        boxShadow: "0 6px 20px rgba(42, 105, 176, 0.4)", transition: "all 0.15s",
+        background: "var(--snd-primary)", color: "var(--snd-button-primary-text)",
+        boxShadow: "0 6px 20px rgba(103, 88, 189, 0.4)", transition: "all 0.15s",
     },
     gateBtnSecondary: {
         width: "100%", padding: "10px 0", borderRadius: "12px",
-        border: "1.5px solid #d0e4f5", fontSize: "0.85rem", fontWeight: 700,
-        cursor: "pointer", background: "#f0f6ff", color: "#2a69b0",
+        border: "1.5px solid #d9d4f5", fontSize: "0.85rem", fontWeight: 700,
+        cursor: "pointer", background: "#f0edff", color: "#6758bd",
         marginTop: "10px", transition: "all 0.15s",
     },
     stepIndicator: {
@@ -74,13 +74,13 @@ const S = {
         width: "32px", height: "32px", borderRadius: "50%",
         display: "flex", alignItems: "center", justifyContent: "center",
         fontSize: "0.78rem", fontWeight: 800,
-        background: done ? "#2a69b0" : active ? "#2a69b0" : "#f0f6ff",
-        color: done || active ? "#fff" : "#2a69b0",
-        border: done || active ? "none" : "1.5px solid #d0e4f5",
-        boxShadow: active ? "0 0 0 4px rgba(42, 105, 176, 0.25)" : "none",
+        background: done ? "#6758bd" : active ? "#6758bd" : "#f0edff",
+        color: done || active ? "#fff" : "#6758bd",
+        border: done || active ? "none" : "1.5px solid #d9d4f5",
+        boxShadow: active ? "0 0 0 4px rgba(103, 88, 189, 0.25)" : "none",
     }),
     stepLine: {
-        flex: 1, height: "2px", background: "linear-gradient(90deg, #2a69b0, #d0e4f5)", maxWidth: "40px",
+        flex: 1, height: "2px", background: "linear-gradient(90deg, #6758bd, #d9d4f5)", maxWidth: "40px",
     },
     // ''‚''‚¬ Cart panel ''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚¬
     cartPanel: {
@@ -95,7 +95,7 @@ const S = {
         display: "flex", alignItems: "center", justifyContent: "space-between",
     },
     cartHeaderBadge: {
-        background: "#2563eb", color: "#fff", borderRadius: "12px",
+        background: "#6758bd", color: "#fff", borderRadius: "12px",
         fontSize: "0.72rem", padding: "3px 10px", fontWeight: 600,
     },
     cartHeaderMeta: {
@@ -115,10 +115,10 @@ const S = {
     cartEmpty: {
         display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center",
-        height: "100%", padding: "30px 20px", color: "#94a3b8", textAlign: "center",
+        height: "100%", padding: "30px 20px", color: "#626b7b", textAlign: "center",
     },
     cartEmptyIcon: { fontSize: "2.8rem", marginBottom: "12px", color: "#cbd5e1" },
-    cartEmptyText: { fontSize: "0.84rem", fontWeight: 500, color: "#94a3b8" },
+    cartEmptyText: { fontSize: "0.84rem", fontWeight: 500, color: "#626b7b" },
     cartRow: {
         display: "flex", alignItems: "center",
         padding: "10px 14px", gap: "8px",
@@ -129,7 +129,7 @@ const S = {
         lineHeight: 1.3, minWidth: 0, overflow: "hidden",
         textOverflow: "ellipsis", whiteSpace: "nowrap",
     },
-    cartItemPrice: { fontSize: "0.76rem", color: "#2563eb", fontWeight: 600, marginTop: "1px" },
+    cartItemPrice: { fontSize: "0.76rem", color: "#6758bd", fontWeight: 600, marginTop: "1px" },
     qtyControl: { display: "flex", alignItems: "center", gap: "3px", flexShrink: 0 },
     qtyBtn: {
         width: "24px", height: "24px", borderRadius: "6px",
@@ -148,7 +148,7 @@ const S = {
         minWidth: "55px", textAlign: "right", flexShrink: 0,
     },
     removeBtn: {
-        background: "#fef2f2", border: "none", color: "#ef4444",
+        background: "#fef2f2", border: "none", color: "#c9342d",
         cursor: "pointer", padding: "4px 6px", borderRadius: "6px",
         fontSize: "0.75rem", flexShrink: 0, transition: "all 0.12s",
     },
@@ -166,14 +166,14 @@ const S = {
     actionBtns: { display: "flex", gap: "8px" },
     btnCancel: {
         flex: 1, padding: "10px 0",
-        background: "#fff", border: "1.5px solid #fee2e2", color: "#ef4444",
+        background: "#fff", border: "1.5px solid #fee2e2", color: "#c9342d",
         borderRadius: "10px", fontSize: "0.83rem", fontWeight: 600, cursor: "pointer",
     },
     btnCheckout: {
-        flex: 2, padding: "10px 0", border: "none", color: "#fff",
-        background: "linear-gradient(135deg,#2563eb,#1d4ed8)",
+        flex: 2, padding: "10px 0", border: "none", color: "var(--snd-button-primary-text)",
+        background: "var(--snd-primary)",
         borderRadius: "10px", fontSize: "0.85rem", fontWeight: 700,
-        cursor: "pointer", boxShadow: "0 4px 14px rgba(37,99,235,0.35)",
+        cursor: "pointer", boxShadow: "0 4px 14px rgba(103,88,189,0.35)",
         letterSpacing: "0.02em",
     },
     // ''‚''‚¬ Products panel ''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚¬
@@ -217,7 +217,7 @@ const S = {
     },
     productTileImgWrap: {
         width: "68px", height: "68px", borderRadius: "14px",
-        overflow: "hidden", background: "#eff6ff", border: "1px solid #dbeafe",
+        overflow: "hidden", background: "#f0edff", border: "1px solid #ded9f5",
         display: "flex", alignItems: "center", justifyContent: "center",
     },
     productTileImg: { width: "100%", height: "100%", objectFit: "cover" },
@@ -231,9 +231,9 @@ const S = {
         fontSize: "0.68rem", fontWeight: 600, padding: "2px 8px",
         borderRadius: "12px",
         background: low ? "#fef2f2" : "#ecfdf5",
-        color: low ? "#dc2626" : "#059669",
+        color: low ? "#dc2626" : "#047857",
     }),
-    productTilePrice: { fontSize: "0.85rem", fontWeight: 800, color: "#2563eb" },
+    productTilePrice: { fontSize: "0.85rem", fontWeight: 800, color: "#6758bd" },
 };
 
 // ''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚''‚¬
@@ -401,8 +401,8 @@ class Cart extends Component {
                 border-radius: 28px !important;
                 background: #ffffff !important;
                 position: relative !important;
-                border: 1.5px solid #d0e4f5 !important;
-                box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.07), 0 4px 15px rgba(42, 105, 176, 0.12) !important;
+                border: 1.5px solid #d9d4f5 !important;
+                box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.07), 0 4px 15px rgba(103, 88, 189, 0.12) !important;
                 padding: 2.4rem 2.2rem 2rem !important;
                 overflow: visible !important;
             }
@@ -425,25 +425,25 @@ class Cart extends Component {
                 transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
             }
             .swal2-popup.swal2-pos-gate .swal2-confirm {
-                background: #2a69b0 !important;
+                background: var(--snd-primary) !important;
                 border: none !important;
-                color: #ffffff !important;
-                box-shadow: 0 6px 18px rgba(42, 105, 176, 0.28) !important;
+                color: var(--snd-button-primary-text) !important;
+                box-shadow: 0 6px 18px rgba(103, 88, 189, 0.28) !important;
                 letter-spacing: 0.02em !important;
                 width: 100% !important;
             }
             .swal2-popup.swal2-pos-gate .swal2-confirm:hover {
-                box-shadow: 0 10px 24px rgba(42, 105, 176, 0.4) !important;
+                box-shadow: 0 10px 24px rgba(103, 88, 189, 0.4) !important;
                 transform: translateY(-2px) !important;
             }
             .swal2-popup.swal2-pos-gate .swal2-cancel {
-                background: #f0f6ff !important;
-                border: 1.5px solid #d0e4f5 !important;
-                color: #8c733e !important;
+                background: #f0edff !important;
+                border: 1.5px solid #d9d4f5 !important;
+                color: #6758bd !important;
             }
             .swal2-popup.swal2-pos-gate .swal2-cancel:hover {
-                background: #f5eedf !important;
-                color: #1a3a5c !important;
+                background: #f0edff !important;
+                color: #28243d !important;
                 transform: translateY(-1px) !important;
             }
             .swal2-popup.swal2-pos-gate select,
@@ -452,9 +452,9 @@ class Cart extends Component {
             }
             .swal2-popup.swal2-pos-gate select:focus,
             .swal2-popup.swal2-pos-gate input:focus {
-                border-color: #2a69b0 !important;
+                border-color: #6758bd !important;
                 background: #ffffff !important;
-                box-shadow: 0 0 0 4px rgba(42, 105, 176, 0.14) !important;
+                box-shadow: 0 0 0 4px rgba(103, 88, 189, 0.14) !important;
             }
 
             /* Select2 Custom POS Gateway Styling */
@@ -465,8 +465,8 @@ class Cart extends Component {
             .swal2-popup.swal2-pos-gate .select2-container--default .select2-selection--single {
                 height: 48px !important;
                 border-radius: 16px !important;
-                border: 1.5px solid #d0e4f5 !important;
-                background: #f0f6ff !important;
+                border: 1.5px solid #d9d4f5 !important;
+                background: #f0edff !important;
                 display: flex !important;
                 align-items: center !important;
                 padding-left: 2.6rem !important;
@@ -476,9 +476,9 @@ class Cart extends Component {
             }
             .swal2-popup.swal2-pos-gate .select2-container--default.select2-container--open .select2-selection--single,
             .swal2-popup.swal2-pos-gate .select2-container--default.select2-container--focus .select2-selection--single {
-                border-color: #2a69b0 !important;
+                border-color: #6758bd !important;
                 background: #ffffff !important;
-                box-shadow: 0 0 0 4px rgba(42, 105, 176, 0.14) !important;
+                box-shadow: 0 0 0 4px rgba(103, 88, 189, 0.14) !important;
                 outline: none !important;
             }
             .swal2-popup.swal2-pos-gate .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -493,16 +493,16 @@ class Cart extends Component {
                 right: 0.9rem !important;
             }
             .swal2-popup.swal2-pos-gate .select2-container--default .select2-selection--single .select2-selection__arrow b {
-                border-color: #2a69b0 transparent transparent transparent !important;
+                border-color: #6758bd transparent transparent transparent !important;
                 border-width: 6px 5px 0 5px !important;
             }
             .swal2-popup.swal2-pos-gate .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
-                border-color: transparent transparent #2a69b0 transparent !important;
+                border-color: transparent transparent #6758bd transparent !important;
                 border-width: 0 5px 6px 5px !important;
             }
             .select2-dropdown {
                 border-radius: 16px !important;
-                border: 1.5px solid #d0e4f5 !important;
+                border: 1.5px solid #d9d4f5 !important;
                 box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important;
                 background: #ffffff !important;
                 overflow: hidden !important;
@@ -520,12 +520,12 @@ class Cart extends Component {
             }
             .select2-container--default .select2-results__option--highlighted[aria-selected],
             .select2-container--default .select2-results__option--highlighted[aria-selected]:hover {
-                background: #2a69b0 !important;
+                background: #6758bd !important;
                 color: #ffffff !important;
             }
             .select2-container--default .select2-results__option[aria-selected="true"] {
-                background: #f0f6ff !important;
-                color: #2a69b0 !important;
+                background: #f0edff !important;
+                color: #6758bd !important;
                 font-weight: 700 !important;
             }
         `;
@@ -554,7 +554,7 @@ class Cart extends Component {
                 icon: "warning",
                 title: "No Branches Assigned",
                 text: "You have no branches assigned. Contact your administrator.",
-                confirmButtonColor: "#2a69b0",
+                confirmButtonColor: "#6758bd",
             });
             return;
         }
@@ -567,16 +567,16 @@ class Cart extends Component {
             title: "",
             html: `
                 <div style="text-align:center;padding:0.2rem 0;">
-                    <div style="width:68px;height:68px;border-radius:22px;background:#2a69b0;display:inline-flex;align-items:center;justify-content:center;color:#ffffff;font-size:1.65rem;box-shadow:0 8px 24px rgba(42, 105, 176, 0.25);margin-bottom:1.2rem;">
+                    <div style="width:68px;height:68px;border-radius:22px;background:var(--snd-primary);display:inline-flex;align-items:center;justify-content:center;color:#ffffff;font-size:1.65rem;box-shadow:0 8px 24px rgba(151, 134, 238, 0.25);margin-bottom:1.2rem;">
                         <i class="fas fa-lock"></i>
                     </div>
 
                     <div style="font-size:1.95rem;font-weight:800;color:#1a1a1a;margin:0 0 0.2rem;letter-spacing:-0.03em;">${CommonHelper.getBrandName()}</div>
-                    <div style="font-size:0.75rem;letter-spacing:0.18em;color:#2a69b0;text-transform:uppercase;font-weight:700;margin-bottom:1rem;">${CommonHelper.getBrandSubtitle()}</div>
+                    <div style="font-size:0.75rem;letter-spacing:0.18em;color:#6758bd;text-transform:uppercase;font-weight:700;margin-bottom:1rem;">${CommonHelper.getBrandSubtitle()}</div>
 
-                    <div style="display:inline-flex;align-items:center;gap:0.55rem;background:rgba(42, 105, 176, 0.1);border:1px solid rgba(42, 105, 176, 0.3);border-radius:20px;padding:0.4rem 1.1rem;margin:0 auto 1.6rem;">
-                        <span style="width:8px;height:8px;border-radius:50%;background:#2a69b0;box-shadow:0 0 8px #2a69b0;"></span>
-                        <span style="font-size:0.76rem;letter-spacing:0.12em;color:#2a69b0;text-transform:uppercase;font-weight:800;">Branch Access</span>
+                    <div style="display:inline-flex;align-items:center;gap:0.55rem;background:rgba(103, 88, 189, 0.1);border:1px solid rgba(103, 88, 189, 0.3);border-radius:20px;padding:0.4rem 1.1rem;margin:0 auto 1.6rem;">
+                        <span style="width:8px;height:8px;border-radius:50%;background:#6758bd;box-shadow:0 0 8px #6758bd;"></span>
+                        <span style="font-size:0.76rem;letter-spacing:0.12em;color:#6758bd;text-transform:uppercase;font-weight:800;">Branch Access</span>
                     </div>
 
                     <div style="display:flex;flex-direction:column;gap:1.2rem;text-align:left;max-width:370px;margin:0 auto;">
@@ -585,11 +585,11 @@ class Cart extends Component {
                                 Select Branch
                             </label>
                             <div style="position:relative;width:100%;">
-                                <i class="fas fa-building" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#2a69b0;font-size:0.95rem;pointer-events:none;z-index:10;"></i>
-                                <select id="swal-branch" style="width:100%;padding:0.85rem 2.5rem 0.85rem 2.8rem;border:1.5px solid #d0e4f5;border-radius:16px;font-size:0.95rem;font-weight:600;outline:none;background:#f0f6ff;color:#1a1a1a;appearance:none;-webkit-appearance:none;cursor:pointer;box-sizing:border-box;transition:all 0.2s ease;">
+                                <i class="fas fa-building" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#6758bd;font-size:0.95rem;pointer-events:none;z-index:10;"></i>
+                                <select id="swal-branch" style="width:100%;padding:0.85rem 2.5rem 0.85rem 2.8rem;border:1.5px solid #d9d4f5;border-radius:16px;font-size:0.95rem;font-weight:600;outline:none;background:#f0edff;color:#1a1a1a;appearance:none;-webkit-appearance:none;cursor:pointer;box-sizing:border-box;transition:all 0.2s ease;">
                                     ${branchOptions}
                                 </select>
-                                <i id="swal-branch-arrow" class="fas fa-chevron-down" style="position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);color:#2a69b0;pointer-events:none;font-size:0.85rem;z-index:3;"></i>
+                                <i id="swal-branch-arrow" class="fas fa-chevron-down" style="position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);color:#6758bd;pointer-events:none;font-size:0.85rem;z-index:3;"></i>
                             </div>
                         </div>
 
@@ -598,12 +598,12 @@ class Cart extends Component {
                                 Branch Password
                             </label>
                             <div style="position:relative;width:100%;">
-                                <i class="fas fa-key" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#2a69b0;font-size:0.95rem;pointer-events:none;z-index:2;"></i>
+                                <i class="fas fa-key" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#6758bd;font-size:0.95rem;pointer-events:none;z-index:2;"></i>
                                 <input id="swal-branch-pass" type="password"
                                        placeholder="Enter branch password"
-                                       style="width:100%;padding:0.85rem 2.8rem 0.85rem 2.8rem;border:1.5px solid #d0e4f5;border-radius:16px;font-size:0.95rem;font-weight:600;outline:none;background:#f0f6ff;color:#1a1a1a;box-sizing:border-box;"
+                                       style="width:100%;padding:0.85rem 2.8rem 0.85rem 2.8rem;border:1.5px solid #d9d4f5;border-radius:16px;font-size:0.95rem;font-weight:600;outline:none;background:#f0edff;color:#1a1a1a;box-sizing:border-box;"
                                        autocomplete="off">
-                                <button type="button" id="swal-pass-toggle" style="position:absolute;right:0.9rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#2a69b0;cursor:pointer;font-size:0.95rem;padding:4px;display:flex;align-items:center;justify-content:center;z-index:2;">
+                                <button type="button" id="swal-pass-toggle" style="position:absolute;right:0.9rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#6758bd;cursor:pointer;font-size:0.95rem;padding:4px;display:flex;align-items:center;justify-content:center;z-index:2;">
                                     <i class="fas fa-eye" id="swal-pass-toggle-icon"></i>
                                 </button>
                             </div>
@@ -612,7 +612,7 @@ class Cart extends Component {
                 </div>`,
             showCancelButton: false,
             confirmButtonText: "Verify Branch",
-            confirmButtonColor: "#2a69b0",
+            confirmButtonColor: "#6758bd",
             allowOutsideClick: false,
             allowEscapeKey: false,
             focusConfirm: false,
@@ -627,11 +627,11 @@ class Cart extends Component {
                         if (passInput.type === "password") {
                             passInput.type = "text";
                             icon.className = "fas fa-eye-slash";
-                            toggleBtn.style.color = "#2a69b0";
+                            toggleBtn.style.color = "#6758bd";
                         } else {
                             passInput.type = "password";
                             icon.className = "fas fa-eye";
-                            toggleBtn.style.color = "#2a69b0";
+                            toggleBtn.style.color = "#6758bd";
                         }
                     });
                 }
@@ -709,7 +709,7 @@ class Cart extends Component {
                 icon: "warning",
                 title: "No Counters Assigned",
                 text: "You have no counters assigned to this branch. Contact your administrator.",
-                confirmButtonColor: "#2a69b0",
+                confirmButtonColor: "#6758bd",
             });
             return;
         }
@@ -722,16 +722,16 @@ class Cart extends Component {
             title: "",
             html: `
                 <div style="text-align:center;padding:0.2rem 0;">
-                    <div style="width:68px;height:68px;border-radius:22px;background:#2a69b0;display:inline-flex;align-items:center;justify-content:center;color:#ffffff;font-size:1.65rem;box-shadow:0 8px 24px rgba(42, 105, 176, 0.25);margin-bottom:1.2rem;">
+                    <div style="width:68px;height:68px;border-radius:22px;background:var(--snd-primary);display:inline-flex;align-items:center;justify-content:center;color:#ffffff;font-size:1.65rem;box-shadow:0 8px 24px rgba(151, 134, 238, 0.25);margin-bottom:1.2rem;">
                         <i class="fas fa-lock"></i>
                     </div>
 
                     <div style="font-size:1.95rem;font-weight:800;color:#1a1a1a;margin:0 0 0.2rem;letter-spacing:-0.03em;">${CommonHelper.getBrandName()}</div>
-                    <div style="font-size:0.75rem;letter-spacing:0.18em;color:#2a69b0;text-transform:uppercase;font-weight:700;margin-bottom:1rem;">${CommonHelper.getBrandSubtitle()}</div>
+                    <div style="font-size:0.75rem;letter-spacing:0.18em;color:#6758bd;text-transform:uppercase;font-weight:700;margin-bottom:1rem;">${CommonHelper.getBrandSubtitle()}</div>
 
-                    <div style="display:inline-flex;align-items:center;gap:0.55rem;background:rgba(42, 105, 176, 0.1);border:1px solid rgba(42, 105, 176, 0.3);border-radius:20px;padding:0.4rem 1.1rem;margin:0 auto 1.6rem;">
-                        <span style="width:8px;height:8px;border-radius:50%;background:#2a69b0;box-shadow:0 0 8px #2a69b0;"></span>
-                        <span style="font-size:0.76rem;letter-spacing:0.12em;color:#2a69b0;text-transform:uppercase;font-weight:800;">Counter Access</span>
+                    <div style="display:inline-flex;align-items:center;gap:0.55rem;background:rgba(103, 88, 189, 0.1);border:1px solid rgba(103, 88, 189, 0.3);border-radius:20px;padding:0.4rem 1.1rem;margin:0 auto 1.6rem;">
+                        <span style="width:8px;height:8px;border-radius:50%;background:#6758bd;box-shadow:0 0 8px #6758bd;"></span>
+                        <span style="font-size:0.76rem;letter-spacing:0.12em;color:#6758bd;text-transform:uppercase;font-weight:800;">Counter Access</span>
                     </div>
 
                     <div style="display:flex;flex-direction:column;gap:1.2rem;text-align:left;max-width:370px;margin:0 auto;">
@@ -740,11 +740,11 @@ class Cart extends Component {
                                 Select Counter
                             </label>
                             <div style="position:relative;width:100%;">
-                                <i class="fas fa-cash-register" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#2a69b0;font-size:0.95rem;pointer-events:none;z-index:10;"></i>
-                                <select id="swal-counter" style="width:100%;padding:0.85rem 2.5rem 0.85rem 2.8rem;border:1.5px solid #d0e4f5;border-radius:16px;font-size:0.95rem;font-weight:600;outline:none;background:#f0f6ff;color:#1a1a1a;appearance:none;-webkit-appearance:none;cursor:pointer;box-sizing:border-box;transition:all 0.2s ease;">
+                                <i class="fas fa-cash-register" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#6758bd;font-size:0.95rem;pointer-events:none;z-index:10;"></i>
+                                <select id="swal-counter" style="width:100%;padding:0.85rem 2.5rem 0.85rem 2.8rem;border:1.5px solid #d9d4f5;border-radius:16px;font-size:0.95rem;font-weight:600;outline:none;background:#f0edff;color:#1a1a1a;appearance:none;-webkit-appearance:none;cursor:pointer;box-sizing:border-box;transition:all 0.2s ease;">
                                     ${counterOptions}
                                 </select>
-                                <i id="swal-counter-arrow" class="fas fa-chevron-down" style="position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);color:#2a69b0;pointer-events:none;font-size:0.85rem;z-index:3;"></i>
+                                <i id="swal-counter-arrow" class="fas fa-chevron-down" style="position:absolute;right:1.1rem;top:50%;transform:translateY(-50%);color:#6758bd;pointer-events:none;font-size:0.85rem;z-index:3;"></i>
                             </div>
                         </div>
 
@@ -753,12 +753,12 @@ class Cart extends Component {
                                 Counter Password
                             </label>
                             <div style="position:relative;width:100%;">
-                                <i class="fas fa-key" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#2a69b0;font-size:0.95rem;pointer-events:none;z-index:2;"></i>
+                                <i class="fas fa-key" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#6758bd;font-size:0.95rem;pointer-events:none;z-index:2;"></i>
                                 <input id="swal-counter-pass" type="password"
                                        placeholder="Enter counter password"
-                                       style="width:100%;padding:0.85rem 2.8rem 0.85rem 2.8rem;border:1.5px solid #d0e4f5;border-radius:16px;font-size:0.95rem;font-weight:600;outline:none;background:#f0f6ff;color:#1a1a1a;box-sizing:border-box;"
+                                       style="width:100%;padding:0.85rem 2.8rem 0.85rem 2.8rem;border:1.5px solid #d9d4f5;border-radius:16px;font-size:0.95rem;font-weight:600;outline:none;background:#f0edff;color:#1a1a1a;box-sizing:border-box;"
                                        autocomplete="off">
-                                <button type="button" id="swal-pass-toggle" style="position:absolute;right:0.9rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#2a69b0;cursor:pointer;font-size:0.95rem;padding:4px;display:flex;align-items:center;justify-content:center;z-index:2;">
+                                <button type="button" id="swal-pass-toggle" style="position:absolute;right:0.9rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#6758bd;cursor:pointer;font-size:0.95rem;padding:4px;display:flex;align-items:center;justify-content:center;z-index:2;">
                                     <i class="fas fa-eye" id="swal-pass-toggle-icon"></i>
                                 </button>
                             </div>
@@ -768,7 +768,7 @@ class Cart extends Component {
             showCancelButton: true,
             cancelButtonText: "Back to Branch",
             confirmButtonText: "Open POS",
-            confirmButtonColor: "#2a69b0",
+            confirmButtonColor: "#6758bd",
             allowOutsideClick: false,
             allowEscapeKey: false,
             focusConfirm: false,
@@ -783,11 +783,11 @@ class Cart extends Component {
                         if (passInput.type === "password") {
                             passInput.type = "text";
                             icon.className = "fas fa-eye-slash";
-                            toggleBtn.style.color = "#2a69b0";
+                            toggleBtn.style.color = "#6758bd";
                         } else {
                             passInput.type = "password";
                             icon.className = "fas fa-eye";
-                            toggleBtn.style.color = "#2a69b0";
+                            toggleBtn.style.color = "#6758bd";
                         }
                     });
                 }
@@ -856,7 +856,7 @@ class Cart extends Component {
             icon: "question",
             showCancelButton: true,
             confirmButtonText: "Yes, switch",
-            confirmButtonColor: "#ef4444",
+            confirmButtonColor: "#c9342d",
             cancelButtonText: "Cancel",
         }).then(async res => {
             if (res.isConfirmed) {
@@ -912,7 +912,7 @@ class Cart extends Component {
             title: "",
             html: `
                 <div style="text-align:center;padding:0.2rem 0 0.5rem;">
-                    <div style="width:60px;height:60px;border-radius:20px;background:#2a69b0;display:inline-flex;align-items:center;justify-content:center;color:#ffffff;font-size:1.5rem;box-shadow:0 8px 22px rgba(42, 105, 176, 0.3);margin-bottom:0.8rem;">
+                    <div style="width:60px;height:60px;border-radius:20px;background:#6758bd;display:inline-flex;align-items:center;justify-content:center;color:#ffffff;font-size:1.5rem;box-shadow:0 8px 22px rgba(103, 88, 189, 0.3);margin-bottom:0.8rem;">
                         <i class="fas fa-user-plus"></i>
                     </div>
                     <div style="font-size:1.45rem;font-weight:800;color:#1a1a1a;margin-bottom:0.2rem;letter-spacing:-0.02em;">Create New Customer</div>
@@ -921,61 +921,61 @@ class Cart extends Component {
                     <div style="text-align:left;display:flex;flex-direction:column;gap:0.9rem;max-width:380px;margin:0 auto;">
                         <div>
                             <label style="font-weight:700;font-size:0.82rem;color:#262626;margin-bottom:0.35rem;display:flex;align-items:center;justify-content:space-between;">
-                                <span>First Name <span style="color:#2a69b0;">*</span></span>
-                                <span style="font-size:0.7rem;color:#2a69b0;font-weight:600;">Required</span>
+                                <span>First Name <span style="color:#6758bd;">*</span></span>
+                                <span style="font-size:0.7rem;color:#6758bd;font-weight:600;">Required</span>
                             </label>
                             <div style="position:relative;width:100%;">
-                                <i class="fas fa-user" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#2a69b0;font-size:0.9rem;pointer-events:none;z-index:2;"></i>
+                                <i class="fas fa-user" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#6758bd;font-size:0.9rem;pointer-events:none;z-index:2;"></i>
                                 <input id="swal-cust-first" type="text" placeholder="e.g. Ayesha"
-                                       style="width:100%;padding:0.75rem 1rem 0.75rem 2.7rem;border:1.5px solid #d0e4f5;border-radius:14px;font-size:0.9rem;font-weight:600;outline:none;background:#f0f6ff;color:#1a1a1a;box-sizing:border-box;transition:all 0.2s ease;"
+                                       style="width:100%;padding:0.75rem 1rem 0.75rem 2.7rem;border:1.5px solid #d9d4f5;border-radius:14px;font-size:0.9rem;font-weight:600;outline:none;background:#f0edff;color:#1a1a1a;box-sizing:border-box;transition:all 0.2s ease;"
                                        autocomplete="off">
                             </div>
                         </div>
 
                         <div>
                             <label style="font-weight:700;font-size:0.82rem;color:#262626;margin-bottom:0.35rem;display:block;">
-                                Last Name <span style="font-size:0.72rem;color:#94a3b8;font-weight:500;">(Optional)</span>
+                                Last Name <span style="font-size:0.72rem;color:#626b7b;font-weight:500;">(Optional)</span>
                             </label>
                             <div style="position:relative;width:100%;">
-                                <i class="far fa-user" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#2a69b0;font-size:0.9rem;pointer-events:none;z-index:2;"></i>
+                                <i class="far fa-user" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#6758bd;font-size:0.9rem;pointer-events:none;z-index:2;"></i>
                                 <input id="swal-cust-last" type="text" placeholder="e.g. Khan"
-                                       style="width:100%;padding:0.75rem 1rem 0.75rem 2.7rem;border:1.5px solid #d0e4f5;border-radius:14px;font-size:0.9rem;font-weight:600;outline:none;background:#f0f6ff;color:#1a1a1a;box-sizing:border-box;transition:all 0.2s ease;"
+                                       style="width:100%;padding:0.75rem 1rem 0.75rem 2.7rem;border:1.5px solid #d9d4f5;border-radius:14px;font-size:0.9rem;font-weight:600;outline:none;background:#f0edff;color:#1a1a1a;box-sizing:border-box;transition:all 0.2s ease;"
                                        autocomplete="off">
                             </div>
                         </div>
 
                         <div>
                             <label style="font-weight:700;font-size:0.82rem;color:#262626;margin-bottom:0.35rem;display:block;">
-                                Phone Number <span style="font-size:0.72rem;color:#94a3b8;font-weight:500;">(Optional)</span>
+                                Phone Number <span style="font-size:0.72rem;color:#626b7b;font-weight:500;">(Optional)</span>
                             </label>
                             <div style="position:relative;width:100%;">
-                                <i class="fas fa-phone-alt" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#2a69b0;font-size:0.9rem;pointer-events:none;z-index:2;"></i>
+                                <i class="fas fa-phone-alt" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#6758bd;font-size:0.9rem;pointer-events:none;z-index:2;"></i>
                                 <input id="swal-cust-phone" type="text" placeholder="e.g. +92 300 1234567"
-                                       style="width:100%;padding:0.75rem 1rem 0.75rem 2.7rem;border:1.5px solid #d0e4f5;border-radius:14px;font-size:0.9rem;font-weight:600;outline:none;background:#f0f6ff;color:#1a1a1a;box-sizing:border-box;transition:all 0.2s ease;"
+                                       style="width:100%;padding:0.75rem 1rem 0.75rem 2.7rem;border:1.5px solid #d9d4f5;border-radius:14px;font-size:0.9rem;font-weight:600;outline:none;background:#f0edff;color:#1a1a1a;box-sizing:border-box;transition:all 0.2s ease;"
                                        autocomplete="off">
                             </div>
                         </div>
 
                         <div>
                             <label style="font-weight:700;font-size:0.82rem;color:#262626;margin-bottom:0.35rem;display:block;">
-                                Email Address <span style="font-size:0.72rem;color:#94a3b8;font-weight:500;">(Optional)</span>
+                                Email Address <span style="font-size:0.72rem;color:#626b7b;font-weight:500;">(Optional)</span>
                             </label>
                             <div style="position:relative;width:100%;">
-                                <i class="fas fa-envelope" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#2a69b0;font-size:0.9rem;pointer-events:none;z-index:2;"></i>
+                                <i class="fas fa-envelope" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#6758bd;font-size:0.9rem;pointer-events:none;z-index:2;"></i>
                                 <input id="swal-cust-email" type="email" placeholder="e.g. ayesha@example.com"
-                                       style="width:100%;padding:0.75rem 1rem 0.75rem 2.7rem;border:1.5px solid #d0e4f5;border-radius:14px;font-size:0.9rem;font-weight:600;outline:none;background:#f0f6ff;color:#1a1a1a;box-sizing:border-box;transition:all 0.2s ease;"
+                                       style="width:100%;padding:0.75rem 1rem 0.75rem 2.7rem;border:1.5px solid #d9d4f5;border-radius:14px;font-size:0.9rem;font-weight:600;outline:none;background:#f0edff;color:#1a1a1a;box-sizing:border-box;transition:all 0.2s ease;"
                                        autocomplete="off">
                             </div>
                         </div>
 
                         <div>
                             <label style="font-weight:700;font-size:0.82rem;color:#262626;margin-bottom:0.35rem;display:block;">
-                                Address <span style="font-size:0.72rem;color:#94a3b8;font-weight:500;">(Optional)</span>
+                                Address <span style="font-size:0.72rem;color:#626b7b;font-weight:500;">(Optional)</span>
                             </label>
                             <div style="position:relative;width:100%;">
-                                <i class="fas fa-map-marker-alt" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#2a69b0;font-size:0.9rem;pointer-events:none;z-index:2;"></i>
+                                <i class="fas fa-map-marker-alt" style="position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);color:#6758bd;font-size:0.9rem;pointer-events:none;z-index:2;"></i>
                                 <input id="swal-cust-address" type="text" placeholder="e.g. Clifton Block 5, Karachi"
-                                       style="width:100%;padding:0.75rem 1rem 0.75rem 2.7rem;border:1.5px solid #d0e4f5;border-radius:14px;font-size:0.9rem;font-weight:600;outline:none;background:#f0f6ff;color:#1a1a1a;box-sizing:border-box;transition:all 0.2s ease;"
+                                       style="width:100%;padding:0.75rem 1rem 0.75rem 2.7rem;border:1.5px solid #d9d4f5;border-radius:14px;font-size:0.9rem;font-weight:600;outline:none;background:#f0edff;color:#1a1a1a;box-sizing:border-box;transition:all 0.2s ease;"
                                        autocomplete="off">
                             </div>
                         </div>
@@ -985,7 +985,7 @@ class Cart extends Component {
 
             showCancelButton: true,
             confirmButtonText: "Save & Select Customer",
-            confirmButtonColor: "#2a69b0",
+            confirmButtonColor: "#6758bd",
             cancelButtonText: "Cancel",
             focusConfirm: false,
             showLoaderOnConfirm: true,
@@ -1028,7 +1028,7 @@ class Cart extends Component {
                 icon: "success",
                 title: "Customer Selected!",
                 text: `${fullName} has been created & selected.`,
-                confirmButtonColor: "#2a69b0",
+                confirmButtonColor: "#6758bd",
                 timer: 2000
             });
         }
@@ -1222,7 +1222,7 @@ class Cart extends Component {
         Swal.fire({
             title: "Clear cart?", text: "All items will be removed.",
             icon: "warning", showCancelButton: true,
-            confirmButtonText: "Yes, clear", confirmButtonColor: "#ef4444",
+            confirmButtonText: "Yes, clear", confirmButtonColor: "#c9342d",
         }).then(result => {
             if (result.isConfirmed) {
                 axios.post("/admin/cart/empty", { _method: "DELETE" })
@@ -1290,7 +1290,7 @@ class Cart extends Component {
                 icon: "warning",
                 title: translations["cart_empty"] || "Cart is Empty",
                 text: "Please add products, services, or deals to the cart before placing an order.",
-                confirmButtonColor: "#2a69b0"
+                confirmButtonColor: "#6758bd"
             });
             return;
         }
@@ -1326,7 +1326,7 @@ class Cart extends Component {
             const isDeal = item.item_type === 'deal' || item.item_type === 2;
             const isService = item.item_type === 'service' || item.item_type === 1;
             const typeBadge = isDeal
-                ? `<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border-radius:5px;font-size:0.67rem;font-weight:700;background:#eff6ff;color:#2a69b0;border:1px solid #bfdbfe;"><i class="fas fa-tags" style="font-size:0.62rem;"></i> Deal</span>`
+                ? `<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border-radius:5px;font-size:0.67rem;font-weight:700;background:#f0edff;color:#6758bd;border:1px solid #d9d4f5;"><i class="fas fa-tags" style="font-size:0.62rem;"></i> Deal</span>`
                 : isService
                 ? `<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border-radius:5px;font-size:0.67rem;font-weight:700;background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;"><i class="fas fa-spa" style="font-size:0.62rem;"></i> Service</span>`
                 : `<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border-radius:5px;font-size:0.67rem;font-weight:700;background:#f8fafc;color:#475569;border:1px solid #e2e8f0;"><i class="fas fa-box-open" style="font-size:0.62rem;"></i> Product</span>`;
@@ -1354,7 +1354,7 @@ class Cart extends Component {
             <div style="text-align: left; font-family: inherit; color: #1e293b;">
                 <!-- Header Card -->
                 <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 1.5px solid #e2e8f0; margin-bottom: 14px;">
-                    <div style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #2a69b0 0%, #1a4d8c 100%); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.25rem; box-shadow: 0 4px 12px rgba(42, 105, 176, 0.25); flex-shrink: 0;">
+                    <div style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #6758bd 0%, #5145a2 100%); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.25rem; box-shadow: 0 4px 12px rgba(103, 88, 189, 0.25); flex-shrink: 0;">
                         <i class="fas fa-clipboard-check"></i>
                     </div>
                     <div style="min-width: 0; flex: 1;">
@@ -1370,12 +1370,12 @@ class Cart extends Component {
                 <!-- Customer & Summary Details Pill -->
                 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; font-size: 0.78rem;">
                     <div style="display: flex; align-items: center; gap: 6px;">
-                        <span style="color: #64748b; font-weight: 600;"><i class="fas fa-user-circle" style="color: #2a69b0;"></i> Customer:</span>
+                        <span style="color: #64748b; font-weight: 600;"><i class="fas fa-user-circle" style="color: #6758bd;"></i> Customer:</span>
                         <strong style="color: #0f172a;">${customerName}</strong>
                         ${customerPhone ? `<span style="color: #64748b; font-size: 0.72rem;">(${customerPhone})</span>` : ""}
                     </div>
                     <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="background: #eff6ff; color: #2a69b0; border: 1px solid #bfdbfe; padding: 2px 7px; border-radius: 6px; font-weight: 700; font-size: 0.72rem;">
+                        <span style="background: #f0edff; color: #6758bd; border: 1px solid #d9d4f5; padding: 2px 7px; border-radius: 6px; font-weight: 700; font-size: 0.72rem;">
                             ${totalQty} Total Items
                         </span>
                         ${activeBranch ? `<span style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 2px 7px; border-radius: 6px; font-weight: 600; font-size: 0.72rem;">${activeBranch.name}</span>` : ""}
@@ -1411,29 +1411,29 @@ class Cart extends Component {
                         <strong style="color: #1e293b; font-family: monospace;">${currency} ${this.formatAmount(saleTotals.subtotal)}</strong>
                     </div>
                     ${saleTotals.discountAmount > 0 ? `
-                        <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #059669; margin-bottom: 5px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #047857; margin-bottom: 5px;">
                             <span>Discount ${saleTotals.discountPercent ? `(${saleTotals.discountPercent}%)` : ''}</span>
                             <strong style="font-family: monospace;">-${currency} ${this.formatAmount(saleTotals.discountAmount)}</strong>
                         </div>
                     ` : ""}
                     ${saleTotals.taxAmount > 0 ? `
-                        <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #2a69b0; margin-bottom: 5px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #6758bd; margin-bottom: 5px;">
                             <span>Sales Tax ${saleTotals.taxPercent ? `(${saleTotals.taxPercent}%)` : ''}</span>
                             <strong style="font-family: monospace;">+${currency} ${this.formatAmount(saleTotals.taxAmount)}</strong>
                         </div>
                     ` : ""}
                     <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 6px; border-top: 1.5px dashed #cbd5e1; margin-top: 6px;">
                         <span style="font-size: 0.95rem; font-weight: 800; color: #0f172a;">Payable Total</span>
-                        <span style="font-size: 1.15rem; font-weight: 900; color: #2a69b0; font-family: monospace;">${currency} ${this.formatAmount(saleTotals.total)}</span>
+                        <span style="font-size: 1.15rem; font-weight: 900; color: #6758bd; font-family: monospace;">${currency} ${this.formatAmount(saleTotals.total)}</span>
                     </div>
                 </div>
 
                 <!-- Editable Cash Received Input Box -->
-                <div style="background: #ffffff; border: 2px solid #2a69b0; border-radius: 12px; padding: 12px 14px; box-shadow: 0 4px 14px rgba(42, 105, 176, 0.1);">
+                <div style="background: #ffffff; border: 2px solid #6758bd; border-radius: 12px; padding: 12px 14px; box-shadow: 0 4px 14px rgba(103, 88, 189, 0.1);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
                         <label for="swal-received-amount" style="font-weight: 800; font-size: 0.85rem; color: #0f172a; margin: 0; display: flex; align-items: center; gap: 5px;">
-                            <i class="fas fa-hand-holding-usd" style="color: #2a69b0; font-size: 0.95rem;"></i>
-                            Received Amount <span style="font-size: 0.72rem; color: #2a69b0; font-weight: 700; background: #eff6ff; padding: 1px 6px; border-radius: 4px; border: 1px solid #bfdbfe;">EDITABLE</span>
+                            <i class="fas fa-hand-holding-usd" style="color: #6758bd; font-size: 0.95rem;"></i>
+                            Received Amount <span style="font-size: 0.72rem; color: #6758bd; font-weight: 700; background: #f0edff; padding: 1px 6px; border-radius: 4px; border: 1px solid #d9d4f5;">EDITABLE</span>
                         </label>
                         <span style="font-size: 0.74rem; font-weight: 700; color: #64748b;">
                             Due: <b style="color: #0f172a;">${currency} ${total}</b>
@@ -1455,7 +1455,7 @@ class Cart extends Component {
 
                     <!-- Quick Preset Buttons -->
                     <div style="display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap;">
-                        <button type="button" id="swal-btn-exact" style="flex: 1; min-width: 80px; padding: 5px 8px; border: 1px solid #93c5fd; background: #eff6ff; color: #1e40af; border-radius: 6px; font-size: 0.73rem; font-weight: 700; cursor: pointer;">
+                        <button type="button" id="swal-btn-exact" style="flex: 1; min-width: 80px; padding: 5px 8px; border: 1px solid #c8bcff; background: #f0edff; color: #5145a2; border-radius: 6px; font-size: 0.73rem; font-weight: 700; cursor: pointer;">
                             Exact (${total})
                         </button>
                         <button type="button" class="swal-preset-btn" data-add="500" style="padding: 5px 9px; border: 1px solid #e2e8f0; background: #ffffff; color: #334155; border-radius: 6px; font-size: 0.73rem; font-weight: 700; cursor: pointer;">
@@ -1483,7 +1483,7 @@ class Cart extends Component {
             width: 550,
             showCancelButton: true,
             confirmButtonText: '<i class="fas fa-check-circle" style="margin-right: 6px;"></i> Confirm & Place Order',
-            confirmButtonColor: "#2a69b0",
+            confirmButtonColor: "#6758bd",
             cancelButtonText: "Cancel",
             cancelButtonColor: "#64748b",
             focusConfirm: false,
@@ -1521,7 +1521,7 @@ class Cart extends Component {
                     inputEl.addEventListener("input", updateChange);
                     inputEl.addEventListener("focus", () => {
                         inputEl.style.background = "#ffffff";
-                        inputEl.style.borderColor = "#2a69b0";
+                        inputEl.style.borderColor = "#6758bd";
                     });
                     inputEl.addEventListener("blur", () => {
                         inputEl.style.background = "#f8fafc";
@@ -1598,7 +1598,7 @@ class Cart extends Component {
                 icon: "info",
                 title: "No Recent Invoice",
                 text: "Please place an order first to view its invoice.",
-                confirmButtonColor: "#2a69b0",
+                confirmButtonColor: "#6758bd",
                 timer: 2500,
             });
         }
@@ -1643,10 +1643,10 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                 <defs>
                     <linearGradient id="srbGradient" x1="0%" x2="100%" y1="0%" y2="0%">
                         <stop offset="0%" stop-color="#0f172a" />
-                        <stop offset="100%" stop-color="#1d4ed8" />
+                        <stop offset="100%" stop-color="#5145a2" />
                     </linearGradient>
                 </defs>
-                <rect x="0" y="0" width="220" height="54" rx="12" fill="#f8fafc" stroke="#dbeafe" />
+                <rect x="0" y="0" width="220" height="54" rx="12" fill="#f8fafc" stroke="#ded9f5" />
                 <rect x="12" y="11" width="32" height="32" rx="8" fill="url(#srbGradient)" />
                 <text x="28" y="33" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff" font-family="Arial, sans-serif">S</text>
                 <text x="55" y="35" font-size="24" font-weight="800" fill="#0f172a" font-family="Arial, sans-serif">RB</text>
@@ -1808,7 +1808,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
             width: 410,
             showCancelButton: true,
             confirmButtonText: '<i class="fas fa-print" style="margin-right: 6px;"></i> Print Receipt',
-            confirmButtonColor: "#2a69b0",
+            confirmButtonColor: "#6758bd",
             cancelButtonText: "Close",
             customClass: { popup: "receipt-modal" },
             didClose: () => {
@@ -1856,7 +1856,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                 icon: "warning",
                 title: "Popup Blocked",
                 text: "Please allow popups for this site in your browser to print receipts.",
-                confirmButtonColor: "#2a69b0",
+                confirmButtonColor: "#6758bd",
             });
             return;
         }
@@ -1937,7 +1937,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                 </div>
                 <div style={S.cartItemTotal}>{this.formatAmount(lineTotal)}</div>
                 <button
-                    style={{ ...S.removeBtn, color: hoveredRemove === itemKey ? "#ef4444" : "#d1d5db", background: hoveredRemove === itemKey ? "#fef2f2" : "none" }}
+                    style={{ ...S.removeBtn, color: hoveredRemove === itemKey ? "#c9342d" : "#d1d5db", background: hoveredRemove === itemKey ? "#fef2f2" : "none" }}
                     onMouseEnter={() => this.setState({ hoveredRemove: itemKey })}
                     onMouseLeave={() => this.setState({ hoveredRemove: null })}
                     onClick={() => this.handleClickDelete(itemKey)}>
@@ -1958,12 +1958,12 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
 
         return (
             <div key={`${p.item_type || "product"}:${p.id}`}
-                style={{ ...S.productTile, borderColor: isHovered ? "#0ea5b0" : "#e8ecf2", boxShadow: isHovered ? "0 6px 18px rgba(14,165,176,0.18)" : "none", transform: isHovered ? "translateY(-2px)" : "none" }}
+                style={{ ...S.productTile, borderColor: isHovered ? "#806fda" : "#e8ecf2", boxShadow: isHovered ? "0 6px 18px rgba(128,111,218,0.18)" : "none", transform: isHovered ? "translateY(-2px)" : "none" }}
                 onMouseEnter={() => this.setState({ hoveredTile: p.id })}
                 onMouseLeave={() => this.setState({ hoveredTile: null })}
                 onClick={() => this.addProductToCart(p.barcode)}
                 title={p.name}>
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: isHovered ? "#0ea5b0" : "transparent" }} />
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: isHovered ? "#806fda" : "transparent" }} />
                 <div style={S.productTileImgWrap}>
                     {p.image_url
                         ? <img src={p.image_url} alt={p.name} style={S.productTileImg}
@@ -2089,7 +2089,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
         if (!gateChecked) {
             return (
                 <div style={{ ...S.gateScreen, height: "calc(100vh - 106px)" }}>
-                    <div style={{ color: "#2a69b0", fontSize: "2rem" }}>
+                    <div style={{ color: "#6758bd", fontSize: "2rem" }}>
                         <i className="fas fa-spinner fa-spin"></i>
                     </div>
                 </div>
@@ -2237,9 +2237,9 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                 cursor: "pointer",
                                                 fontSize: "0.84rem",
                                                 fontWeight: 800,
-                                                background: catalogMode === "services" ? "linear-gradient(135deg, #2a69b0 0%, #174276 100%)" : "transparent",
-                                                color: catalogMode === "services" ? "#ffffff" : "#475569",
-                                                boxShadow: catalogMode === "services" ? "0 2px 8px rgba(42, 105, 176, 0.35)" : "none",
+                                                background: catalogMode === "services" ? "var(--snd-primary)" : "transparent",
+                                                color: catalogMode === "services" ? "var(--snd-button-primary-text)" : "#475569",
+                                                boxShadow: catalogMode === "services" ? "0 2px 8px rgba(103, 88, 189, 0.35)" : "none",
                                                 transition: "all 0.18s ease"
                                             }}
                                         >
@@ -2249,8 +2249,8 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                 fontSize: "0.68rem",
                                                 padding: "2px 7px",
                                                 borderRadius: "8px",
-                                                background: catalogMode === "services" ? "rgba(255,255,255,0.24)" : "#e2e8f0",
-                                                color: catalogMode === "services" ? "#ffffff" : "#334155",
+                                                background: catalogMode === "services" ? "rgba(17,17,26,0.08)" : "#e2e8f0",
+                                                color: catalogMode === "services" ? "var(--snd-button-primary-text)" : "#334155",
                                                 fontWeight: 700
                                             }}>
                                                 {services.length}
@@ -2270,9 +2270,9 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                 cursor: "pointer",
                                                 fontSize: "0.84rem",
                                                 fontWeight: 800,
-                                                background: catalogMode === "deals" ? "linear-gradient(135deg, #2a69b0 0%, #174276 100%)" : "transparent",
-                                                color: catalogMode === "deals" ? "#ffffff" : "#475569",
-                                                boxShadow: catalogMode === "deals" ? "0 2px 8px rgba(42, 105, 176, 0.35)" : "none",
+                                                background: catalogMode === "deals" ? "var(--snd-primary)" : "transparent",
+                                                color: catalogMode === "deals" ? "var(--snd-button-primary-text)" : "#475569",
+                                                boxShadow: catalogMode === "deals" ? "0 2px 8px rgba(103, 88, 189, 0.35)" : "none",
                                                 transition: "all 0.18s ease"
                                             }}
                                         >
@@ -2282,8 +2282,8 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                 fontSize: "0.68rem",
                                                 padding: "2px 7px",
                                                 borderRadius: "8px",
-                                                background: catalogMode === "deals" ? "rgba(255,255,255,0.24)" : "#e2e8f0",
-                                                color: catalogMode === "deals" ? "#ffffff" : "#334155",
+                                                background: catalogMode === "deals" ? "rgba(17,17,26,0.08)" : "#e2e8f0",
+                                                color: catalogMode === "deals" ? "var(--snd-button-primary-text)" : "#334155",
                                                 fontWeight: 700
                                             }}>
                                                 {deals.length}
@@ -2297,28 +2297,28 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                     {/* Active Title & Count */}
                                     {catalogMode === "services" ? (
                                         <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}>
-                                            <div style={{ width: "32px", height: "32px", borderRadius: "10px", background: "linear-gradient(135deg, #2a69b0 0%, #174276 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: "0.9rem", boxShadow: "0 2px 6px rgba(42,105,176,0.3)", flexShrink: 0 }}>
+                                            <div style={{ width: "32px", height: "32px", borderRadius: "10px", background: "linear-gradient(135deg, #6758bd 0%, #5145a2 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: "0.9rem", boxShadow: "0 2px 6px rgba(103,88,189,0.3)", flexShrink: 0 }}>
                                                 <i className={getCategoryIcon(activeCategoryOption?.key, activeCategoryOption?.label)}></i>
                                             </div>
                                             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                                                 <span style={{ fontSize: "0.98rem", fontWeight: 800, color: "#0f172a", whiteSpace: "nowrap" }}>
                                                     {activeCategoryOption?.label || "All Items"}
                                                 </span>
-                                                <span style={{ background: "#eff6ff", color: "#2a69b0", fontSize: "0.72rem", fontWeight: 700, padding: "2px 8px", borderRadius: "12px", border: "1px solid #bfdbfe", whiteSpace: "nowrap" }}>
+                                                <span style={{ background: "#f0edff", color: "#6758bd", fontSize: "0.72rem", fontWeight: 700, padding: "2px 8px", borderRadius: "12px", border: "1px solid #d9d4f5", whiteSpace: "nowrap" }}>
                                                     {dashboardCards.length} {dashboardCards.length === 1 ? 'item' : 'items'}
                                                 </span>
                                             </div>
                                         </div>
                                     ) : (
                                         <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}>
-                                            <div style={{ width: "32px", height: "32px", borderRadius: "10px", background: "linear-gradient(135deg, #2a69b0 0%, #174276 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: "0.9rem", boxShadow: "0 2px 6px rgba(42,105,176,0.3)", flexShrink: 0 }}>
+                                            <div style={{ width: "32px", height: "32px", borderRadius: "10px", background: "linear-gradient(135deg, #6758bd 0%, #5145a2 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: "0.9rem", boxShadow: "0 2px 6px rgba(103,88,189,0.3)", flexShrink: 0 }}>
                                                 <i className="fas fa-tags"></i>
                                             </div>
                                             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                                                 <span style={{ fontSize: "0.98rem", fontWeight: 800, color: "#0f172a", whiteSpace: "nowrap" }}>
                                                     All Deal Packages
                                                 </span>
-                                                <span style={{ background: "#eff6ff", color: "#2a69b0", fontSize: "0.72rem", fontWeight: 700, padding: "2px 8px", borderRadius: "12px", border: "1px solid #bfdbfe", whiteSpace: "nowrap" }}>
+                                                <span style={{ background: "#f0edff", color: "#6758bd", fontSize: "0.72rem", fontWeight: 700, padding: "2px 8px", borderRadius: "12px", border: "1px solid #d9d4f5", whiteSpace: "nowrap" }}>
                                                     {filteredDeals.length} {filteredDeals.length === 1 ? 'deal' : 'deals'}
                                                 </span>
                                             </div>
@@ -2334,8 +2334,8 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                             gap: "8px",
                                             alignItems: "center",
                                             background: "#ffffff",
-                                            border: searchFocused ? "1.5px solid #2a69b0" : "1.5px solid #cbd5e1",
-                                            boxShadow: searchFocused ? "0 0 0 3px rgba(42, 105, 176, 0.15), 0 2px 8px rgba(0,0,0,0.04)" : "0 1px 3px rgba(0,0,0,0.02)",
+                                            border: searchFocused ? "1.5px solid #6758bd" : "1.5px solid #cbd5e1",
+                                            boxShadow: searchFocused ? "0 0 0 3px rgba(103, 88, 189, 0.15), 0 2px 8px rgba(0,0,0,0.04)" : "0 1px 3px rgba(0,0,0,0.02)",
                                             borderRadius: "12px",
                                             padding: "6px 14px",
                                             transition: "all 0.22s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -2345,9 +2345,9 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                         }}
                                     >
                                         {isSearching ? (
-                                            <i className="fas fa-circle-notch fa-spin" style={{ color: "#2a69b0", fontSize: "0.85rem", flexShrink: 0 }}></i>
+                                            <i className="fas fa-circle-notch fa-spin" style={{ color: "#6758bd", fontSize: "0.85rem", flexShrink: 0 }}></i>
                                         ) : (
-                                            <i className="fas fa-search" style={{ color: searchFocused ? "#2a69b0" : "#64748b", fontSize: "0.82rem", flexShrink: 0 }}></i>
+                                            <i className="fas fa-search" style={{ color: searchFocused ? "#6758bd" : "#64748b", fontSize: "0.82rem", flexShrink: 0 }}></i>
                                         )}
                                         <input
                                             type="text"
@@ -2360,7 +2360,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                             style={{ border: "none", background: "transparent", outline: "none", fontSize: "0.84rem", width: "100%", minWidth: 0, color: "#0f172a", fontWeight: 500 }}
                                         />
                                         {isSearching && (
-                                            <span style={{ fontSize: "0.65rem", fontWeight: 700, color: "#2a69b0", background: "#eff6ff", padding: "1px 5px", borderRadius: "6px", flexShrink: 0 }}>
+                                            <span style={{ fontSize: "0.65rem", fontWeight: 700, color: "#6758bd", background: "#f0edff", padding: "1px 5px", borderRadius: "6px", flexShrink: 0 }}>
                                                 Searching
                                             </span>
                                         )}
@@ -2368,7 +2368,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                             <i
                                                 className="fas fa-times-circle"
                                                 onClick={() => this.setState({ search: "" }, () => this.loadProducts(""))}
-                                                style={{ cursor: "pointer", color: "#94a3b8", fontSize: "0.85rem", transition: "color 0.15s", flexShrink: 0 }}
+                                                style={{ cursor: "pointer", color: "#626b7b", fontSize: "0.85rem", transition: "color 0.15s", flexShrink: 0 }}
                                                 title="Clear search (ESC)"
                                             />
                                         ) : null}
@@ -2408,22 +2408,22 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                     gap: "7px",
                                                     padding: "7px 14px",
                                                     borderRadius: "10px",
-                                                    border: isActive ? "1.5px solid #1a4d87" : "1px solid #e2e8f0",
-                                                    background: isActive ? "linear-gradient(135deg, #2a69b0 0%, #1a4d87 100%)" : "#ffffff",
-                                                    color: isActive ? "#ffffff" : "#334155",
+                                                    border: isActive ? "1.5px solid var(--snd-primary)" : "1px solid #e2e8f0",
+                                                    background: isActive ? "var(--snd-primary)" : "#ffffff",
+                                                    color: isActive ? "var(--snd-button-primary-text)" : "#334155",
                                                     fontWeight: isActive ? 700 : 600,
                                                     fontSize: "0.81rem",
                                                     cursor: "pointer",
                                                     whiteSpace: "nowrap",
                                                     margin: "2px 0",
-                                                    boxShadow: isActive ? "0 3px 10px rgba(42, 105, 176, 0.28)" : "0 1px 3px rgba(0,0,0,0.02)",
+                                                    boxShadow: isActive ? "0 3px 10px rgba(103, 88, 189, 0.28)" : "0 1px 3px rgba(0,0,0,0.02)",
                                                     transition: "all 0.16s cubic-bezier(0.4, 0, 0.2, 1)",
                                                 }}
                                                 onMouseEnter={(e) => {
                                                     if (!isActive) {
-                                                        e.currentTarget.style.background = "#eff6ff";
-                                                        e.currentTarget.style.borderColor = "#93c5fd";
-                                                        e.currentTarget.style.color = "#2a69b0";
+                                                        e.currentTarget.style.background = "#f0edff";
+                                                        e.currentTarget.style.borderColor = "#c8bcff";
+                                                        e.currentTarget.style.color = "#6758bd";
                                                     }
                                                 }}
                                                 onMouseLeave={(e) => {
@@ -2434,7 +2434,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                     }
                                                 }}
                                             >
-                                                <i className={iconClass} style={{ fontSize: "0.85rem", color: isActive ? "#93c5fd" : "#2a69b0" }}></i>
+                                                <i className={iconClass} style={{ fontSize: "0.85rem", color: isActive ? "#c8bcff" : "#6758bd" }}></i>
                                                 <span>{cat.label}</span>
                                                 <span
                                                     style={{
@@ -2442,8 +2442,8 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                         fontWeight: 700,
                                                         padding: "2px 7px",
                                                         borderRadius: "8px",
-                                                        background: isActive ? "rgba(255, 255, 255, 0.24)" : "#f1f5f9",
-                                                        color: isActive ? "#ffffff" : "#475569",
+                                                        background: isActive ? "rgba(17, 17, 26, 0.08)" : "#f1f5f9",
+                                                        color: isActive ? "var(--snd-button-primary-text)" : "#475569",
                                                         marginLeft: "2px",
                                                     }}
                                                 >
@@ -2457,8 +2457,8 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
 
                             {/* Active Search Progress Shimmer Line */}
                             {isSearching && (
-                                <div style={{ position: "relative", height: "3px", width: "100%", background: "#e0edff", borderRadius: "3px", overflow: "hidden", flexShrink: 0 }}>
-                                    <div className="pos-search-progress-bar" style={{ position: "absolute", top: 0, left: 0, height: "100%", width: "40%", background: "linear-gradient(90deg, #2a69b0, #60a5fa, #2a69b0)", borderRadius: "3px" }} />
+                                <div style={{ position: "relative", height: "3px", width: "100%", background: "#f0edff", borderRadius: "3px", overflow: "hidden", flexShrink: 0 }}>
+                                    <div className="pos-search-progress-bar" style={{ position: "absolute", top: 0, left: 0, height: "100%", width: "40%", background: "linear-gradient(90deg, #6758bd, #9786ee, #6758bd)", borderRadius: "3px" }} />
                                 </div>
                             )}
 
@@ -2468,7 +2468,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(310px, 1fr))", gap: "14px", width: "100%", boxSizing: "border-box" }}>
                                         {filteredDeals.length === 0 ? (
                                             <div style={{ gridColumn: "1 / -1", background: "#fff", borderRadius: "16px", padding: "60px 20px", textAlign: "center", border: "1px solid #e2e8f0", boxShadow: "0 2px 8px rgba(15, 23, 42, 0.03)" }}>
-                                                <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "#eff6ff", border: "2px solid #bfdbfe", display: "inline-flex", alignItems: "center", justifyContent: "center", color: "#2a69b0", fontSize: "1.5rem", marginBottom: "14px" }}>
+                                                <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "#f0edff", border: "2px solid #d9d4f5", display: "inline-flex", alignItems: "center", justifyContent: "center", color: "#6758bd", fontSize: "1.5rem", marginBottom: "14px" }}>
                                                     <i className="fas fa-tags"></i>
                                                 </div>
                                                 <div style={{ fontWeight: 800, fontSize: "1.05rem", color: "#0f172a", marginBottom: "4px" }}>
@@ -2481,7 +2481,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                     <button
                                                         type="button"
                                                         onClick={() => this.setState({ search: "" }, () => this.loadProducts(""))}
-                                                        style={{ background: "#eff6ff", border: "1px solid #bfdbfe", color: "#2a69b0", padding: "7px 16px", borderRadius: "10px", fontSize: "0.82rem", fontWeight: 700, cursor: "pointer", transition: "all 0.15s ease" }}
+                                                        style={{ background: "#f0edff", border: "1px solid #d9d4f5", color: "#6758bd", padding: "7px 16px", borderRadius: "10px", fontSize: "0.82rem", fontWeight: 700, cursor: "pointer", transition: "all 0.15s ease" }}
                                                     >
                                                         <i className="fas fa-redo-alt mr-1"></i> Clear Search
                                                     </button>
@@ -2505,10 +2505,10 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                         onClick={() => this.addProductToCart(deal.barcode)}
                                                         style={{
                                                             background: inCartQty > 0 ? "#f8fbff" : "#ffffff",
-                                                            border: inCartQty > 0 ? "2px solid #2a69b0" : "1.5px solid #e2e8f0",
+                                                            border: inCartQty > 0 ? "2px solid #6758bd" : "1.5px solid #e2e8f0",
                                                             borderRadius: "16px",
                                                             overflow: "hidden",
-                                                            boxShadow: inCartQty > 0 ? "0 8px 24px rgba(42, 105, 176, 0.18)" : "0 2px 10px rgba(15, 23, 42, 0.04)",
+                                                            boxShadow: inCartQty > 0 ? "0 8px 24px rgba(103, 88, 189, 0.18)" : "0 2px 10px rgba(15, 23, 42, 0.04)",
                                                             cursor: "pointer",
                                                             transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
                                                             boxSizing: "border-box",
@@ -2517,8 +2517,8 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                         }}
                                                         onMouseEnter={(e) => {
                                                             if (inCartQty === 0) {
-                                                                e.currentTarget.style.borderColor = "#93c5fd";
-                                                                e.currentTarget.style.boxShadow = "0 8px 24px rgba(42, 105, 176, 0.12)";
+                                                                e.currentTarget.style.borderColor = "#c8bcff";
+                                                                e.currentTarget.style.boxShadow = "0 8px 24px rgba(103, 88, 189, 0.12)";
                                                                 e.currentTarget.style.transform = "translateY(-2px)";
                                                             }
                                                         }}
@@ -2533,7 +2533,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                         {/* Top Deal Header */}
                                                         <div style={{
                                                             padding: "10px 14px",
-                                                            background: inCartQty > 0 ? "linear-gradient(135deg, #e0efff 0%, #d0e4f5 100%)" : "linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)",
+                                                            background: inCartQty > 0 ? "linear-gradient(135deg, #f0edff 0%, #d9d4f5 100%)" : "linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)",
                                                             borderBottom: "1px solid #e2e8f0",
                                                             display: "flex",
                                                             alignItems: "center",
@@ -2542,7 +2542,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                         }}>
                                                             <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                                                                 <span style={{
-                                                                    background: "linear-gradient(135deg, #2a69b0 0%, #174276 100%)",
+                                                                    background: "linear-gradient(135deg, #6758bd 0%, #5145a2 100%)",
                                                                     color: "#ffffff",
                                                                     fontSize: "0.7rem",
                                                                     fontWeight: 800,
@@ -2552,16 +2552,16 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                                     display: "inline-flex",
                                                                     alignItems: "center",
                                                                     gap: "5px",
-                                                                    boxShadow: "0 2px 5px rgba(42, 105, 176, 0.28)"
+                                                                    boxShadow: "0 2px 5px rgba(103, 88, 189, 0.28)"
                                                                 }}>
                                                                     <i className="fas fa-tags" style={{ fontSize: "0.68rem" }}></i>
                                                                     DEAL PACKAGE
                                                                 </span>
                                                                 {discountPercent > 0 && (
                                                                     <span style={{
-                                                                        background: "#eff6ff",
-                                                                        color: "#1e40af",
-                                                                        border: "1px solid #bfdbfe",
+                                                                        background: "#f0edff",
+                                                                        color: "#5145a2",
+                                                                        border: "1px solid #d9d4f5",
                                                                         fontSize: "0.7rem",
                                                                         fontWeight: 800,
                                                                         padding: "2px 8px",
@@ -2607,7 +2607,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                                         alignItems: "center",
                                                                         gap: "5px"
                                                                     }}>
-                                                                        <i className="fas fa-list-check" style={{ color: "#2a69b0", fontSize: "0.72rem" }}></i>
+                                                                        <i className="fas fa-list-check" style={{ color: "#6758bd", fontSize: "0.72rem" }}></i>
                                                                         Included Services ({includedServices.length})
                                                                     </span>
                                                                 </div>
@@ -2621,7 +2621,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                                     paddingRight: "2px"
                                                                 }}>
                                                                     {includedServices.length === 0 ? (
-                                                                        <span style={{ fontSize: "0.76rem", color: "#94a3b8", fontStyle: "italic" }}>No services specified</span>
+                                                                        <span style={{ fontSize: "0.76rem", color: "#626b7b", fontStyle: "italic" }}>No services specified</span>
                                                                     ) : (
                                                                         includedServices.map((srv, sIdx) => (
                                                                             <div
@@ -2632,15 +2632,15 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                                                     gap: "7px",
                                                                                     padding: "5px 9px",
                                                                                     borderRadius: "8px",
-                                                                                    background: inCartQty > 0 ? "#eff6ff" : "#f8fafc",
-                                                                                    border: inCartQty > 0 ? "1px solid #bfdbfe" : "1px solid #e2e8f0",
+                                                                                    background: inCartQty > 0 ? "#f0edff" : "#f8fafc",
+                                                                                    border: inCartQty > 0 ? "1px solid #d9d4f5" : "1px solid #e2e8f0",
                                                                                     fontSize: "0.78rem",
                                                                                     color: "#1e293b",
                                                                                     fontWeight: 600,
                                                                                     lineHeight: 1.25
                                                                                 }}
                                                                             >
-                                                                                <i className="fas fa-check-circle" style={{ color: "#2a69b0", fontSize: "0.74rem", flexShrink: 0 }}></i>
+                                                                                <i className="fas fa-check-circle" style={{ color: "#6758bd", fontSize: "0.74rem", flexShrink: 0 }}></i>
                                                                                 <span style={{ wordBreak: "break-word" }}>{srv.name}</span>
                                                                             </div>
                                                                         ))
@@ -2653,7 +2653,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                         <div style={{
                                                             padding: "11px 16px",
                                                             borderTop: "1px dashed #e2e8f0",
-                                                            background: inCartQty > 0 ? "rgba(42, 105, 176, 0.05)" : "#fafafa",
+                                                            background: inCartQty > 0 ? "rgba(103, 88, 189, 0.05)" : "#fafafa",
                                                             display: "flex",
                                                             alignItems: "center",
                                                             justifyContent: "space-between",
@@ -2662,15 +2662,15 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                         }}>
                                                             <div>
                                                                 {originalPrice > dealPrice && (
-                                                                    <div style={{ fontSize: "0.74rem", color: "#94a3b8", textDecoration: "line-through", fontWeight: 600, lineHeight: 1 }}>
+                                                                    <div style={{ fontSize: "0.74rem", color: "#626b7b", textDecoration: "line-through", fontWeight: 600, lineHeight: 1 }}>
                                                                         {this.formatAmount(originalPrice)}
                                                                     </div>
                                                                 )}
-                                                                <div style={{ fontSize: "1.15rem", fontWeight: 800, color: inCartQty > 0 ? "#174276" : "#0f172a", lineHeight: 1.2 }}>
+                                                                <div style={{ fontSize: "1.15rem", fontWeight: 800, color: inCartQty > 0 ? "#5145a2" : "#0f172a", lineHeight: 1.2 }}>
                                                                     {this.formatAmount(dealPrice)}
                                                                 </div>
                                                                 {savings > 0 && (
-                                                                    <div style={{ fontSize: "0.7rem", color: "#2a69b0", fontWeight: 700 }}>
+                                                                    <div style={{ fontSize: "0.7rem", color: "#6758bd", fontWeight: 700 }}>
                                                                         Save {this.formatAmount(savings)}
                                                                     </div>
                                                                 )}
@@ -2692,13 +2692,13 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                                         >
                                                                             -
                                                                         </button>
-                                                                        <span style={{ minWidth: "24px", textAlign: "center", fontWeight: 800, fontSize: "0.9rem", color: "#2a69b0" }}>
+                                                                        <span style={{ minWidth: "24px", textAlign: "center", fontWeight: 800, fontSize: "0.9rem", color: "#6758bd" }}>
                                                                             {inCartQty}
                                                                         </span>
                                                                         <button
                                                                             type="button"
                                                                             onClick={() => this.handleChangeQty(itemKey, inCartQty + 1)}
-                                                                            style={{ width: "28px", height: "28px", borderRadius: "8px", border: "none", background: "#2a69b0", color: "#ffffff", cursor: "pointer", fontWeight: 800, fontSize: "0.9rem", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 6px rgba(42, 105, 176, 0.3)", transition: "all 0.15s ease" }}
+                                                                            style={{ width: "28px", height: "28px", borderRadius: "8px", border: "none", background: "var(--snd-primary)", color: "var(--snd-button-primary-text)", cursor: "pointer", fontWeight: 800, fontSize: "0.9rem", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 6px rgba(103, 88, 189, 0.3)", transition: "all 0.15s ease" }}
                                                                         >
                                                                             +
                                                                         </button>
@@ -2711,8 +2711,8 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                                             this.addProductToCart(deal.barcode);
                                                                         }}
                                                                         style={{
-                                                                            background: "linear-gradient(135deg, #2a69b0 0%, #174276 100%)",
-                                                                            color: "#ffffff",
+                                                                            background: "var(--snd-primary)",
+                                                                            color: "var(--snd-button-primary-text)",
                                                                             border: "none",
                                                                             borderRadius: "10px",
                                                                             padding: "7px 14px",
@@ -2722,7 +2722,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                                             display: "flex",
                                                                             alignItems: "center",
                                                                             gap: "6px",
-                                                                            boxShadow: "0 3px 10px rgba(42, 105, 176, 0.32)",
+                                                                            boxShadow: "0 3px 10px rgba(103, 88, 189, 0.32)",
                                                                             transition: "all 0.18s ease"
                                                                         }}
                                                                     >
@@ -2743,7 +2743,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(138px, 1fr))", gap: "10px", width: "100%", boxSizing: "border-box" }}>
                                         {isSearching && dashboardCards.length === 0 ? (
                                             <div style={{ gridColumn: "1 / -1", background: "#fff", borderRadius: "16px", padding: "60px 20px", textAlign: "center", border: "1px solid #e2e8f0", boxShadow: "0 2px 8px rgba(15, 23, 42, 0.03)" }}>
-                                                <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#eff6ff", border: "2px solid #bfdbfe", display: "inline-flex", alignItems: "center", justifyContent: "center", color: "#2a69b0", fontSize: "1.3rem", marginBottom: "12px" }}>
+                                                <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#f0edff", border: "2px solid #d9d4f5", display: "inline-flex", alignItems: "center", justifyContent: "center", color: "#6758bd", fontSize: "1.3rem", marginBottom: "12px" }}>
                                                     <i className="fas fa-circle-notch fa-spin"></i>
                                                 </div>
                                                 <div style={{ fontWeight: 800, fontSize: "0.95rem", color: "#0f172a", marginBottom: "4px" }}>Searching catalog...</div>
@@ -2751,7 +2751,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                             </div>
                                         ) : dashboardCards.length === 0 ? (
                                             <div style={{ gridColumn: "1 / -1", background: "#fff", borderRadius: "16px", padding: "50px 20px", textAlign: "center", color: "#64748b", border: "1px solid #e2e8f0" }}>
-                                                <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#f8fafc", display: "inline-flex", alignItems: "center", justifyContent: "center", color: "#94a3b8", fontSize: "1.3rem", marginBottom: "10px" }}>
+                                                <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#f8fafc", display: "inline-flex", alignItems: "center", justifyContent: "center", color: "#626b7b", fontSize: "1.3rem", marginBottom: "10px" }}>
                                                     <i className="fas fa-search"></i>
                                                 </div>
                                                 <div style={{ fontWeight: 800, fontSize: "0.95rem", color: "#1e293b", marginBottom: "4px" }}>
@@ -2764,7 +2764,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                     <button
                                                         type="button"
                                                         onClick={() => this.setState({ search: "" }, () => this.loadProducts(""))}
-                                                        style={{ background: "#eff6ff", border: "1px solid #bfdbfe", color: "#2a69b0", padding: "6px 14px", borderRadius: "10px", fontSize: "0.78rem", fontWeight: 700, cursor: "pointer", transition: "all 0.15s ease" }}
+                                                        style={{ background: "#f0edff", border: "1px solid #d9d4f5", color: "#6758bd", padding: "6px 14px", borderRadius: "10px", fontSize: "0.78rem", fontWeight: 700, cursor: "pointer", transition: "all 0.15s ease" }}
                                                     >
                                                         <i className="fas fa-redo-alt" style={{ marginRight: "6px" }}></i>
                                                         Clear Search & Show All
@@ -2775,7 +2775,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                             dashboardCards.map((item, idx) => {
                                                 const displayPrice = Number(item.price ?? item.rate ?? 0);
                                                 const productLabel = item.item_type === 'service' ? 'Service' : 'Menu';
-                                                const iconColor = idx % 2 === 0 ? '#2a69b0' : '#2a69b0';
+                                                const iconColor = idx % 2 === 0 ? '#6758bd' : '#6758bd';
                                                 const itemKey = `${item.item_type || 'product'}:${item.id}`;
                                                 const cartItem = cart.find(c => this.getCartItemKey(c) === itemKey);
                                                 const inCartQty = cartItem ? Number(cartItem.pivot?.quantity || 0) : 0;
@@ -2786,18 +2786,18 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                         onClick={() => this.addProductToCart(item.barcode)}
                                                         style={{
                                                             background: inCartQty > 0 ? "#f8fbff" : "#ffffff",
-                                                            border: inCartQty > 0 ? "1.5px solid #2a69b0" : "1px solid #e2e8f0",
+                                                            border: inCartQty > 0 ? "1.5px solid #6758bd" : "1px solid #e2e8f0",
                                                             borderRadius: "14px",
                                                             overflow: "hidden",
-                                                            boxShadow: inCartQty > 0 ? "0 6px 16px rgba(42, 105, 176, 0.14)" : "0 2px 6px rgba(15, 23, 42, 0.03)",
+                                                            boxShadow: inCartQty > 0 ? "0 6px 16px rgba(103, 88, 189, 0.14)" : "0 2px 6px rgba(15, 23, 42, 0.03)",
                                                             cursor: "pointer",
                                                             transition: "all 0.18s ease",
                                                             boxSizing: "border-box",
                                                         }}
                                                         onMouseEnter={(e) => {
                                                             if (inCartQty === 0) {
-                                                                e.currentTarget.style.borderColor = "#93c5fd";
-                                                                e.currentTarget.style.boxShadow = "0 4px 14px rgba(42, 105, 176, 0.10)";
+                                                                e.currentTarget.style.borderColor = "#c8bcff";
+                                                                e.currentTarget.style.boxShadow = "0 4px 14px rgba(103, 88, 189, 0.10)";
                                                                 e.currentTarget.style.transform = "translateY(-2px)";
                                                             }
                                                         }}
@@ -2809,19 +2809,19 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                             }
                                                         }}
                                                     >
-                                                        <div style={{ height: "80px", background: "rgba(42, 105, 176, 0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                                            <div style={{ width: "48px", height: "48px", borderRadius: "14px", background: "rgba(42, 105, 176, 0.12)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.35rem", color: iconColor }}>
+                                                        <div style={{ height: "80px", background: "rgba(103, 88, 189, 0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                                            <div style={{ width: "48px", height: "48px", borderRadius: "14px", background: "rgba(103, 88, 189, 0.12)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.35rem", color: iconColor }}>
                                                                 <i className={`fas fa-${item.item_type === 'service' ? 'tags' : 'spa'}`}></i>
                                                             </div>
                                                         </div>
                                                         <div style={{ padding: "8px 9px 10px" }}>
                                                             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
                                                                 <span style={{ fontSize: "0.66rem", fontWeight: 700, color: "#64748b", letterSpacing: "0.02em", textTransform: "uppercase" }}>{productLabel}</span>
-                                                                <span style={{ fontSize: "0.66rem", color: "#2a69b0", fontWeight: 700 }}>#{idx + 1}</span>
+                                                                <span style={{ fontSize: "0.66rem", color: "#6758bd", fontWeight: 700 }}>#{idx + 1}</span>
                                                             </div>
                                                             <div style={{ fontWeight: 700, fontSize: "0.8rem", color: "#1f2937", marginBottom: "6px", minHeight: "34px", lineHeight: "1.2", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }} title={item.name}>{item.name}</div>
                                                             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "6px", paddingTop: "6px", borderTop: "1px dashed #e2e8f0", marginTop: "auto" }}>
-                                                                <span style={{ fontSize: "0.86rem", fontWeight: 800, color: inCartQty > 0 ? "#1c4e8a" : "#0f172a", minWidth: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }} title={this.formatAmount(displayPrice)}>
+                                                                <span style={{ fontSize: "0.86rem", fontWeight: 800, color: inCartQty > 0 ? "#5145a2" : "#0f172a", minWidth: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }} title={this.formatAmount(displayPrice)}>
                                                                     {this.formatAmount(displayPrice)}
                                                                 </span>
                                                                 <div style={{ display: "flex", alignItems: "center", gap: "3px", flexShrink: 0 }}>
@@ -2842,7 +2842,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                                         title="Decrease quantity"
                                                                     >-</button>
                                                                     {inCartQty > 0 && (
-                                                                        <span style={{ minWidth: "15px", textAlign: "center", fontSize: "0.72rem", fontWeight: 800, color: "#2a69b0" }}>
+                                                                        <span style={{ minWidth: "15px", textAlign: "center", fontSize: "0.72rem", fontWeight: 800, color: "#6758bd" }}>
                                                                             {inCartQty}
                                                                         </span>
                                                                     )}
@@ -2852,7 +2852,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                                             e.stopPropagation();
                                                                             this.addProductToCart(item.barcode);
                                                                         }}
-                                                                        style={{ width: "22px", height: "22px", borderRadius: "6px", border: "none", background: "#2a69b0", color: "#fff", cursor: "pointer", fontSize: "0.75rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", padding: 0, boxSizing: "border-box", boxShadow: "0 2px 5px rgba(42, 105, 176, 0.28)", transition: "all 0.15s ease" }}
+                                                                        style={{ width: "22px", height: "22px", borderRadius: "6px", border: "none", background: "var(--snd-primary)", color: "var(--snd-button-primary-text)", cursor: "pointer", fontSize: "0.75rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", padding: 0, boxSizing: "border-box", boxShadow: "0 2px 5px rgba(103, 88, 189, 0.28)", transition: "all 0.15s ease" }}
                                                                         title="Add to cart"
                                                                     >+</button>
                                                                 </div>
@@ -2877,16 +2877,16 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
 
 
                             {/* Customer Select & Quick Add Bar */}
-                            <div className="pos-customer-wrapper" style={{ background: "#fff", border: "1.5px solid #d0e4f5", borderRadius: "14px", padding: "10px 12px", marginBottom: "12px", boxShadow: "0 4px 12px rgba(15,23,42,0.03)" }}>
+                            <div className="pos-customer-wrapper" style={{ background: "#fff", border: "1.5px solid #d9d4f5", borderRadius: "14px", padding: "10px 12px", marginBottom: "12px", boxShadow: "0 4px 12px rgba(15,23,42,0.03)" }}>
                                 <div style={{ fontSize: "0.72rem", fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "6px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                                     <span style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                                        <i className="fas fa-user-circle" style={{ color: "#2a69b0", fontSize: "0.88rem" }}></i>
+                                        <i className="fas fa-user-circle" style={{ color: "#6758bd", fontSize: "0.88rem" }}></i>
                                         Customer
                                     </span>
                                     <button
                                         type="button"
                                         onClick={this.showAddCustomerModal}
-                                        style={{ border: "none", background: "#2a69b0", color: "#fff", borderRadius: "8px", padding: "4px 10px", fontSize: "0.72rem", fontWeight: 700, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "4px", boxShadow: "0 2px 6px rgba(42, 105, 176, 0.3)" }}>
+                                        style={{ border: "none", background: "var(--snd-primary)", color: "var(--snd-button-primary-text)", borderRadius: "8px", padding: "4px 10px", fontSize: "0.72rem", fontWeight: 700, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "4px", boxShadow: "0 2px 6px rgba(103, 88, 189, 0.3)" }}>
                                         <i className="fas fa-user-plus"></i> + Add New
                                     </button>
                                 </div>
@@ -2924,7 +2924,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                         const isDeal = item.item_type === 'deal' || item.item_type === 2;
                                         const isService = item.item_type === 'service' || item.item_type === 1;
                                         return (
-                                            <div className="pos-order-item" key={this.getCartItemKey(item)} style={{ background: "#fff", border: isDeal ? "1.5px solid #bfdbfe" : "1px solid #e5e7eb", borderRadius: "12px", padding: "8px 10px", display: "flex", flexDirection: "column", gap: "5px" }}>
+                                            <div className="pos-order-item" key={this.getCartItemKey(item)} style={{ background: "#fff", border: isDeal ? "1.5px solid #d9d4f5" : "1px solid #e5e7eb", borderRadius: "12px", padding: "8px 10px", display: "flex", flexDirection: "column", gap: "5px" }}>
                                                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                                                     <div style={{ minWidth: 0, flex: 1 }}>
                                                         <div className="pos-order-item-name" style={{ fontWeight: 700, color: "#1f2937" }}>{item.name}</div>
@@ -2937,9 +2937,9 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                                                 fontWeight: 700,
                                                                 padding: "1px 6px",
                                                                 borderRadius: "6px",
-                                                                background: "#eff6ff",
-                                                                color: "#2a69b0",
-                                                                border: "1px solid #bfdbfe"
+                                                                background: "#f0edff",
+                                                                color: "#6758bd",
+                                                                border: "1px solid #d9d4f5"
                                                             }}>
                                                                 <i className={`fas fa-${isDeal ? 'tags' : isService ? 'spa' : 'box-open'}`} style={{ fontSize: "0.65rem" }}></i>
                                                                 {isDeal ? 'Deal Package' : isService ? 'Service' : 'Product'}
@@ -2968,7 +2968,7 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                 )}
                             </div>
 
-                            <div className="pos-order-summary" style={{ flexShrink: 0, marginTop: "12px", background: "#fff", border: "1px solid rgba(42, 105, 176, 0.25)", borderRadius: "14px", padding: "12px" }}>
+                            <div className="pos-order-summary" style={{ flexShrink: 0, marginTop: "12px", background: "#fff", border: "1px solid rgba(103, 88, 189, 0.25)", borderRadius: "14px", padding: "12px" }}>
                                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem", color: "#64748b", marginBottom: "8px" }}><span>Sub Total</span><span>{this.formatAmount(saleTotals.subtotal)}</span></div>
                                 {taxEnabled && <div style={{ marginBottom: "10px" }}>
                                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "0.8rem", color: "#64748b", marginBottom: "5px" }}><span>Tax</span><span>{this.formatAmount(saleTotals.taxAmount)}</span></div>
@@ -2984,25 +2984,25 @@ buildSrbBarcodeSvg(reference = "SRB-000000") {
                                         <input type="number" min="0" step="0.01" placeholder="Discount amount" value={saleTotals.discountAmount ? saleTotals.discountAmount.toFixed(2) : ""} onChange={this.setDiscountAmount} style={S.inputField} />
                                     </div>
                                 </div>}
-                                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "1rem", fontWeight: 800, color: "#1f2937", paddingTop: "8px", borderTop: "1px solid #e5e7eb", marginTop: "8px" }}><span>Amount to Pay</span><span style={{ color: "#2a69b0" }}>{this.formatAmount(saleTotals.total)}</span></div>
+                                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "1rem", fontWeight: 800, color: "#1f2937", paddingTop: "8px", borderTop: "1px solid #e5e7eb", marginTop: "8px" }}><span>Amount to Pay</span><span style={{ color: "#6758bd" }}>{this.formatAmount(saleTotals.total)}</span></div>
                             </div>
 
                             <div className="pos-order-actions" style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: "8px", marginTop: "12px" }}>
-                                <button onClick={this.handleClickSubmit} style={{ background: "#2a69b0", border: "none", borderRadius: "12px", color: "#fff", fontWeight: 800, fontSize: "0.9rem", padding: "12px", cursor: "pointer", boxShadow: "0 6px 20px rgba(42, 105, 176, 0.38)" }}>Place an Order</button>
+                                <button onClick={this.handleClickSubmit} style={{ background: "var(--snd-primary)", border: "none", borderRadius: "12px", color: "var(--snd-button-primary-text)", fontWeight: 800, fontSize: "0.9rem", padding: "12px", cursor: "pointer", boxShadow: "0 6px 20px rgba(103, 88, 189, 0.38)" }}>Place an Order</button>
                                 <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "8px" }}>
                                     <button
                                         onClick={() => (this.state.cart.length > 0 ? this.handleClickSubmit() : this.state.lastPlacedOrder ? this.printReceipt(this.state.lastPlacedOrder) : this.handleClickSubmit())}
-                                        style={{ border: "1px solid #d0e4f5", background: "#fff", borderRadius: "10px", padding: "9px 6px", fontSize: "0.74rem", color: "#1a3a5c", fontWeight: 700, cursor: "pointer", transition: "all 0.15s" }}>
+                                        style={{ border: "1px solid #d9d4f5", background: "#fff", borderRadius: "10px", padding: "9px 6px", fontSize: "0.74rem", color: "#28243d", fontWeight: 700, cursor: "pointer", transition: "all 0.15s" }}>
                                         <i className="fas fa-print" style={{ marginRight: "4px" }}></i>Print
                                     </button>
                                     <button
                                         onClick={this.handleOpenLastInvoice}
-                                        style={{ border: "1px solid #d0e4f5", background: "#fff", borderRadius: "10px", padding: "9px 6px", fontSize: "0.74rem", color: "#1a3a5c", fontWeight: 700, cursor: "pointer", transition: "all 0.15s" }}>
+                                        style={{ border: "1px solid #d9d4f5", background: "#fff", borderRadius: "10px", padding: "9px 6px", fontSize: "0.74rem", color: "#28243d", fontWeight: 700, cursor: "pointer", transition: "all 0.15s" }}>
                                         <i className="fas fa-file-invoice" style={{ marginRight: "4px" }}></i>Invoice
                                     </button>
                                     <button
                                         onClick={() => Swal.fire({ icon: "info", title: "Draft Saved", text: "Your current cart items are active and saved in your session.", timer: 2000, showConfirmButton: false })}
-                                        style={{ border: "1px solid #d0e4f5", background: "#fff", borderRadius: "10px", padding: "9px 6px", fontSize: "0.74rem", color: "#1a3a5c", fontWeight: 700, cursor: "pointer", transition: "all 0.15s" }}>
+                                        style={{ border: "1px solid #d9d4f5", background: "#fff", borderRadius: "10px", padding: "9px 6px", fontSize: "0.74rem", color: "#28243d", fontWeight: 700, cursor: "pointer", transition: "all 0.15s" }}>
                                         <i className="fas fa-save" style={{ marginRight: "4px" }}></i>Draft
                                     </button>
                                 </div>

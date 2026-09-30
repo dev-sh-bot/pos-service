@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>First Name <span style="color:#ef4444">*</span></label>
+                                <label>First Name <span style="color:#c9342d">*</span></label>
                                 <input type="text" name="first_name"
                                        class="form-control @error('first_name') is-invalid @enderror"
                                        value="{{ old('first_name') }}" placeholder="John">
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Last Name <span style="color:#ef4444">*</span></label>
+                                <label>Last Name <span style="color:#c9342d">*</span></label>
                                 <input type="text" name="last_name"
                                        class="form-control @error('last_name') is-invalid @enderror"
                                        value="{{ old('last_name') }}" placeholder="Doe">
@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Email <span style="color:#ef4444">*</span></label>
+                                <label>Email <span style="color:#c9342d">*</span></label>
                                 <input type="email" name="email"
                                        class="form-control @error('email') is-invalid @enderror"
                                        value="{{ old('email') }}" placeholder="john@example.com">
@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Password <span style="color:#ef4444">*</span></label>
+                                <label>Password <span style="color:#c9342d">*</span></label>
                                 <input type="password" name="password"
                                        class="form-control @error('password') is-invalid @enderror"
                                        placeholder="Min. 8 characters">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Confirm Password <span style="color:#ef4444">*</span></label>
+                                <label>Confirm Password <span style="color:#c9342d">*</span></label>
                                 <input type="password" name="password_confirmation"
                                        class="form-control" placeholder="Repeat password">
                             </div>
@@ -80,7 +80,7 @@
                         <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:500;">
                             <input type="checkbox" name="is_active" value="1"
                                    {{ old('is_active', true) ? 'checked' : '' }}
-                                   style="accent-color:#0ea5b0;width:16px;height:16px;">
+                                   style="accent-color:var(--snd-primary-deep);width:16px;height:16px;">
                             Active (user can log in)
                         </label>
                     </div>
@@ -100,7 +100,7 @@
                             <label class="assign-chip">
                                 <input type="checkbox" name="roles[]" value="{{ $role->id }}"
                                        {{ in_array($role->id, old('roles', [])) ? 'checked' : '' }}
-                                       style="accent-color:#0ea5b0;">
+                                       style="accent-color:var(--snd-primary-deep);">
                                 {{ $role->name }}
                             </label>
                             @endforeach
@@ -113,7 +113,7 @@
                         <label>Direct Permissions</label>
                         @foreach($permissions->groupBy('group_name') as $group => $groupPermissions)
                         <div class="mb-3">
-                            <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#0ea5b0;margin-bottom:6px;">
+                            <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--snd-primary-deep);margin-bottom:6px;">
                                 {{ $group ?? 'General' }}
                             </div>
                             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
@@ -121,7 +121,7 @@
                                 <label class="assign-chip">
                                     <input type="checkbox" name="permissions[]" value="{{ $permission->id }}"
                                            {{ in_array($permission->id, old('permissions', [])) ? 'checked' : '' }}
-                                           style="accent-color:#0ea5b0;">
+                                           style="accent-color:var(--snd-primary-deep);">
                                     {{ $permission->name }}
                                 </label>
                                 @endforeach
@@ -156,10 +156,10 @@
                                 <input type="checkbox" name="branches[]" value="{{ $branch->id }}"
                                        {{ in_array($branch->id, old('branches', [])) ? 'checked' : '' }}
                                        class="branch-check"
-                                       style="accent-color:#0ea5b0;width:15px;height:15px;flex-shrink:0;">
+                                       style="accent-color:var(--snd-primary-deep);width:15px;height:15px;flex-shrink:0;">
                                 <div>
-                                    <span style="font-weight:600;font-size:0.84rem;color:#0d3b45;">{{ $branch->name }}</span>
-                                    <code style="background:#f0f9fa;color:#0ea5b0;padding:1px 7px;border-radius:4px;font-size:0.74rem;margin-left:6px;">{{ $branch->code }}</code>
+                                    <span style="font-weight:600;font-size:0.84rem;color:var(--snd-ink);">{{ $branch->name }}</span>
+                                    <code style="background:var(--snd-primary-soft);color:var(--snd-primary-deep);padding:1px 7px;border-radius:4px;font-size:0.74rem;margin-left:6px;">{{ $branch->code }}</code>
                                 </div>
                             </label>
                             @endforeach
@@ -220,10 +220,10 @@ function refreshCounters() {
         counterList.insertAdjacentHTML('beforeend', `
             <label class="assign-row counter-row">
                 <input type="checkbox" name="counters[]" value="${c.id}" ${checked}
-                       style="accent-color:#0ea5b0;width:15px;height:15px;flex-shrink:0;" class="counter-check">
+                       style="accent-color:var(--snd-primary-deep);width:15px;height:15px;flex-shrink:0;" class="counter-check">
                 <div>
-                    <span style="font-weight:600;font-size:0.84rem;color:#0d3b45;">${c.name}</span>
-                    <code style="background:#f0f9fa;color:#0ea5b0;padding:1px 7px;border-radius:4px;font-size:0.74rem;margin-left:6px;">${c.code}</code>
+                    <span style="font-weight:600;font-size:0.84rem;color:var(--snd-ink);">${c.name}</span>
+                    <code style="background:var(--snd-primary-soft);color:var(--snd-primary-deep);padding:1px 7px;border-radius:4px;font-size:0.74rem;margin-left:6px;">${c.code}</code>
                 </div>
             </label>`);
     });
@@ -235,14 +235,14 @@ function refreshCounters() {
 function applyHighlight(cb) {
     const row = cb.closest('.assign-row');
     if (!row) return;
-    const update = () => row.style.borderColor = cb.checked ? '#0ea5b0' : '#e2e8f0';
+    const update = () => row.style.borderColor = cb.checked ? 'var(--snd-primary-deep)' : 'var(--snd-border-strong)';
     update();
     cb.addEventListener('change', update);
 }
 
 document.querySelectorAll('.branch-check').forEach(cb => {
     const row = cb.closest('.assign-row');
-    const update = () => { if (row) row.style.borderColor = cb.checked ? '#0ea5b0' : '#e2e8f0'; };
+    const update = () => { if (row) row.style.borderColor = cb.checked ? 'var(--snd-primary-deep)' : 'var(--snd-border-strong)'; };
     update();
     cb.addEventListener('change', () => { update(); refreshCounters(); });
 });
@@ -252,14 +252,14 @@ refreshCounters();
 
 <style>
 .assign-chip {
-    display:flex;align-items:center;gap:6px;background:#f8fafc;
-    border:1px solid #e2e8f0;border-radius:8px;padding:6px 14px;
-    cursor:pointer;font-size:0.84rem;font-weight:500;color:#374151;margin:0;
+    display:flex;align-items:center;gap:6px;background:var(--snd-surface-soft);
+    border:1px solid var(--snd-border-strong);border-radius:8px;padding:6px 14px;
+    cursor:pointer;font-size:0.84rem;font-weight:500;color:var(--snd-ink-soft);margin:0;
     transition:border-color 0.12s;
 }
 .assign-row {
     display:flex;align-items:center;gap:10px;padding:8px 12px;
-    border:1px solid #e2e8f0;border-radius:8px;cursor:pointer;
+    border:1px solid var(--snd-border-strong);border-radius:8px;cursor:pointer;
     transition:border-color 0.12s;margin:0;
 }
 </style>

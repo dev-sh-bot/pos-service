@@ -336,7 +336,7 @@ class Purchase extends Component {
         return (
             <div className="row purchase-container">
                 {/* LEFT SIDE - Product Selector */}
-                <div className="col-lg-8 col-md-7">
+                <div className="col-lg-8 col-md-7 purchase-product-column">
                     <div className="card">
                         <div className="card-body">
                             <div className="product-search mb-3">
@@ -370,7 +370,7 @@ class Purchase extends Component {
                 </div>
 
                 {/* RIGHT SIDE - Purchase Cart */}
-                <div className="col-lg-4 col-md-5">
+                <div className="col-lg-4 col-md-5 purchase-sidebar-column">
                     <div className="cart-card">
                         {/* Supplier & Date Card */}
                         <div className="card card-primary card-outline">
@@ -382,6 +382,11 @@ class Purchase extends Component {
                             <div className="card-body">
                                 <div className="form-group">
                                     <label>Supplier <span className="text-danger">*</span></label>
+                                    {suppliersList.length === 0 && (
+                                        <div className="snd-empty-form-state">
+                                            No suppliers found. <a href="/admin/suppliers/create">Add a supplier</a> before recording a purchase.
+                                        </div>
+                                    )}
                                     <select
                                         className="form-control"
                                         value={supplier_id}

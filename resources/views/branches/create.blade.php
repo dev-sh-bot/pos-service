@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Name <span style="color:#ef4444">*</span></label>
+                                <label>Name <span style="color:#c9342d">*</span></label>
                                 <input type="text" name="name"
                                        class="form-control @error('name') is-invalid @enderror"
                                        value="{{ old('name') }}" placeholder="e.g. Main Branch">
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Code <span style="color:#ef4444">*</span></label>
+                                <label>Code <span style="color:#c9342d">*</span></label>
                                 <input type="text" name="code"
                                        class="form-control @error('code') is-invalid @enderror"
                                        value="{{ old('code') }}" placeholder="e.g. MB01"
@@ -61,7 +61,7 @@
                                 <label style="display:flex;align-items:center;gap:8px;cursor:pointer;margin-top:32px;">
                                     <input type="checkbox" name="is_active" value="1"
                                            {{ old('is_active', true) ? 'checked' : '' }}
-                                           style="accent-color:#0ea5b0;width:16px;height:16px;">
+                                           style="accent-color:var(--snd-primary-deep);width:16px;height:16px;">
                                     <span style="font-weight:500;">Branch is Active</span>
                                 </label>
                             </div>
@@ -87,7 +87,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Password <span style="color:#ef4444">*</span></label>
+                                    <label>Password <span style="color:#c9342d">*</span></label>
                                     <input type="password" name="password" id="branch_password"
                                            class="form-control @error('password') is-invalid @enderror"
                                            placeholder="Min. 4 characters" autocomplete="new-password">
@@ -96,7 +96,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Confirm Password <span style="color:#ef4444">*</span></label>
+                                    <label>Confirm Password <span style="color:#c9342d">*</span></label>
                                     <input type="password" name="password_confirmation"
                                            class="form-control" placeholder="Repeat password"
                                            autocomplete="new-password">
@@ -105,7 +105,7 @@
                         </div>
                         <div class="snd-form-toggle">
                             <label>
-                                <input type="checkbox" id="show_pass" style="accent-color:#0ea5b0;">
+                                <input type="checkbox" id="show_pass" style="accent-color:var(--snd-primary-deep);">
                                 Show passwords
                             </label>
                         </div>
@@ -116,9 +116,9 @@
                             <x-snd-icon name="file-text" />Branch SRB Registration
                         </div>
                         <div class="row">
-                            <div class="col-md-4"><div class="form-group"><label>SRB POS Registration ID <span style="color:#ef4444">*</span></label><input type="number" min="1" name="srb_pos_id" class="form-control @error('srb_pos_id') is-invalid @enderror" value="{{ old('srb_pos_id') }}">@error('srb_pos_id')<span class="invalid-feedback">{{ $message }}</span>@enderror</div></div>
-                            <div class="col-md-4"><div class="form-group"><label>SRB POS User <span style="color:#ef4444">*</span></label><input type="text" name="srb_pos_user" class="form-control @error('srb_pos_user') is-invalid @enderror" value="{{ old('srb_pos_user') }}">@error('srb_pos_user')<span class="invalid-feedback">{{ $message }}</span>@enderror</div></div>
-                            <div class="col-md-4"><div class="form-group"><label>SRB POS Password <span style="color:#ef4444">*</span></label><input type="password" name="srb_pos_password" class="form-control @error('srb_pos_password') is-invalid @enderror" value="{{ old('srb_pos_password') }}" autocomplete="new-password">@error('srb_pos_password')<span class="invalid-feedback">{{ $message }}</span>@enderror</div></div>
+                            <div class="col-md-4"><div class="form-group"><label>SRB POS Registration ID <span style="color:#c9342d">*</span></label><input type="number" min="1" name="srb_pos_id" class="form-control @error('srb_pos_id') is-invalid @enderror" value="{{ old('srb_pos_id') }}">@error('srb_pos_id')<span class="invalid-feedback">{{ $message }}</span>@enderror</div></div>
+                            <div class="col-md-4"><div class="form-group"><label>SRB POS User <span style="color:#c9342d">*</span></label><input type="text" name="srb_pos_user" class="form-control @error('srb_pos_user') is-invalid @enderror" value="{{ old('srb_pos_user') }}">@error('srb_pos_user')<span class="invalid-feedback">{{ $message }}</span>@enderror</div></div>
+                            <div class="col-md-4"><div class="form-group"><label>SRB POS Password <span style="color:#c9342d">*</span></label><input type="password" name="srb_pos_password" class="form-control @error('srb_pos_password') is-invalid @enderror" value="{{ old('srb_pos_password') }}" autocomplete="new-password">@error('srb_pos_password')<span class="invalid-feedback">{{ $message }}</span>@enderror</div></div>
                         </div>
                     </div>
 

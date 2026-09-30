@@ -33,20 +33,20 @@
                 <tr>
                     <td>{{ $role->id }}</td>
                     <td>
-                        <span class="font-weight-600" style="color:#0d3b45;">{{ $role->name }}</span>
+                        <span class="font-weight-600" style="color:var(--snd-ink);">{{ $role->name }}</span>
                         @if($role->is_system)
                             <span class="badge badge-info ml-1">System</span>
                         @endif
                     </td>
-                    <td><code style="background:#f0f9fa;color:#0ea5b0;padding:2px 7px;border-radius:5px;font-size:0.78rem;">{{ $role->slug }}</code></td>
-                    <td style="color:#6b7280;font-size:0.84rem;">{{ $role->description ?? '—' }}</td>
+                    <td><code style="background:var(--snd-primary-soft);color:var(--snd-primary-deep);padding:2px 7px;border-radius:5px;font-size:0.78rem;">{{ $role->slug }}</code></td>
+                    <td style="color:var(--snd-muted);font-size:0.84rem;">{{ $role->description ?? '—' }}</td>
                     <td>
                         <span class="badge badge-primary">{{ $role->permissions_count ?? $role->permissions->count() }}</span>
                     </td>
                     <td>
                         <span class="badge badge-secondary">{{ $role->users_count ?? '—' }}</span>
                     </td>
-                    <td style="font-size:0.82rem;color:#9ca3af;">{{ $role->created_at->format('d M Y') }}</td>
+                    <td style="font-size:0.82rem;color:#626b7b;">{{ $role->created_at->format('d M Y') }}</td>
                     <td>
                         @can('roles.edit')
                             <a href="{{ route('roles.edit', $role) }}" class="btn btn-sm btn-primary" title="Edit">
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete',
-        confirmButtonColor: '#ef4444',
+        confirmButtonColor: '#c9342d',
         cancelButtonText: 'Cancel',
     }).then(result => {
         if (result.isConfirmed) {

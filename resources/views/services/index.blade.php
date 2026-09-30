@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
 @endsection
 @section('content')
-<div class="card snd-order-filter-card mb-3">
+<div class="card snd-order-filter-card snd-filter-card-single mb-3">
     <div class="card-body">
         <form method="GET" action="{{ route('services.index') }}" class="snd-order-filter-form">
             <div class="snd-order-filter-grid">

@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="name">Name <span style="color:#ef4444">*</span></label>
+                                <label for="name">Name <span style="color:#c9342d">*</span></label>
                                 <input type="text" name="name" id="name"
                                        class="form-control @error('name') is-invalid @enderror"
                                        value="{{ old('name') }}" placeholder="e.g. Store Manager">
@@ -38,7 +38,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="slug">Slug <span style="color:#ef4444">*</span></label>
+                                <label for="slug">Slug <span style="color:#c9342d">*</span></label>
                                 <input type="text" name="slug" id="slug"
                                        class="form-control @error('slug') is-invalid @enderror"
                                        value="{{ old('slug') }}" placeholder="e.g. store-manager">
@@ -69,15 +69,15 @@
                     <div class="snd-permissions-list">
                         @foreach ($permissions->groupBy('group_name') as $group => $groupPermissions)
                         <div class="snd-permission-group mb-3">
-                            <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#0ea5b0;margin-bottom:6px;">
+                            <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--snd-primary-deep);margin-bottom:6px;">
                                 {{ $group ?? 'General' }}
                             </div>
                             <div class="snd-permission-chips" style="display:flex;flex-wrap:wrap;gap:8px;">
                                 @foreach($groupPermissions as $permission)
-                                <label style="display:flex;align-items:center;gap:6px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:0.82rem;font-weight:500;color:#374151;margin:0;transition:border-color 0.12s;">
+                                <label style="display:flex;align-items:center;gap:6px;background:var(--snd-surface-soft);border:1px solid var(--snd-border-strong);border-radius:8px;padding:5px 12px;cursor:pointer;font-size:0.82rem;font-weight:500;color:var(--snd-ink-soft);margin:0;transition:border-color 0.12s;">
                                     <input type="checkbox" name="permissions[]" value="{{ $permission->id }}"
                                            {{ in_array($permission->id, old('permissions', [])) ? 'checked' : '' }}
-                                           style="accent-color:#0ea5b0;">
+                                           style="accent-color:var(--snd-primary-deep);">
                                     {{ $permission->name }}
                                 </label>
                                 @endforeach

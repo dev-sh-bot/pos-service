@@ -12,7 +12,7 @@
         border-radius: 20px;
         padding: 22px 26px;
         margin-bottom: 24px;
-        border: 1.5px solid #e8e6f5;
+        border: 1.5px solid var(--snd-border-strong);
         box-shadow: 0 10px 30px rgba(151, 134, 238, 0.08);
         display: flex;
         align-items: center;
@@ -24,7 +24,7 @@
     .welcome-title h2 {
         font-size: 1.55rem;
         font-weight: 600;
-        color: #1a1a1a;
+        color: var(--snd-ink);
         margin: 0 0 4px;
         letter-spacing: -0.03em;
     }
@@ -32,7 +32,7 @@
     .welcome-title p {
         margin: 0;
         font-size: 0.88rem;
-        color: #9786ee;
+        color: var(--snd-primary-deep);
     }
 
     .quick-actions {
@@ -54,28 +54,29 @@
     }
 
     .btn-pos-quick {
-        background: #9786ee;
-        color: #ffffff !important;
-        box-shadow: 0 6px 18px rgba(151, 134, 238, 0.38);
+        background: var(--snd-primary);
+        color: var(--snd-button-primary-text) !important;
+        box-shadow: 0 6px 18px rgba(103, 88, 189, 0.22);
     }
     .btn-pos-quick:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(151, 134, 238, 0.5);
+        background: var(--snd-primary);
+        box-shadow: 0 8px 24px rgba(103, 88, 189, 0.28);
     }
 
     .btn-secondary-quick {
-        background: #f0edff;
-        color: #9786ee !important;
-        border: 1.5px solid #e8e6f5;
+        background: var(--snd-primary-soft);
+        color: var(--snd-primary-deep) !important;
+        border: 1.5px solid var(--snd-border-strong);
     }
     .btn-secondary-quick:hover {
-        background: #ebe6ff;
-        border-color: #9786ee;
-        color: #9786ee !important;
+        background: var(--snd-primary-soft);
+        border-color: var(--snd-primary-deep);
+        color: var(--snd-primary-deep) !important;
         transform: translateY(-2px);
     }
 
-    /* ''‚''‚¬ Metric Cards ''‚''‚¬ */
+    /* ''ï¿½''ï¿½ï¿½ Metric Cards ''ï¿½''ï¿½ï¿½ */
     .metric-card {
         border-radius: 20px;
         padding: 22px;
@@ -98,44 +99,44 @@
     .metric-card.card-today {
         background: #ffffff;
         border: 1.5px solid rgba(151, 134, 238, 0.3);
-        color: #1a1a1a;
+        color: var(--snd-ink);
     }
 
     .metric-card.card-week {
         background: #ffffff;
         border: 1.5px solid rgba(151, 134, 238, 0.3);
-        color: #1a1a1a;
+        color: var(--snd-ink);
     }
 
     .metric-card.card-month {
         background: #ffffff;
         border: 1.5px solid rgba(151, 134, 238, 0.3);
-        color: #1a1a1a;
+        color: var(--snd-ink);
     }
 
     .metric-card.card-customers {
         background: #ffffff;
         border: 1.5px solid rgba(151, 134, 238, 0.3);
-        color: #1a1a1a;
+        color: var(--snd-ink);
     }
 
     .metric-card.card-week h3,
     .metric-card.card-week p,
     .metric-card.card-customers h3,
     .metric-card.card-customers p {
-        color: #1a1a1a;
+        color: var(--snd-ink);
     }
 
     .metric-card.card-week .icon-bubble, .metric-card.card-today .icon-bubble,.metric-card.card-customers .icon-bubble,
     .metric-card.card-month .icon-bubble {
-        background: #ebe6ff;
-        color: #9786ee;
+        background: var(--snd-primary-soft);
+        color: var(--snd-primary-deep);
     }
 
     .metric-card.card-week .metric-pill, .metric-card.card-today .metric-pill, .metric-card.card-customers .metric-pill,
     .metric-card.card-month .metric-pill {
-        background: #ebe6ff;
-        color: #9786ee;
+        background: var(--snd-primary-soft);
+        color: var(--snd-primary-deep);
     }
 
     .metric-header {
@@ -181,11 +182,11 @@
         font-weight: 500;
     }
 
-    /* ''‚''‚¬ Standard Widget Card ''‚''‚¬ */
+    /* ''ï¿½''ï¿½ï¿½ Standard Widget Card ''ï¿½''ï¿½ï¿½ */
     .widget-card {
         background: #ffffff;
         border-radius: 20px;
-        border: 1.5px solid #e8e6f5;
+        border: 1.5px solid var(--snd-border-strong);
         box-shadow: 0 10px 30px rgba(151, 134, 238, 0.06);
         margin-bottom: 24px;
         overflow: hidden;
@@ -193,7 +194,7 @@
 
     .widget-header {
         padding: 18px 22px;
-        border-bottom: 1px solid #f5eedf;
+        border-bottom: 1px solid var(--snd-border);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -204,7 +205,7 @@
         margin: 0;
         font-size: 1.05rem;
         font-weight: 600;
-        color: #1a1a1a;
+        color: var(--snd-ink);
         display: flex;
         align-items: center;
         gap: 8px;
@@ -213,9 +214,9 @@
     .widget-header .badge-tag {
         font-size: 0.72rem;
         font-weight: 500;
-        background: #f0edff;
-        color: #9786ee;
-        border: 1px solid #e8e6f5;
+        background: var(--snd-primary-soft);
+        color: var(--snd-primary-deep);
+        border: 1px solid var(--snd-border-strong);
         padding: 4px 10px;
         border-radius: 8px;
     }
@@ -232,29 +233,29 @@
         position: relative;
     }
 
-    /* ''‚''‚¬ Data Tables ''‚''‚¬ */
+    /* ''ï¿½''ï¿½ï¿½ Data Tables ''ï¿½''ï¿½ï¿½ */
     .table-modern {
         margin-bottom: 0;
     }
 
     .table-modern thead th {
-        background: #f0edff;
-        color: #9786ee;
+        background: var(--snd-primary-soft);
+        color: var(--snd-primary-deep);
         font-size: 0.74rem;
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.06em;
         border-top: none;
-        border-bottom: 1px solid #e8e6f5;
+        border-bottom: 1px solid var(--snd-border-strong);
         padding: 12px 18px;
     }
 
     .table-modern tbody td {
         padding: 14px 18px;
         font-size: 0.86rem;
-        color: #1a1a1a;
+        color: var(--snd-ink);
         vertical-align: middle;
-        border-bottom: 1px solid #f8f6f0;
+        border-bottom: 1px solid var(--snd-border);
     }
 
     .table-modern tbody tr:last-child td {
@@ -262,16 +263,16 @@
     }
 
     .table-modern tbody tr:hover {
-        background-color: #f0edff;
+        background-color: var(--snd-primary-soft);
     }
 
     .avatar-badge {
         width: 34px;
         height: 34px;
         border-radius: 10px;
-        background: #f0edff;
-        border: 1px solid #e8e6f5;
-        color: #9786ee;
+        background: var(--snd-primary-soft);
+        border: 1px solid var(--snd-border-strong);
+        color: var(--snd-primary-deep);
         font-weight: 600;
         font-size: 0.82rem;
         display: inline-flex;
@@ -290,29 +291,29 @@
     }
 
     .status-pill.paid {
-        background: #ecfdf5;
-        color: #059669;
-        border: 1px solid #a7f3d0;
+        background: var(--snd-success-soft);
+        color: var(--snd-success);
+        border: 1px solid rgba(31,122,61,.22);
     }
 
     .status-pill.srb {
-        background: #f0edff;
-        color: #9786ee;
-        border: 1px solid #e8e6f5;
+        background: var(--snd-primary-soft);
+        color: var(--snd-primary-deep);
+        border: 1px solid var(--snd-border-strong);
         font-size: 0.7rem;
     }
 
     .progress-bar-custom {
         height: 6px;
         border-radius: 4px;
-        background: #e8e6f5;
+        background: var(--snd-border-strong);
         overflow: hidden;
         margin-top: 6px;
     }
 
     .progress-fill-orange {
         height: 100%;
-        background: #9786ee;
+        background: var(--snd-primary);
         border-radius: 4px;
     }
 
@@ -321,14 +322,14 @@
         justify-content: space-between;
         align-items: center;
         padding: 13px 0;
-        border-bottom: 1px solid #f8f6f0;
+        border-bottom: 1px solid var(--snd-border);
     }
     .summary-item:last-child {
         border-bottom: none;
     }
     .summary-item .label {
         font-size: 0.86rem;
-        color: #9786ee;
+        color: var(--snd-primary-deep);
         display: flex;
         align-items: center;
         gap: 8px;
@@ -336,7 +337,7 @@
     .summary-item .value {
         font-size: 0.95rem;
         font-weight: 600;
-        color: #1a1a1a;
+        color: var(--snd-ink);
     }
 
     /* Dashboard overview layout: KPI rail, centered analytics, quick options. */
@@ -353,7 +354,7 @@
         padding: 22px 24px;
         border: 1px solid var(--snd-border);
         border-radius: var(--snd-radius-xl);
-        background: linear-gradient(135deg, rgba(255, 255, 255, .92), rgba(246, 243, 255, .86));
+        background: linear-gradient(135deg, rgba(255, 255, 255, .92), rgba(243, 247, 255, .86));
         box-shadow: var(--snd-shadow);
     }
 
@@ -460,13 +461,13 @@
     .dashboard-quick-action-primary {
         border-color: transparent;
         background: var(--snd-primary);
-        color: #fff !important;
-        box-shadow: 0 8px 18px rgba(151, 134, 238, .2);
+        color: var(--snd-button-primary-text) !important;
+        box-shadow: 0 8px 18px rgba(103, 88, 189, .2);
     }
     .dashboard-quick-action-primary:hover {
         border-color: transparent;
-        background: var(--snd-primary-hover);
-        color: #fff !important;
+        background: var(--snd-primary);
+        color: var(--snd-button-primary-text) !important;
     }
     .dashboard-quick-action-icon {
         display: inline-flex;
@@ -481,7 +482,7 @@
     }
     .dashboard-quick-action-primary .dashboard-quick-action-icon {
         background: rgba(255, 255, 255, .2);
-        color: #fff;
+        color: var(--snd-button-primary-text);
     }
     .dashboard-quick-action-copy {
         display: flex;
@@ -498,6 +499,9 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+    .dashboard-quick-action-primary .dashboard-quick-action-copy strong {
+        color: var(--snd-button-primary-text) !important;
+    }
     .dashboard-quick-action-copy small {
         overflow: hidden;
         color: var(--snd-muted);
@@ -505,9 +509,9 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    .dashboard-quick-action-primary .dashboard-quick-action-copy small { color: rgba(255, 255, 255, .78); }
+    .dashboard-quick-action-primary .dashboard-quick-action-copy small { color: var(--snd-button-primary-text) !important; }
     .dashboard-quick-arrow { flex: 0 0 auto; color: var(--snd-muted); }
-    .dashboard-quick-action-primary .dashboard-quick-arrow { color: rgba(255, 255, 255, .82); }
+    .dashboard-quick-action-primary .dashboard-quick-arrow { color: var(--snd-button-primary-text); }
 
     .dashboard-overview-grid {
         display: grid;
@@ -667,7 +671,7 @@
     {{-- 1. Dashboard welcome panel --}}
     <section class="dashboard-hero" aria-labelledby="dashboard-welcome-title">
         <div class="dashboard-hero-copy">
-            <div class="dashboard-eyebrow">{{ \App\Helpers\CommonHelper::getBrandName() }} · Operations overview</div>
+            <div class="dashboard-eyebrow">{{ \App\Helpers\CommonHelper::getBrandName() }} ï¿½ Operations overview</div>
             <h2 id="dashboard-welcome-title">Welcome back, {{ auth()->user()->first_name ?? 'Admin' }}!</h2>
             <p>Here's your service sales, deals, and counter performance at a glance.</p>
         </div>
@@ -778,11 +782,19 @@
         <div class="dashboard-category-column">
             <div class="widget-card">
                 <div class="widget-header">
-                    <h4><x-snd-icon name="chart-pie" style="color: var(--snd-primary-deep);" /> Category & Service Share</h4>
+                    <h4><x-snd-icon name="chart-pie" style="color: var(--snd-primary-deep);" /> Service Sales Share</h4>
                     <span class="badge-tag">Volume Distribution</span>
                 </div>
                 <div class="chart-container-sm">
-                    <canvas id="serviceSalesChart"></canvas>
+                    @if ($service_sales->isNotEmpty())
+                        <canvas id="serviceSalesChart"></canvas>
+                    @else
+                        <div class="dashboard-chart-empty" role="status">
+                            <span class="dashboard-chart-empty-icon"><x-snd-icon name="chart-pie" /></span>
+                            <strong>No service sales yet</strong>
+                            <span>Service sales will appear here as service orders are recorded.</span>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -790,14 +802,14 @@
 
     </div>
 
-    {{-- ''‚''‚¬ 4. Real-time Operations Row ''‚''‚¬ --}}
+    {{-- ''ï¿½''ï¿½ï¿½ 4. Real-time Operations Row ''ï¿½''ï¿½ï¿½ --}}
     <div class="row dashboard-equal-row">
         {{-- Recent Orders Feed --}}
         <div class="col-lg-7">
             <div class="widget-card">
                 <div class="widget-header">
-                    <h4><x-snd-icon name="shopping-bag" style="color: #9786ee;" /> Latest Transactions</h4>
-                    <a href="{{ route('orders.index') }}" class="btn btn-xs" style="background: #f0edff; border: 1px solid #e8e6f5; color: #9786ee; border-radius: 8px; font-weight: 500;">View All Orders</a>
+                    <h4><x-snd-icon name="shopping-bag" style="color: var(--snd-primary-deep);" /> Latest Transactions</h4>
+                    <a href="{{ route('orders.index') }}" class="btn btn-xs" style="background: var(--snd-primary-soft); border: 1px solid var(--snd-border-strong); color: var(--snd-primary-deep); border-radius: 8px; font-weight: 500;">View All Orders</a>
                 </div>
                 <div class="table-responsive snd-table-scroll">
                     <table class="table table-modern">
@@ -815,7 +827,7 @@
                             @forelse($recent_orders as $ord)
                                 <tr>
                                     <td>
-                                        <span style="font-weight: 500; color: #1a1a1a;">#ORD-{{ $ord->id }}</span>
+                                        <span style="font-weight: 500; color: var(--snd-ink);">#ORD-{{ $ord->id }}</span>
                                         @if($ord->srb_invoice_id)
                                             <div class="status-pill srb">{{ $ord->srb_invoice_id }}</div>
                                         @endif
@@ -826,25 +838,25 @@
                                                 {{ strtoupper(substr($ord->customer->first_name ?? 'Walk-in', 0, 1)) }}
                                             </div>
                                             <div>
-                                                <div style="font-weight: 600; color: #1a1a1a;">
+                                                <div style="font-weight: 600; color: var(--snd-ink);">
                                                     {{ $ord->customer ? $ord->customer->first_name . ' ' . $ord->customer->last_name : 'Walk-in Customer' }}
                                                 </div>
-                                                <small style="color: #9786ee;">{{ $ord->customer->phone ?? '' }}</small>
+                                                <small style="color: var(--snd-primary-deep);">{{ $ord->customer->phone ?? '' }}</small>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="badge badge-light" style="font-size: 0.8rem; font-weight: 600; background: #f0edff; border: 1px solid #e8e6f5; color: #9786ee;">{{ $ord->items->sum('quantity') }} items</span>
+                                        <span class="badge badge-light" style="font-size: 0.8rem; font-weight: 600; background: var(--snd-primary-soft); border: 1px solid var(--snd-border-strong); color: var(--snd-primary-deep);">{{ $ord->items->sum('quantity') }} items</span>
                                     </td>
                                     <td>
-                                        <strong style="color: #9786ee; font-size: 0.92rem; font-weight: 600;">
+                                        <strong style="color: var(--snd-primary-deep); font-size: 0.92rem; font-weight: 600;">
                                             {{ config('settings.currency_symbol') }} {{ number_format($ord->total_amount, 2) }}
                                         </strong>
                                     </td>
                                     <td>
                                         <span class="status-pill paid"><x-snd-icon name="circle-check" class="mr-1" /> Paid</span>
                                     </td>
-                                    <td style="color: #9786ee; font-size: 0.8rem;">
+                                    <td style="color: var(--snd-primary-deep); font-size: 0.8rem;">
                                         {{ $ord->created_at ? $ord->created_at->format('d M, h:i A') : '' }}
                                     </td>
                                 </tr>
@@ -863,15 +875,15 @@
         <div class="col-lg-5">
             <div class="widget-card">
                 <div class="widget-header">
-                    <h4><x-snd-icon name="flame" style="color: #9786ee;" /> Top Selling Items</h4>
+                    <h4><x-snd-icon name="flame" style="color: var(--snd-primary-deep);" /> Top Selling Items</h4>
                     <span class="badge-tag">High Demand</span>
                 </div>
                 <div class="p-3">
                     @forelse($top_selling_items as $item)
                         <div class="mb-3">
                             <div class="d-flex justify-content-between align-items-center mb-1">
-                                <span style="font-weight: 600; font-size: 0.88rem; color: #1a1a1a;">{{ $item['name'] }}</span>
-                                <span style="font-weight: 500; font-size: 0.86rem; color: #9786ee;">{{ $item['quantity'] }} sold</span>
+                                <span style="font-weight: 600; font-size: 0.88rem; color: var(--snd-ink);">{{ $item['name'] }}</span>
+                                <span style="font-weight: 500; font-size: 0.86rem; color: var(--snd-primary-deep);">{{ $item['quantity'] }} sold</span>
                             </div>
                             <div class="progress-bar-custom">
                                 <div class="progress-fill-orange" style="width: {{ min(100, max(20, $item['quantity'] * 2)) }}%;"></div>
@@ -883,7 +895,7 @@
                 </div>
 
                 @if($low_stock_products->isNotEmpty())
-                    <div class="p-3 border-top" style="background: #f0edff;">
+                    <div class="p-3 border-top" style="background: var(--snd-primary-soft);">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                         <span style="font-size: 0.82rem; font-weight: 600; color: #dc2626;"><x-snd-icon name="triangle-alert" class="mr-1" /> Low Stock Alert</span>
                             <a href="{{ route('products.index') }}" class="small" style="color: #dc2626; font-weight: 600;">Manage Inventory</a>
@@ -901,13 +913,13 @@
         </div>
     </div>
 
-    {{-- ''‚''‚¬ 5. Financial Breakdown & POS Summary Row ''‚''‚¬ --}}
+    {{-- ''ï¿½''ï¿½ï¿½ 5. Financial Breakdown & POS Summary Row ''ï¿½''ï¿½ï¿½ --}}
     <div class="row dashboard-equal-row dashboard-financial-row">
         {{-- Detailed Monthly Breakdown --}}
         <div class="col-lg-8">
             <div class="widget-card">
                 <div class="widget-header">
-                    <h4><x-snd-icon name="table" style="color: #9786ee;" /> Monthly Financial Breakdown</h4>
+                    <h4><x-snd-icon name="table" style="color: var(--snd-primary-deep);" /> Monthly Financial Breakdown</h4>
                     <span class="badge-tag">Audited Log</span>
                 </div>
                 <div class="table-responsive snd-table-scroll">
@@ -925,9 +937,9 @@
                             @foreach($monthly_sales as $month)
                                 <tr>
                                     <td><strong>{{ $month['label'] }}</strong></td>
-                                    <td><span class="badge badge-light" style="font-size: 0.82rem; font-weight: 600; background: #f0edff; border: 1px solid #e8e6f5; color: #9786ee;">{{ $month['orders'] }} orders</span></td>
-                                    <td><strong style="color: #1a1a1a;">{{ config('settings.currency_symbol') }} {{ number_format($month['sales'], 2) }}</strong></td>
-                                    <td style="color: #9786ee;">{{ config('settings.currency_symbol') }} {{ number_format($month['orders'] ? $month['sales'] / $month['orders'] : 0, 2) }}</td>
+                                    <td><span class="badge badge-light" style="font-size: 0.82rem; font-weight: 600; background: var(--snd-primary-soft); border: 1px solid var(--snd-border-strong); color: var(--snd-primary-deep);">{{ $month['orders'] }} orders</span></td>
+                                    <td><strong style="color: var(--snd-ink);">{{ config('settings.currency_symbol') }} {{ number_format($month['sales'], 2) }}</strong></td>
+                                    <td style="color: var(--snd-primary-deep);">{{ config('settings.currency_symbol') }} {{ number_format($month['orders'] ? $month['sales'] / $month['orders'] : 0, 2) }}</td>
                                     <td>
                                         <span class="status-pill paid"><x-snd-icon name="check-check" class="mr-1" /> Closed</span>
                                     </td>
@@ -943,29 +955,29 @@
         <div class="col-lg-4">
             <div class="widget-card">
                 <div class="widget-header">
-                    <h4><x-snd-icon name="calculator" style="color: #9786ee;" /> Current Month POS Audit</h4>
+                    <h4><x-snd-icon name="calculator" style="color: var(--snd-primary-deep);" /> Current Month POS Audit</h4>
                     <span class="badge-tag">{{ now()->format('M Y') }}</span>
                 </div>
                 <div class="p-3">
                     <div class="summary-item">
-                        <span class="label"><x-snd-icon name="box" style="color: #9786ee;" /> Items Dispatched</span>
+                        <span class="label"><x-snd-icon name="box" style="color: var(--snd-primary-deep);" /> Items Dispatched</span>
                         <span class="value">{{ number_format($pos_summary['items_sold']) }} units</span>
                     </div>
                     <div class="summary-item">
-                        <span class="label"><x-snd-icon name="receipt" style="color: #9786ee;" /> Average Basket Size</span>
+                        <span class="label"><x-snd-icon name="receipt" style="color: var(--snd-primary-deep);" /> Average Basket Size</span>
                         <span class="value">{{ config('settings.currency_symbol') }} {{ number_format($pos_summary['average_order'], 2) }}</span>
                     </div>
                     <div class="summary-item">
-                        <span class="label"><x-snd-icon name="percent" style="color: #9786ee;" /> Tax Collected (SRB)</span>
-                        <span class="value" style="color: #059669;">{{ config('settings.currency_symbol') }} {{ number_format($pos_summary['tax'], 2) }}</span>
+                        <span class="label"><x-snd-icon name="percent" style="color: var(--snd-primary-deep);" /> Tax Collected (SRB)</span>
+                        <span class="value" style="color: var(--snd-success);">{{ config('settings.currency_symbol') }} {{ number_format($pos_summary['tax'], 2) }}</span>
                     </div>
                     <div class="summary-item">
-                        <span class="label"><x-snd-icon name="tag" style="color: #9786ee;" /> Discounts Claimed</span>
-                        <span class="value" style="color: #9786ee;">{{ config('settings.currency_symbol') }} {{ number_format($pos_summary['discount'], 2) }}</span>
+                        <span class="label"><x-snd-icon name="tag" style="color: var(--snd-primary-deep);" /> Discounts Claimed</span>
+                        <span class="value" style="color: var(--snd-primary-deep);">{{ config('settings.currency_symbol') }} {{ number_format($pos_summary['discount'], 2) }}</span>
                     </div>
-                    <div class="summary-item" style="background: #f0edff; border: 1px solid #e8e6f5; padding: 12px 14px; border-radius: 12px; margin-top: 10px;">
-                        <span class="label" style="font-weight: 600; color: #1a1a1a;"><x-snd-icon name="wallet" style="color: #9786ee;" /> Total Net Inflow</span>
-                        <span class="value" style="color: #9786ee; font-size: 1.1rem; font-weight: 600;">{{ config('settings.currency_symbol') }} {{ number_format($sales_month, 2) }}</span>
+                    <div class="summary-item" style="background: var(--snd-primary-soft); border: 1px solid var(--snd-border-strong); padding: 12px 14px; border-radius: 12px; margin-top: 10px;">
+                        <span class="label" style="font-weight: 600; color: var(--snd-ink);"><x-snd-icon name="wallet" style="color: var(--snd-primary-deep);" /> Total Net Inflow</span>
+                        <span class="value" style="color: var(--snd-primary-deep); font-size: 1.1rem; font-weight: 600;">{{ config('settings.currency_symbol') }} {{ number_format($sales_month, 2) }}</span>
                     </div>
                 </div>
             </div>
@@ -982,6 +994,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currency = @json(config('settings.currency_symbol'));
     const monthly = @json($monthly_sales);
     const services = @json($service_sales);
+    const themeColor = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
     // 1. Monthly Sales & Orders Combined Bar + Area Chart
     const ctxMonthly = document.getElementById('monthlySalesChart');
@@ -999,7 +1012,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         label: 'Gross Sales (' + currency + ')',
                         data: salesData,
                         backgroundColor: 'rgba(151, 134, 238, 0.85)',
-                        borderColor: '#9786ee',
+                        borderColor: themeColor('--snd-primary'),
                         borderWidth: 1,
                         borderRadius: 8,
                         barPercentage: 0.6,
@@ -1009,10 +1022,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         label: 'Orders Count',
                         data: ordersData,
                         type: 'line',
-                        borderColor: '#806fda',
+                        borderColor: themeColor('--snd-primary-hover'),
                         backgroundColor: 'rgba(151, 134, 238, 0.12)',
                         borderWidth: 3,
-                        pointBackgroundColor: '#806fda',
+                        pointBackgroundColor: themeColor('--snd-primary-hover'),
                         pointBorderColor: '#ffffff',
                         pointRadius: 4,
                         pointHoverRadius: 6,
@@ -1034,7 +1047,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         position: 'top',
                         labels: {
                             font: { family: 'system-ui', size: 12, weight: '600' },
-                            color: '#85899d',
+                            color: themeColor('--snd-muted'),
                             usePointStyle: true,
                             boxWidth: 8
                         }
@@ -1058,16 +1071,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 scales: {
                     x: {
                         grid: { display: false },
-                        ticks: { font: { family: 'system-ui', size: 11 }, color: '#85899d' }
+                        ticks: { font: { family: 'system-ui', size: 11 }, color: themeColor('--snd-muted') }
                     },
                     ySales: {
                         type: 'linear',
                         position: 'left',
                         beginAtZero: true,
-                        grid: { color: '#eef0f7' },
+                        grid: { color: themeColor('--snd-workspace-deep') },
                         ticks: {
                             font: { family: 'system-ui', size: 11 },
-                            color: '#85899d',
+                            color: themeColor('--snd-muted'),
                             callback: value => currency + ' ' + (value >= 1000 ? (value/1000) + 'k' : value)
                         }
                     },
@@ -1078,7 +1091,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         grid: { drawOnChartArea: false },
                         ticks: {
                             font: { family: 'system-ui', size: 11 },
-                            color: '#85899d',
+                            color: themeColor('--snd-muted'),
                             stepSize: 10
                         }
                     }
@@ -1094,8 +1107,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const serviceValues = Object.values(services);
 
         const chartColors = [
-            '#9786ee', '#806fda', '#6758bd', '#5ac8fa',
-            '#34c759', '#ff9500', '#ff3b30', '#b2a6f4'
+            themeColor('--snd-primary'), themeColor('--snd-primary-hover'), themeColor('--snd-primary-deep'), themeColor('--snd-info'),
+            themeColor('--snd-success'), themeColor('--snd-warning'), themeColor('--snd-danger'), '#5ac8fa'
         ];
 
         new Chart(ctxService, {
@@ -1123,7 +1136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 size: 11,
                                 weight: '500'
                             },
-                            color: '#85899d',
+                            color: '#626b7b',
                             usePointStyle: true,
                             boxWidth: 8,
                             padding: 14

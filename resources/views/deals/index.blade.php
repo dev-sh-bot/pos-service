@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-<div class="card snd-order-filter-card mb-3">
+<div class="card snd-order-filter-card snd-filter-card-compact mb-3">
     <div class="card-body">
         <form method="GET" action="{{ route('deals.index') }}" class="snd-order-filter-form">
             <div class="snd-order-filter-grid">

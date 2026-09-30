@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Branch <span style="color:#ef4444">*</span></label>
+                        <label>Branch <span style="color:#c9342d">*</span></label>
                         <select name="branch_id" class="form-control @error('branch_id') is-invalid @enderror">
                             <option value="">— Select Branch —</option>
                             @foreach($branches as $branch)
@@ -40,7 +40,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Counter Name <span style="color:#ef4444">*</span></label>
+                                <label>Counter Name <span style="color:#c9342d">*</span></label>
                                 <input type="text" name="name"
                                        class="form-control @error('name') is-invalid @enderror"
                                        value="{{ old('name') }}" placeholder="e.g. Counter 1">
@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Code <span style="color:#ef4444">*</span></label>
+                                <label>Code <span style="color:#c9342d">*</span></label>
                                 <input type="text" name="code"
                                        class="form-control @error('code') is-invalid @enderror"
                                        value="{{ old('code') }}" placeholder="e.g. C1"
@@ -63,7 +63,7 @@
                         <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
                             <input type="checkbox" name="is_active" value="1"
                                    {{ old('is_active', true) ? 'checked' : '' }}
-                                   style="accent-color:#0ea5b0;width:16px;height:16px;">
+                                   style="accent-color:var(--snd-primary-deep);width:16px;height:16px;">
                             <span style="font-weight:500;">Counter is Active</span>
                         </label>
                     </div>
@@ -78,7 +78,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Password <span style="color:#ef4444">*</span></label>
+                                    <label>Password <span style="color:#c9342d">*</span></label>
                                     <input type="password" name="password" id="counter_password"
                                            class="form-control @error('password') is-invalid @enderror"
                                            placeholder="Min. 4 characters" autocomplete="new-password">
@@ -87,14 +87,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Confirm Password <span style="color:#ef4444">*</span></label>
+                                    <label>Confirm Password <span style="color:#c9342d">*</span></label>
                                     <input type="password" name="password_confirmation"
                                            class="form-control" autocomplete="new-password">
                                 </div>
                             </div>
                         </div>
                         <label class="snd-form-toggle">
-                            <input type="checkbox" id="show_pass" style="accent-color:#0ea5b0;">
+                            <input type="checkbox" id="show_pass" style="accent-color:var(--snd-primary-deep);">
                             Show passwords
                         </label>
                     </div>

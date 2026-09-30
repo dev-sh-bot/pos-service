@@ -33,18 +33,18 @@
                     <td>{{ $user->id }}</td>
                     <td>
                         <div style="display:flex;align-items:center;gap:9px;">
-                            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#0ea5b0,#0d3b45);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:600;flex-shrink:0;">
+                            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--snd-primary-deep),var(--snd-ink));color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:600;flex-shrink:0;">
                                 {{ strtoupper(substr($user->first_name, 0, 1)) }}
                             </div>
                             <div>
-                                <div style="font-weight:600;color:#0d3b45;font-size:0.85rem;">{{ $user->getFullname() }}</div>
+                                <div style="font-weight:600;color:var(--snd-ink);font-size:0.85rem;">{{ $user->getFullname() }}</div>
                                 @if($user->id === auth()->id())
-                                    <span style="font-size:0.7rem;color:#0ea5b0;font-weight:600;">You</span>
+                                    <span style="font-size:0.7rem;color:var(--snd-primary-deep);font-weight:600;">You</span>
                                 @endif
                             </div>
                         </div>
                     </td>
-                    <td style="color:#6b7280;font-size:0.84rem;">{{ $user->email }}</td>
+                    <td style="color:var(--snd-muted);font-size:0.84rem;">{{ $user->email }}</td>
                     <td>
                         @forelse($user->roles as $role)
                             <span class="badge badge-primary mr-1">{{ $role->name }}</span>
@@ -74,7 +74,7 @@
                             @endif
                         @endcan
                     </td>
-                    <td style="font-size:0.82rem;color:#9ca3af;">{{ $user->created_at->format('d M Y') }}</td>
+                    <td style="font-size:0.82rem;color:#626b7b;">{{ $user->created_at->format('d M Y') }}</td>
                     <td>
                         @can('users.edit')
                             <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-primary" title="Edit">
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete',
-        confirmButtonColor: '#ef4444',
+        confirmButtonColor: '#c9342d',
         cancelButtonText: 'Cancel',
     }).then(result => {
         if (result.isConfirmed) {

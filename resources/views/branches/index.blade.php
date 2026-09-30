@@ -33,15 +33,15 @@
                 <tr>
                     <td>{{ $branch->id }}</td>
                     <td>
-                        <span style="font-weight:600;color:#0d3b45;">{{ $branch->name }}</span>
+                        <span style="font-weight:600;color:var(--snd-ink);">{{ $branch->name }}</span>
                     </td>
                     <td>
-                        <code style="background:#f0f9fa;color:#0ea5b0;padding:2px 8px;border-radius:5px;font-size:0.78rem;">
+                        <code style="background:var(--snd-primary-soft);color:var(--snd-primary-deep);padding:2px 8px;border-radius:5px;font-size:0.78rem;">
                             {{ $branch->code }}
                         </code>
                     </td>
-                    <td style="color:#6b7280;font-size:0.84rem;">{{ $branch->phone ?? '—' }}</td>
-                    <td style="color:#6b7280;font-size:0.84rem;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                    <td style="color:var(--snd-muted);font-size:0.84rem;">{{ $branch->phone ?? '—' }}</td>
+                    <td style="color:var(--snd-muted);font-size:0.84rem;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
                         {{ $branch->address ?? '—' }}
                     </td>
                     <td><span class="badge badge-primary">{{ $branch->counters_count }}</span></td>
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete',
-        confirmButtonColor: '#ef4444',
+        confirmButtonColor: '#c9342d',
         cancelButtonText: 'Cancel',
     }).then(r => {
         if (r.isConfirmed) {

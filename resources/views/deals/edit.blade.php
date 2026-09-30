@@ -15,10 +15,10 @@
 }
 .select2-container--default.select2-container--focus .select2-selection--multiple {
     border-color: var(--snd-primary) !important;
-    box-shadow: 0 0 0 3px rgba(151, 134, 238, 0.18) !important;
+    box-shadow: 0 0 0 3px var(--snd-primary-ring) !important;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background: var(--snd-primary) !important;
+    background: var(--snd-button-primary) !important;
     border: none !important;
     color: #fff !important;
     font-weight: 600 !important;
@@ -46,8 +46,8 @@
     padding: 8px 12px !important;
 }
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: var(--snd-primary) !important;
-    color: #fff !important;
+    background-color: var(--snd-button-primary) !important;
+    color: var(--snd-button-primary-text) !important;
 }
 .deal-savings-box {
     background: var(--snd-success-soft, #eaf9ee);

@@ -33,7 +33,7 @@
 
         .order-product .item {
             background: #fff;
-            border: 2px solid #e3e6f0;
+            border: 2px solid var(--snd-border-strong);
             border-radius: 8px;
             padding: 15px;
             text-align: center;
@@ -43,9 +43,9 @@
         }
 
         .order-product .item:hover {
-            border-color: #007bff;
+            border-color: var(--snd-button-primary);
             transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,123,255,0.2);
+            box-shadow: 0 4px 8px rgba(81,69,162,.18);
         }
 
         .order-product .item img {
@@ -59,13 +59,13 @@
         .order-product .item h5 {
             font-size: 0.9rem;
             margin: 0;
-            color: #333;
+            color: var(--snd-ink);
             font-weight: 600;
         }
 
         .order-product .item small {
             font-size: 0.75rem;
-            color: #6c757d;
+            color: var(--snd-muted);
         }
 
         /* Cart Table Styling */
@@ -75,10 +75,10 @@
         }
 
         .purchase-cart .table thead th {
-            background-color: #f8f9fa;
-            border-bottom: 2px solid #dee2e6;
+            background-color: var(--snd-surface-soft);
+            border-bottom: 2px solid var(--snd-border);
             font-weight: 600;
-            color: #495057;
+            color: var(--snd-ink-soft);
             padding: 0.5rem;
         }
 
@@ -94,7 +94,7 @@
 
         /* Status Radio Buttons */
         .status-selector {
-            background: #f8f9fa;
+            background: var(--snd-surface-soft);
             padding: 10px;
             border-radius: 6px;
             margin-bottom: 15px;
@@ -116,12 +116,12 @@
 
         /* Total Section */
         .purchase-total {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--snd-primary-deep) 0%, var(--snd-button-primary-hover) 100%);
+            color: var(--snd-button-primary-text);
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 15px;
-            box-shadow: 0 4px 8px rgba(102,126,234,0.3);
+            box-shadow: 0 4px 8px rgba(103,88,189,.24);
         }
 
         .purchase-total .amount {
@@ -146,14 +146,14 @@
         }
 
         .product-search input {
-            border: 2px solid #e3e6f0;
+            border: 2px solid var(--snd-border-strong);
             border-radius: 8px;
             padding: 12px 20px;
             font-size: 1rem;
         }
 
         .product-search input:focus {
-            border-color: #007bff;
+            border-color: var(--snd-button-primary);
             box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.15);
         }
 
@@ -169,17 +169,17 @@
         }
 
         .order-product::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: var(--snd-workspace-deep);
             border-radius: 10px;
         }
 
         .order-product::-webkit-scrollbar-thumb {
-            background: #888;
+            background: var(--snd-primary-deep);
             border-radius: 10px;
         }
 
         .order-product::-webkit-scrollbar-thumb:hover {
-            background: #555;
+            background: var(--snd-primary-hover);
         }
 
         /* Responsive */

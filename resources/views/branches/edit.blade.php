@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Name <span style="color:#ef4444">*</span></label>
+                                <label>Name <span style="color:#c9342d">*</span></label>
                                 <input type="text" name="name"
                                        class="form-control @error('name') is-invalid @enderror"
                                        value="{{ old('name', $branch->name) }}">
@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Code <span style="color:#ef4444">*</span></label>
+                                <label>Code <span style="color:#c9342d">*</span></label>
                                 <input type="text" name="code"
                                        class="form-control @error('code') is-invalid @enderror"
                                        value="{{ old('code', $branch->code) }}"
@@ -64,7 +64,7 @@
                                 <label style="display:flex;align-items:center;gap:8px;cursor:pointer;margin-top:32px;">
                                     <input type="checkbox" name="is_active" value="1"
                                            {{ old('is_active', $branch->is_active) ? 'checked' : '' }}
-                                           style="accent-color:#0ea5b0;width:16px;height:16px;">
+                                           style="accent-color:var(--snd-primary-deep);width:16px;height:16px;">
                                     <span style="font-weight:500;">Branch is Active</span>
                                 </label>
                             </div>
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                         <label class="snd-form-toggle">
-                            <input type="checkbox" id="show_pass" style="accent-color:#0ea5b0;">
+                            <input type="checkbox" id="show_pass" style="accent-color:var(--snd-primary-deep);">
                             Show passwords
                         </label>
                     </div>
@@ -110,8 +110,8 @@
                     <div class="snd-form-subsection">
                         <div class="snd-form-subsection-heading"><x-snd-icon name="file-text" />Branch SRB Registration</div>
                         <div class="row">
-                            <div class="col-md-4"><div class="form-group"><label>SRB POS Registration ID <span style="color:#ef4444">*</span></label><input type="number" min="1" name="srb_pos_id" class="form-control @error('srb_pos_id') is-invalid @enderror" value="{{ old('srb_pos_id', $branch->srb_pos_id) }}">@error('srb_pos_id')<span class="invalid-feedback">{{ $message }}</span>@enderror</div></div>
-                            <div class="col-md-4"><div class="form-group"><label>SRB POS User <span style="color:#ef4444">*</span></label><input type="text" name="srb_pos_user" class="form-control @error('srb_pos_user') is-invalid @enderror" value="{{ old('srb_pos_user', $branch->srb_pos_user) }}">@error('srb_pos_user')<span class="invalid-feedback">{{ $message }}</span>@enderror</div></div>
+                            <div class="col-md-4"><div class="form-group"><label>SRB POS Registration ID <span style="color:#c9342d">*</span></label><input type="number" min="1" name="srb_pos_id" class="form-control @error('srb_pos_id') is-invalid @enderror" value="{{ old('srb_pos_id', $branch->srb_pos_id) }}">@error('srb_pos_id')<span class="invalid-feedback">{{ $message }}</span>@enderror</div></div>
+                            <div class="col-md-4"><div class="form-group"><label>SRB POS User <span style="color:#c9342d">*</span></label><input type="text" name="srb_pos_user" class="form-control @error('srb_pos_user') is-invalid @enderror" value="{{ old('srb_pos_user', $branch->srb_pos_user) }}">@error('srb_pos_user')<span class="invalid-feedback">{{ $message }}</span>@enderror</div></div>
                             <div class="col-md-4"><div class="form-group"><label>SRB POS Password</label><input type="password" name="srb_pos_password" class="form-control @error('srb_pos_password') is-invalid @enderror" placeholder="Leave blank to keep current" autocomplete="new-password">@error('srb_pos_password')<span class="invalid-feedback">{{ $message }}</span>@enderror</div></div>
                         </div>
                     </div>
@@ -130,28 +130,28 @@
     <div class="col-lg-5">
         <div class="card">
             <div class="card-header">
-                <x-snd-icon name="users" class="mr-2" style="color:#0ea5b0;" />Assign Users
+                <x-snd-icon name="users" class="mr-2" style="color:var(--snd-primary-deep);" />Assign Users
                 <span class="badge badge-primary ml-2">{{ $branch->users_count }}</span>
             </div>
             <div class="card-body">
                 <form action="{{ route('branches.assign-users', $branch) }}" method="POST">
                     @csrf
-                    <p style="font-size:0.82rem;color:#6b7280;margin-bottom:12px;">
+                    <p style="font-size:0.82rem;color:var(--snd-muted);margin-bottom:12px;">
                         Select which users can access this branch on the POS screen.
                     </p>
                     <div style="display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto;">
                         @foreach($allUsers as $user)
-                        <label style="display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:border-color 0.12s;"
+                        <label style="display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--snd-border-strong);border-radius:8px;cursor:pointer;transition:border-color 0.12s;"
                                class="user-assign-row">
                             <input type="checkbox" name="users[]" value="{{ $user->id }}"
                                    {{ in_array($user->id, $assignedUsers) ? 'checked' : '' }}
-                                   style="accent-color:#0ea5b0;width:15px;height:15px;flex-shrink:0;">
-                            <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0ea5b0,#0d3b45);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:600;flex-shrink:0;">
+                                   style="accent-color:var(--snd-primary-deep);width:15px;height:15px;flex-shrink:0;">
+                            <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--snd-primary-deep),var(--snd-ink));color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:600;flex-shrink:0;">
                                 {{ strtoupper(substr($user->first_name,0,1)) }}
                             </div>
                             <div>
-                                <div style="font-size:0.84rem;font-weight:600;color:#0d3b45;">{{ $user->getFullname() }}</div>
-                                <div style="font-size:0.75rem;color:#9ca3af;">{{ $user->email }}</div>
+                                <div style="font-size:0.84rem;font-weight:600;color:var(--snd-ink);">{{ $user->getFullname() }}</div>
+                                <div style="font-size:0.75rem;color:#626b7b;">{{ $user->email }}</div>
                             </div>
                         </label>
                         @endforeach
@@ -179,7 +179,7 @@ document.querySelector('[name="code"]').addEventListener('input', function () {
 // Highlight checked rows
 document.querySelectorAll('.user-assign-row input').forEach(cb => {
     const row = cb.closest('.user-assign-row');
-    const update = () => row.style.borderColor = cb.checked ? '#0ea5b0' : '#e2e8f0';
+    const update = () => row.style.borderColor = cb.checked ? 'var(--snd-primary-deep)' : 'var(--snd-border-strong)';
     update();
     cb.addEventListener('change', update);
 });

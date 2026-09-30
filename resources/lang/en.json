@@ -120,7 +120,7 @@
     "settings.title": "Settings",
     "common.Logout": "Logout",
     "order.Orders_List": "Orders List",
-    "order.submit": "Submit Order",
+    "order.submit": "Apply Filters",
     "order.ID": "ID",
     "order.Customer_Name": "Customer Name",
     "order.Total": "Total",

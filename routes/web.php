@@ -46,26 +46,27 @@ Route::prefix('admin')->middleware(['auth', 'locale'])->group(function (): void 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
 
-    Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     Route::post('users/{user}/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggle-status');
-    Route::resource('roles', RoleController::class);
+    Route::resource('roles', RoleController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     Route::get('permissions', [PermissionController::class, 'index'])->name('permissions.index');
 
     // ── Branch & Counter management ────────────────────────────
-    Route::resource('branches', BranchController::class);
+    Route::resource('branches', BranchController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     Route::post('branches/{branch}/assign-users', [BranchController::class, 'assignUsers'])->name('branches.assign-users');
 
-    Route::resource('counters', CounterController::class);
+    Route::resource('counters', CounterController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     Route::post('counters/{counter}/assign-users', [CounterController::class, 'assignUsers'])->name('counters.assign-users');
 
-    Route::resource('products', ProductController::class);
-    Route::resource('categories', CategoryController::class);
-    Route::resource('services', ServiceController::class);
-    Route::resource('deals', DealController::class);
+    Route::resource('products', ProductController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('categories', CategoryController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('services', ServiceController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('deals', DealController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     Route::post('deals/{deal}/toggle-status', [DealController::class, 'toggleStatus'])->name('deals.toggle-status');
-    Route::resource('customers', CustomerController::class);
-    Route::resource('orders', OrderController::class);
-    Route::resource('suppliers', SupplierController::class);
+    Route::resource('customers', CustomerController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('orders', OrderController::class)->only(['index', 'store']);
+    Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::resource('suppliers', SupplierController::class)->only(['index', 'create', 'store', 'update', 'destroy']);
 
     // POS Cart
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
@@ -87,7 +88,7 @@ Route::prefix('admin')->middleware(['auth', 'locale'])->group(function (): void 
 
     Route::get('/purchases/data', [PurchaseController::class, 'data'])->name('purchases.data');
     Route::get('/purchases/{purchase}/receipt', [PurchaseController::class, 'receipt'])->name('purchases.receipt');
-    Route::resource('purchases', PurchaseController::class);
+    Route::resource('purchases', PurchaseController::class)->only(['index', 'create', 'store', 'show', 'update', 'destroy']);
 
     // Purchase Cart API
     Route::prefix('purchase-cart')->name('purchase-cart.')->group(function (): void {

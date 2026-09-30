@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Service;
 use App\Services\SrbInvoiceService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -40,6 +41,11 @@ class OrderController extends Controller
         $receivedAmount = $orders->sum(fn($order) => $order->receivedAmount());
 
         return view('orders.index', ['orders' => $orders, 'total' => $total, 'receivedAmount' => $receivedAmount]);
+    }
+
+    public function create(): RedirectResponse
+    {
+        return redirect()->route('cart.index');
     }
 
     public function store(OrderStoreRequest $request, SrbInvoiceService $srbInvoiceService): \Illuminate\Http\JsonResponse

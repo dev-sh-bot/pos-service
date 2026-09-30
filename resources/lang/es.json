@@ -120,7 +120,7 @@
     "settings.title": "Ajustes",
     "common.Logout": "Cerrar sesión",
     "order.Orders_List": "Lista de pedidos",
-    "order.submit": "Enviar pedido",
+    "order.submit": "Aplicar filtros",
     "order.ID": "ID",
     "order.Customer_Name": "Nombre del cliente",
     "order.Total": "Total",

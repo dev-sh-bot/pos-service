@@ -49,13 +49,13 @@
                 <tr>
                     <td>{{ $counter->id }}</td>
                     <td>
-                        <span style="font-size:0.82rem;color:#0ea5b0;font-weight:600;">
+                        <span style="font-size:0.82rem;color:var(--snd-primary-deep);font-weight:600;">
                             {{ $counter->branch->name ?? '—' }}
                         </span>
                     </td>
-                    <td style="font-weight:600;color:#0d3b45;">{{ $counter->name }}</td>
+                    <td style="font-weight:600;color:var(--snd-ink);">{{ $counter->name }}</td>
                     <td>
-                        <code style="background:#f0f9fa;color:#0ea5b0;padding:2px 8px;border-radius:5px;font-size:0.78rem;">
+                        <code style="background:var(--snd-primary-soft);color:var(--snd-primary-deep);padding:2px 8px;border-radius:5px;font-size:0.78rem;">
                             {{ $counter->code }}
                         </code>
                     </td>
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete',
-        confirmButtonColor: '#ef4444',
+        confirmButtonColor: '#c9342d',
     }).then(r => {
         if (r.isConfirmed) {
             $.post(url, { _method: 'DELETE', _token: '{{ csrf_token() }}' })
