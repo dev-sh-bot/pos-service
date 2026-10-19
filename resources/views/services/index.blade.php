@@ -8,9 +8,13 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
 @endsection
+@section('content-eyebrow', __('Services'))
+
 @section('content')
-<div class="card snd-order-filter-card snd-filter-card-single mb-3">
-    <div class="card-body">
+<div class="management-page management-page--services management-page--list">
+    @include('management.context', ['module' => 'services', 'records' => $services])
+    <div class="management-workspace">
+<x-snd-filter-accordion id="service-filters" class="snd-filter-card-single mb-3" :open="request()->filled('category_id')">
         <form method="GET" action="{{ route('services.index') }}" class="snd-order-filter-form">
             <div class="snd-order-filter-grid">
                 <div class="form-group mb-0">
@@ -24,10 +28,10 @@
                 </div>
             </div>
         </form>
-    </div>
-</div>
+</x-snd-filter-accordion>
 
-<div class="card">
+<div class="card management-records">
+        <div class="management-table-heading"><x-snd-icon name="sparkles" /><span>{{ __('Services') }}</span><small>{{ __('Record directory') }}</small></div>
     <div class="card-body">
         <div class="table-responsive snd-table-scroll">
         <table class="table">
@@ -80,6 +84,9 @@
         </table>
         </div>
         <x-snd-pagination :paginator="$services" />
+    </div>
+</div>
+
     </div>
 </div>
 @endsection

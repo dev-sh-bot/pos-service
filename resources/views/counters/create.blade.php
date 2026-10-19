@@ -8,7 +8,13 @@
     </a>
 @endsection
 
+@section('content-eyebrow', __('Counters'))
+
 @section('content')
+<div class="management-page management-page--counters management-page--form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'counters', 'variant' => 'guide'])
+        <div class="management-workspace">
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -106,6 +112,10 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
 </div>

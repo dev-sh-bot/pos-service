@@ -11,7 +11,9 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
+            font-family: 'DejaVu Sans Mono', 'Courier New', monospace;
+            color: #000;
+            background: #fff;
             font-size: 11px;
             line-height: 1.4;
             width: 70mm;
@@ -21,12 +23,13 @@
         .header {
             text-align: center;
             margin-bottom: 10px;
-            border-bottom: 1px dashed #000;
-            padding-bottom: 10px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 12px;
         }
 
         .header h1 {
-            font-size: 16px;
+            font-size: 15px;
+            letter-spacing: -0.4px;
             font-weight: bold;
             margin-bottom: 5px;
         }
@@ -44,8 +47,9 @@
 
         .section-title {
             font-weight: bold;
-            font-size: 12px;
-            margin-bottom: 5px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
@@ -160,7 +164,7 @@
 <!-- Header -->
 <div class="header">
     <h1>{{ config('app.name') }}</h1>
-    <p>PURCHASE RECEIPT</p>
+    <p style="font-weight:bold;letter-spacing:1.5px;">PURCHASE RECEIPT</p>
     @if(config('settings.store_address'))
         <p>{{ config('settings.store_address') }}</p>
     @endif

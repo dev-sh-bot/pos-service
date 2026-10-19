@@ -8,7 +8,13 @@
     </a>
 @endsection
 
+@section('content-eyebrow', __('Users'))
+
 @section('content')
+<div class="management-page management-page--users management-page--form management-page--wide-form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'users', 'variant' => 'guide'])
+        <div class="management-workspace">
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -16,6 +22,8 @@
                 <form action="{{ route('users.store') }}" method="POST" id="user-form">
                     @csrf
 
+<div class="management-account-layout">
+<section class="management-account-profile">
                     <div class="snd-form-section-heading">
                         <x-snd-icon name="user-plus" />
                         <div>
@@ -85,6 +93,9 @@
                         </label>
                     </div>
 
+
+</section>
+<section class="management-account-access">
                     @can('users.assign-roles')
                     <div class="snd-form-section-heading mt-4">
                         <x-snd-icon name="shield" />
@@ -177,6 +188,9 @@
                         </div>
                     </div>
 
+
+</section>
+</div>
                     <div class="snd-form-actions">
                         <button type="submit" class="btn btn-primary">
                             <x-snd-icon name="user-plus" class="mr-1" /> Create User
@@ -184,6 +198,10 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
 </div>

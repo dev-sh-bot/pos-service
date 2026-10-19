@@ -3,7 +3,13 @@
 @section('title', 'Create Service')
 @section('content-header', 'Create Service')
 
+@section('content-eyebrow', __('Services'))
+
 @section('content')
+<div class="management-page management-page--services management-page--form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'services', 'variant' => 'guide'])
+        <div class="management-workspace">
 <div class="card">
     <div class="card-body">
         <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
@@ -84,6 +90,10 @@
                 <button class="btn btn-primary" type="submit"><x-snd-icon name="plus" class="mr-1" />Create Service</button>
             </div>
         </form>
+    </div>
+</div>
+
+        </div>
     </div>
 </div>
 @endsection

@@ -8,7 +8,13 @@
     </a>
 @endsection
 
+@section('content-eyebrow', __('Counters'))
+
 @section('content')
+<div class="management-page management-page--counters management-page--form management-page--wide-form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'counters', 'variant' => 'guide'])
+        <div class="management-workspace">
 <div class="row">
     {{-- Left: counter details --}}
     <div class="col-lg-7">
@@ -124,7 +130,7 @@
                         Only users assigned to <strong>{{ $counter->branch->name ?? 'this branch' }}</strong> are shown.
                     </p>
                     @if($allUsers->isEmpty())
-                        <div style="text-align:center;color:#626b7b;padding:20px 0;font-size:0.84rem;">
+                        <div style="text-align:center;color:var(--snd-muted);padding:20px 0;font-size:0.84rem;">
                             <x-snd-icon name="info" class="mr-1" />
                             No users are assigned to this branch yet.
                             <br>
@@ -142,12 +148,12 @@
                                        {{ in_array($user->id, $assignedUsers) ? 'checked' : '' }}
                                        {{ !$isBranchUser ? 'disabled' : '' }}
                                        style="accent-color:var(--snd-primary-deep);width:15px;height:15px;flex-shrink:0;">
-                                <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--snd-primary-deep),var(--snd-ink));color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:600;flex-shrink:0;">
+                                <div style="width:30px;height:30px;border-radius:50%;background:var(--snd-primary);color:var(--snd-primary-ink);display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:600;flex-shrink:0;">
                                     {{ strtoupper(substr($user->first_name,0,1)) }}
                                 </div>
                                 <div>
                                     <div style="font-size:0.84rem;font-weight:600;color:var(--snd-ink);">{{ $user->getFullname() }}</div>
-                                    <div style="font-size:0.75rem;color:#626b7b;">{{ $user->email }}</div>
+                                    <div style="font-size:0.75rem;color:var(--snd-muted);">{{ $user->email }}</div>
                                 </div>
                             </label>
                             @endforeach
@@ -158,6 +164,10 @@
                     @endif
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
 </div>

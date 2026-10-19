@@ -10,8 +10,14 @@
     @endcan
 @endsection
 
+@section('content-eyebrow', __('Branches'))
+
 @section('content')
-<div class="card">
+<div class="management-page management-page--branches management-page--list">
+    @include('management.context', ['module' => 'branches', 'records' => $branches])
+    <div class="management-workspace">
+<div class="card management-records">
+        <div class="management-table-heading"><x-snd-icon name="git-branch" /><span>{{ __('Branches') }}</span><small>{{ __('Record directory') }}</small></div>
     <div class="card-body">
         <div class="table-responsive snd-table-scroll">
         <table class="table">
@@ -87,6 +93,9 @@
         </table>
         </div>
         <x-snd-pagination :paginator="$branches" />
+    </div>
+</div>
+
     </div>
 </div>
 @endsection

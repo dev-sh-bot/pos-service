@@ -1,12 +1,13 @@
 @extends('layouts.auth')
 
-@section('title', 'Reset Password - ' . \App\Helpers\CommonHelper::getBrandName())
+@section('title', 'Reset Password - Knowhere POS')
 
 @section('content')
-    <h2 class="snd-auth-title">Choose a new password</h2>
-    <p class="snd-auth-subtitle">Use a strong password to keep your account protected.</p>
+    <span class="snd-auth-form-index">{{ __('Account recovery') }}</span>
+    <h2 class="snd-auth-title">{{ __('A fresh start') }}<span>.</span></h2>
+    <p class="snd-auth-subtitle">{{ __('Choose a strong new password to keep your account protected.') }}</p>
 
-    <form method="POST" action="{{ route('password.update') }}">
+    <form method="POST" action="{{ route('password.update') }}" class="snd-auth-form">
         @csrf
         <input type="hidden" name="token" value="{{ $token }}">
 
@@ -33,6 +34,6 @@
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm new password">
             </div>
         </div>
-        <button type="submit" class="snd-auth-submit">Reset password</button>
+        <button type="submit" class="snd-auth-submit">{{ __('Reset password') }} <x-snd-icon name="arrow-up-right" /></button>
     </form>
 @endsection

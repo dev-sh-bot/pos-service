@@ -8,8 +8,14 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
 @endsection
+@section('content-eyebrow', __('Customers'))
+
 @section('content')
-<div class="card">
+<div class="management-page management-page--customers management-page--list">
+    @include('management.context', ['module' => 'customers', 'records' => $customers])
+    <div class="management-workspace">
+<div class="card management-records">
+        <div class="management-table-heading"><x-snd-icon name="users" /><span>{{ __('Customers') }}</span><small>{{ __('Record directory') }}</small></div>
     <div class="card-body">
         <div class="table-responsive snd-table-scroll">
         <table class="table">
@@ -60,6 +66,9 @@
         </table>
         </div>
         <x-snd-pagination :paginator="$customers" />
+    </div>
+</div>
+
     </div>
 </div>
 @endsection

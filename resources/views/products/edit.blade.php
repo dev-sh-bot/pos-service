@@ -3,8 +3,14 @@
 @section('title', __('product.Edit_Product'))
 @section('content-header', __('product.Edit_Product'))
 
+@section('content-eyebrow', __('Products'))
+
 @section('content')
 
+<div class="management-page management-page--products management-page--form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'products', 'variant' => 'guide'])
+        <div class="management-workspace">
 <div class="card">
     <div class="card-body">
 
@@ -108,6 +114,10 @@
                 <button class="btn btn-primary" type="submit"><x-snd-icon name="save" class="mr-1" />{{ __('common.Update') }}</button>
             </div>
         </form>
+    </div>
+</div>
+
+        </div>
     </div>
 </div>
 @endsection

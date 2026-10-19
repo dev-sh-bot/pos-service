@@ -11,8 +11,14 @@
     @endcan
 @endsection
 
+@section('content-eyebrow', __('Users'))
+
 @section('content')
-<div class="card">
+<div class="management-page management-page--users management-page--list">
+    @include('management.context', ['module' => 'users', 'records' => $users])
+    <div class="management-workspace">
+<div class="card management-records">
+        <div class="management-table-heading"><x-snd-icon name="user-cog" /><span>{{ __('Users') }}</span><small>{{ __('Record directory') }}</small></div>
     <div class="card-body">
         <div class="table-responsive snd-table-scroll">
         <table class="table" id="users-table">
@@ -33,7 +39,7 @@
                     <td>{{ $user->id }}</td>
                     <td>
                         <div style="display:flex;align-items:center;gap:9px;">
-                            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--snd-primary-deep),var(--snd-ink));color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:600;flex-shrink:0;">
+                            <div style="width:32px;height:32px;border-radius:50%;background:var(--snd-primary);color:var(--snd-primary-ink);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:600;flex-shrink:0;">
                                 {{ strtoupper(substr($user->first_name, 0, 1)) }}
                             </div>
                             <div>
@@ -74,7 +80,7 @@
                             @endif
                         @endcan
                     </td>
-                    <td style="font-size:0.82rem;color:#626b7b;">{{ $user->created_at->format('d M Y') }}</td>
+                    <td style="font-size:0.82rem;color:var(--snd-muted);">{{ $user->created_at->format('d M Y') }}</td>
                     <td>
                         @can('users.edit')
                             <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-primary" title="Edit">
@@ -108,6 +114,9 @@
         </table>
         </div>
         <x-snd-pagination :paginator="$users" />
+    </div>
+</div>
+
     </div>
 </div>
 @endsection

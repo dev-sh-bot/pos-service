@@ -3,9 +3,15 @@
 @section('title', __('supplier.Create_supplier') )
 @section('content-header', __('supplier.Create_supplier') )
 
+@section('content-eyebrow', __('Suppliers'))
+
 @section('content')
 
-    <div class="card">
+    <div class="management-page management-page--suppliers management-page--form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'suppliers', 'variant' => 'guide'])
+        <div class="management-workspace">
+<div class="card">
         <div class="card-body">
 
             <form action="{{ route('suppliers.store') }}" method="POST" enctype="multipart/form-data">
@@ -78,6 +84,10 @@
             </form>
         </div>
     </div>
+
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('js')

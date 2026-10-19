@@ -25,6 +25,21 @@ return [
     'Active'        => 'Active',
     'Inactive'      => 'Inactive',
     'More_info'     => 'More info',
+    'Theme'         => 'Theme',
+    'Switch_to_light_theme' => 'Switch to light theme',
+    'Switch_to_dark_theme' => 'Switch to dark theme',
+    'Workspace'    => 'Workspace',
+    'Open navigation' => 'Open navigation',
+    'New sale'     => 'New sale',
+    'Sales'        => 'Sales',
+    'Catalog'      => 'Catalog',
+    'Purchases'    => 'Purchases',
+    'Administration' => 'Administration',
+    'System'       => 'System',
+    'Business metrics' => 'Business metrics',
+    'Daily sales total' => 'Daily sales total',
+    'New Purchase' => 'New Purchase',
+    'All Purchases' => 'All Purchases',
 
     //==========================================
     // Footer messages

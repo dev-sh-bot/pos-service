@@ -3,7 +3,13 @@
 @section('title', 'Permissions')
 @section('content-header', 'Permissions')
 
+@section('content-eyebrow', __('Permissions'))
+
 @section('content')
+<div class="management-page management-page--permissions management-page--list">
+    @include('management.context', ['module' => 'permissions', 'records' => $permissions])
+    <div class="management-workspace">
+<div class="management-permission-grid">
 @forelse($permissions->groupBy('group_name') as $group => $groupPerms)
 <div class="card mb-3">
     <div class="card-header d-flex align-items-center" style="gap: 8px;">
@@ -14,7 +20,7 @@
     <div class="card-body" style="padding:14px 18px;">
         <div style="display:flex;flex-wrap:wrap;gap:8px;">
             @foreach($groupPerms as $permission)
-            <div style="background:var(--snd-surface-soft, #f8fafc);border:1px solid var(--snd-border);border-radius:8px;padding:6px 14px;">
+            <div class="management-permission-chip">
                 <span style="font-size:0.8rem;font-weight:600;color:var(--snd-primary-deep);">{{ $permission->name }}</span>
                 @if($permission->description)
                     <span style="font-size:0.75rem;color:var(--snd-muted);margin-left:6px;">— {{ $permission->description }}</span>
@@ -31,4 +37,8 @@
     </div>
 </div>
 @endforelse
+
+</div>
+    </div>
+</div>
 @endsection
