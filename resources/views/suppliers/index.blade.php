@@ -8,8 +8,14 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
 @endsection
+@section('content-eyebrow', __('Suppliers'))
+
 @section('content')
-<div class="card">
+<div class="management-page management-page--suppliers management-page--list">
+    @include('management.context', ['module' => 'suppliers', 'records' => $suppliers])
+    <div class="management-workspace">
+<div class="card management-records">
+        <div class="management-table-heading"><x-snd-icon name="truck" /><span>{{ __('Suppliers') }}</span><small>{{ __('Record directory') }}</small></div>
     <div class="card-body">
         <div class="table-responsive snd-table-scroll">
         <table class="table">
@@ -40,7 +46,6 @@
                     <td>{{$supplier->address}}</td>
                     <td>{{$supplier->created_at}}</td>
                     <td>
-                        <!-- <a href="{{ route('suppliers.edit', $supplier) }}" class="btn btn-primary"><x-snd-icon name="square-pen" /></a> -->
                         <button class="btn btn-danger btn-delete" data-url="{{route('suppliers.destroy', $supplier)}}"><x-snd-icon name="trash" /></button>
                     </td>
                 </tr>
@@ -60,6 +65,9 @@
         </table>
         </div>
         <x-snd-pagination :paginator="$suppliers" />
+    </div>
+</div>
+
     </div>
 </div>
 @endsection

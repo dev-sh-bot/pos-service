@@ -1,12 +1,13 @@
 @extends('layouts.auth')
 
-@section('title', 'Forgot Password - ' . \App\Helpers\CommonHelper::getBrandName())
+@section('title', 'Forgot Password - Knowhere POS')
 
 @section('content')
-    <h2 class="snd-auth-title">Reset your password</h2>
-    <p class="snd-auth-subtitle">Enter your email and we’ll send you a secure reset link.</p>
+    <span class="snd-auth-form-index">{{ __('Account recovery') }}</span>
+    <h2 class="snd-auth-title">{{ __('Reset password') }}<span>.</span></h2>
+    <p class="snd-auth-subtitle">{{ __('Enter your email and we’ll send you a secure reset link.') }}</p>
 
-    <form method="POST" action="{{ route('password.email') }}">
+    <form method="POST" action="{{ route('password.email') }}" class="snd-auth-form">
         @csrf
         <div class="snd-auth-field">
             <label class="snd-auth-label" for="email">Email address</label>
@@ -16,7 +17,7 @@
             </div>
             @error('email')<span class="snd-auth-error"><strong>{{ $message }}</strong></span>@enderror
         </div>
-        <button type="submit" class="snd-auth-submit">Request reset link</button>
+        <button type="submit" class="snd-auth-submit">{{ __('Request reset link') }} <x-snd-icon name="arrow-up-right" /></button>
     </form>
 
     <div class="snd-auth-links"><a href="{{ route('login') }}">Back to sign in</a>@if(Route::has('register'))<a href="{{ route('register') }}">Create account</a>@endif</div>

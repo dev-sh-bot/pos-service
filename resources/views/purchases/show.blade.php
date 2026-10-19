@@ -10,7 +10,10 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="management-page management-page--purchases management-page--detail">
+    @include('management.context', ['module' => 'purchases'])
+    <div class="management-workspace">
+<div class="container-fluid">
         <div class="row">
             <!-- Purchase Info -->
             <div class="col-md-4">
@@ -190,4 +193,7 @@
             </div>
         </div>
     </div>
+
+    </div>
+</div>
 @endsection

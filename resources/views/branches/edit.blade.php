@@ -8,7 +8,13 @@
     </a>
 @endsection
 
+@section('content-eyebrow', __('Branches'))
+
 @section('content')
+<div class="management-page management-page--branches management-page--form management-page--wide-form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'branches', 'variant' => 'guide'])
+        <div class="management-workspace">
 <div class="row">
     {{-- Left: branch details --}}
     <div class="col-lg-7">
@@ -146,12 +152,12 @@
                             <input type="checkbox" name="users[]" value="{{ $user->id }}"
                                    {{ in_array($user->id, $assignedUsers) ? 'checked' : '' }}
                                    style="accent-color:var(--snd-primary-deep);width:15px;height:15px;flex-shrink:0;">
-                            <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--snd-primary-deep),var(--snd-ink));color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:600;flex-shrink:0;">
+                            <div style="width:30px;height:30px;border-radius:50%;background:var(--snd-primary);color:var(--snd-primary-ink);display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:600;flex-shrink:0;">
                                 {{ strtoupper(substr($user->first_name,0,1)) }}
                             </div>
                             <div>
                                 <div style="font-size:0.84rem;font-weight:600;color:var(--snd-ink);">{{ $user->getFullname() }}</div>
-                                <div style="font-size:0.75rem;color:#626b7b;">{{ $user->email }}</div>
+                                <div style="font-size:0.75rem;color:var(--snd-muted);">{{ $user->email }}</div>
                             </div>
                         </label>
                         @endforeach
@@ -161,6 +167,10 @@
                     </button>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
 </div>

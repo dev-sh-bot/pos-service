@@ -1,12 +1,13 @@
 @extends('layouts.auth')
 
-@section('title', 'Confirm Password - ' . \App\Helpers\CommonHelper::getBrandName())
+@section('title', 'Confirm Password - Knowhere POS')
 
 @section('content')
-    <h2 class="snd-auth-title">Confirm password</h2>
-    <p class="snd-auth-subtitle">Please confirm your password before continuing.</p>
+    <span class="snd-auth-form-index">{{ __('One more step') }}</span>
+    <h2 class="snd-auth-title">{{ __('Confirm access') }}<span>.</span></h2>
+    <p class="snd-auth-subtitle">{{ __('Please confirm your password before continuing.') }}</p>
 
-    <form method="POST" action="{{ route('password.confirm') }}">
+    <form method="POST" action="{{ route('password.confirm') }}" class="snd-auth-form">
         @csrf
         <div class="snd-auth-field">
             <label class="snd-auth-label" for="password">Password</label>
@@ -16,7 +17,7 @@
             </div>
             @error('password')<span class="snd-auth-error"><strong>{{ $message }}</strong></span>@enderror
         </div>
-        <button type="submit" class="snd-auth-submit">Confirm password</button>
+        <button type="submit" class="snd-auth-submit">{{ __('Confirm password') }} <x-snd-icon name="arrow-up-right" /></button>
     </form>
 
     @if (Route::has('password.request'))

@@ -11,23 +11,14 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid"
+    <div class="management-page management-page--purchases management-page--list">
+    @include('management.context', ['module' => 'purchases'])
+    <div class="management-workspace">
+<div class="container-fluid"
          x-data="purchaseFilter()"
          x-init="init()">
 
-        <!-- Filters Card -->
-        <div class="card card-outline card-primary">
-            <div class="card-header">
-                <h3 class="card-title">
-                    <x-snd-icon name="filter" /> {{ __('Filters') }}
-                </h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <x-snd-icon name="minus" />
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
+        <x-snd-filter-accordion id="purchase-filters" class="card-outline card-primary" :open="request()->filled('status') || request()->filled('supplier_id') || request()->filled('date_from') || request()->filled('date_to') || request()->filled('search')">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
@@ -99,8 +90,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+        </x-snd-filter-accordion>
 
         <!-- Loading Overlay -->
         <div x-show="loading"
@@ -110,7 +100,8 @@
         </div>
 
         <!-- Purchases Table Card -->
-        <div class="card" x-show="!loading" x-transition>
+        <div class="card management-records" x-show="!loading" x-transition>
+        <div class="management-table-heading"><x-snd-icon name="shopping-bag" /><span>{{ __('Purchases') }}</span><small>{{ __('Record directory') }}</small></div>
             <div class="card-body p-0">
                 <div class="table-responsive snd-table-scroll">
                     <table class="table table-hover mb-0">
@@ -231,6 +222,9 @@
             </div>
         </div>
     </div>
+
+    </div>
+</div>
 @endsection
 
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

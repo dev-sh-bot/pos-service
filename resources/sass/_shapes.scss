@@ -1,0 +1,36 @@
+// Keep interactive controls and containers softly rounded without a pill-shaped look.
+.btn:not(.btn-link),
+button:not(.swal2-close),
+.snd-theme-toggle,
+.snd-icon-button,
+.snd-menu-button,
+.snd-sidebar-close,
+.snd-user-trigger,
+.pos-primary-button,
+.snd-auth-submit {
+  border-radius: var(--snd-radius-md) !important;
+}
+
+.card,
+.dashboard-kpi,
+.dashboard-panel,
+.dashboard-shortcuts,
+#cart .pos-catalog-card,
+#cart .pos-deal-card,
+#cart .pos-order-item,
+#cart .pos-gate-card,
+#purchase .purchase-product,
+#purchase .purchase-product-column,
+#purchase .purchase-sidebar-column,
+#purchase .purchase-line-item,
+.management-page .snd-permission-group,
+.modal-content,
+.swal2-popup {
+  border-radius: var(--snd-radius-lg) !important;
+}
+
+.card > .card-header:first-child,
+.modal-content > .modal-header:first-child {
+  border-top-left-radius: var(--snd-radius-lg) !important;
+  border-top-right-radius: var(--snd-radius-lg) !important;
+}

@@ -24,6 +24,21 @@ return [
     'Active'        => 'Activo',
     'Inactive'      => 'Inactivo',
     'More_info'     => 'Más información',
+    'Theme'         => 'Tema',
+    'Switch_to_light_theme' => 'Cambiar al tema claro',
+    'Switch_to_dark_theme' => 'Cambiar al tema oscuro',
+    'Workspace'    => 'Espacio de trabajo',
+    'Open navigation' => 'Abrir navegación',
+    'New sale'     => 'Nueva venta',
+    'Sales'        => 'Ventas',
+    'Catalog'      => 'Catálogo',
+    'Purchases'    => 'Compras',
+    'Administration' => 'Administración',
+    'System'       => 'Sistema',
+    'Business metrics' => 'Métricas del negocio',
+    'Daily sales total' => 'Ventas del día',
+    'New Purchase' => 'Nueva compra',
+    'All Purchases' => 'Todas las compras',
 
     //==========================================
     // Mensajes del pie de página

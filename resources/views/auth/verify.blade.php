@@ -1,20 +1,21 @@
 @extends('layouts.auth')
 
-@section('title', 'Verify Email - ' . \App\Helpers\CommonHelper::getBrandName())
+@section('title', 'Verify Email - Knowhere POS')
 
 @section('content')
-    <div class="snd-card-icon mb-3"><x-snd-icon name="mail-open" /></div>
-    <h2 class="snd-auth-title">Verify your email</h2>
-    <p class="snd-auth-subtitle">Before continuing, please check your email for a verification link.</p>
+    <span class="snd-auth-form-index">{{ __('Check your inbox') }}</span>
+    <div class="snd-auth-verification-icon"><x-snd-icon name="mail-open" /></div>
+    <h2 class="snd-auth-title">{{ __('Verify your email') }}<span>.</span></h2>
+    <p class="snd-auth-subtitle">{{ __('Before continuing, please check your email for a verification link.') }}</p>
 
     @if (session('resent'))
         <div class="alert alert-success" role="alert">{{ __('A fresh verification link has been sent to your email address.') }}</div>
     @endif
 
-    <p style="font-size:.74rem;color:var(--snd-ink-soft);">{{ __('If you did not receive the email') }},</p>
+    <p class="snd-auth-resend-label">{{ __('If you did not receive the email') }},</p>
     <form method="POST" action="{{ route('verification.resend') }}">
         @csrf
-        <button type="submit" class="snd-auth-submit">{{ __('click here to request another') }}</button>
+        <button type="submit" class="snd-auth-submit">{{ __('click here to request another') }} <x-snd-icon name="arrow-up-right" /></button>
     </form>
     <div class="snd-auth-links"><a href="{{ route('login') }}">Back to sign in</a></div>
 @endsection

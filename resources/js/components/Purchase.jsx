@@ -271,6 +271,7 @@ class Purchase extends Component {
 
         Swal.fire({
             title: "Confirm Purchase",
+            customClass: { popup: "pos-purchase-dialog" },
             html: `
                 <div style="text-align: left;">
                     <p><strong>Supplier:</strong> ${supplierName}</p>
@@ -318,283 +319,38 @@ class Purchase extends Component {
     }
 
     render() {
-        const {
-            cart = [],
-            products = [],
-            suppliers = [],
-            search = "",
-            supplier_id,
-            purchase_date,
-            status,
-            notes,
-            translations = {}
-        } = this.state;
-
-        // Ensure suppliers is always an array
+        const { cart = [], products = [], suppliers = [], search = "", supplier_id, purchase_date, status, notes, translations = {} } = this.state;
         const suppliersList = Array.isArray(suppliers) ? suppliers : [];
+        const currency = window.APP.currency_symbol || "";
+        const itemCount = cart.reduce((count, item) => count + Number(item.pivot.quantity || 0), 0);
 
         return (
-            <div className="row purchase-container">
-                {/* LEFT SIDE - Product Selector */}
-                <div className="col-lg-8 col-md-7 purchase-product-column">
-                    <div className="card">
-                        <div className="card-body">
-                            <div className="product-search mb-3">
-                                <input
-                                    type="text"
-                                    className="form-control form-control-lg"
-                                    placeholder={(translations["search_product"] || "Search Product") + "..."}
-                                    value={search}
-                                    onChange={this.handleChangeSearch}
-                                    onKeyDown={this.handleSearch}
-                                />
-                            </div>
-                            <div className="order-product">
-                                {products.map((p) => (
-                                    <div
-                                        onClick={() => this.addProductToCart(p)}
-                                        key={p.id}
-                                        className="item"
-                                    >
-                                        <img src={p.image_url} alt={p.name} />
-                                        <h5>{p.name}</h5>
-                                        <small className="text-muted">Stock: {p.quantity}</small>
-                                        {p.purchase_price && (
-                                            <><br /><small className="text-success font-weight-bold">Cost: {window.APP.currency_symbol}{p.purchase_price}</small></>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+            <div className="purchase-container">
+                <section className="purchase-product-column" aria-label="Purchase product catalog">
+                    <div className="purchase-catalog-header"><div><span className="pos-workspace-eyebrow">Build your purchase</span><h2>Select products<span>.</span></h2><p>Choose stock to receive from your supplier.</p></div><span className="purchase-count">{products.length} products</span></div>
+                    <div className="purchase-search"><i className="fas fa-search"></i><input type="search" aria-label="Search purchase products" placeholder={(translations["search_product"] || "Search products by name or barcode") + "…"} value={search} onChange={this.handleChangeSearch} onKeyDown={this.handleSearch} /><button type="button" onClick={() => this.loadProducts(search)} aria-label="Search products"><i className="fas fa-arrow-right"></i></button></div>
+                    <div className="purchase-product-grid">{products.length ? products.map(product => {
+                        const quantity = Number(cart.find(item => item.id === product.id)?.pivot?.quantity || 0);
+                        return <article className={`purchase-product ${quantity ? "is-selected" : ""}`} key={product.id}><button type="button" onClick={() => this.addProductToCart(product)}><div className="purchase-product-visual"><i className="fas fa-box-open"></i>{product.image_url && <img src={product.image_url} alt="" onError={e => { e.currentTarget.hidden = true; }} />}{quantity > 0 && <span>{quantity} selected</span>}</div><span className="pos-workspace-eyebrow">{product.barcode || "Inventory"}</span><h3>{product.name}</h3><span className="purchase-stock">{product.quantity} currently in stock</span><div className="purchase-product-bottom"><strong>{currency} {Number(product.purchase_price || 0).toFixed(2)}</strong><span className="purchase-product-add"><i className="fas fa-plus"></i></span></div></button></article>;
+                    }) : <div className="pos-empty-state"><i className="fas fa-box-open"></i><h3>No products found</h3><p>Try another product name or barcode.</p></div>}</div>
+                </section>
+                <aside className="purchase-sidebar-column" aria-label="Purchase details">
+                    <div className="purchase-panel-heading"><div><span className="pos-workspace-eyebrow">Purchase details</span><h2>Stock intake</h2></div><span className="purchase-count">{itemCount} items</span></div>
+                    <div className="purchase-form-section">
+                        <label htmlFor="purchase-supplier">Supplier <span className="purchase-required">*</span></label>
+                        {suppliersList.length === 0 && <div className="purchase-empty-suppliers">No suppliers found. <a href="/admin/suppliers/create">Add a supplier</a> to record a purchase.</div>}
+                        <select id="purchase-supplier" className="form-control" value={supplier_id} onChange={this.setSupplierId}><option value="">Select supplier</option>{suppliersList.map(supplier => <option key={supplier.id} value={supplier.id}>{`${supplier.first_name} ${supplier.last_name}`}</option>)}</select>
+                        <label htmlFor="purchase-date">Purchase date <span className="purchase-required">*</span></label><input id="purchase-date" type="date" className="form-control" value={purchase_date} onChange={this.handleDateChange} />
                     </div>
-                </div>
-
-                {/* RIGHT SIDE - Purchase Cart */}
-                <div className="col-lg-4 col-md-5 purchase-sidebar-column">
-                    <div className="cart-card">
-                        {/* Supplier & Date Card */}
-                        <div className="card card-primary card-outline">
-                            <div className="card-header">
-                                <h3 className="card-title">
-                                    <i className="fas fa-truck mr-2"></i>Purchase Information
-                                </h3>
-                            </div>
-                            <div className="card-body">
-                                <div className="form-group">
-                                    <label>Supplier <span className="text-danger">*</span></label>
-                                    {suppliersList.length === 0 && (
-                                        <div className="snd-empty-form-state">
-                                            No suppliers found. <a href="/admin/suppliers/create">Add a supplier</a> before recording a purchase.
-                                        </div>
-                                    )}
-                                    <select
-                                        className="form-control"
-                                        value={supplier_id}
-                                        onChange={this.setSupplierId}
-                                    >
-                                        <option value="">Select Supplier</option>
-                                        {suppliersList.map((sup) => (
-                                            <option
-                                                key={sup.id}
-                                                value={sup.id}
-                                            >{`${sup.first_name} ${sup.last_name}`}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className="form-group">
-                                    <label>Purchase Date <span className="text-danger">*</span></label>
-                                    <input
-                                        type="date"
-                                        className="form-control"
-                                        value={purchase_date}
-                                        onChange={this.handleDateChange}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Cart Items Card */}
-                        <div className="card card-secondary card-outline">
-                            <div className="card-header">
-                                <h3 className="card-title">
-                                    <i className="fas fa-shopping-basket mr-2"></i>Items
-                                </h3>
-                            </div>
-                            <div className="card-body p-0 purchase-cart">
-                                <table className="table table-sm table-hover mb-0">
-                                    <thead>
-                                    <tr>
-                                        <th>Product</th>
-                                        <th width="70">Qty</th>
-                                        <th width="90">Price</th>
-                                        <th width="40"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {cart.map((c) => (
-                                        <tr key={c.id}>
-                                            <td>
-                                                <small className="font-weight-bold">{c.name}</small>
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="number"
-                                                    className="form-control form-control-sm"
-                                                    value={c.pivot.quantity}
-                                                    onChange={(event) =>
-                                                        this.handleChangeQty(
-                                                            c.id,
-                                                            event.target.value
-                                                        )
-                                                    }
-                                                    min="1"
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="number"
-                                                    className="form-control form-control-sm"
-                                                    value={c.pivot.purchase_price || 0}
-                                                    onChange={(event) =>
-                                                        this.handleChangePrice(
-                                                            c.id,
-                                                            event.target.value
-                                                        )
-                                                    }
-                                                    min="0"
-                                                    step="0.01"
-                                                />
-                                            </td>
-                                            <td>
-                                                <button
-                                                    className="btn btn-danger btn-xs"
-                                                    onClick={() => this.handleClickDelete(c.id)}
-                                                    title="Remove"
-                                                >
-                                                    <i className="fas fa-times"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                    </tbody>
-                                </table>
-                                {cart.length === 0 && (
-                                    <div className="text-center text-muted py-4">
-                                        <i className="fas fa-inbox fa-3x mb-2"></i>
-                                        <p>No items added yet</p>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* Notes */}
-                        {cart.length > 0 && (
-                            <div className="card">
-                                <div className="card-body">
-                                    <div className="form-group mb-0">
-                                        <label className="small">Notes (optional)</label>
-                                        <textarea
-                                            className="form-control form-control-sm"
-                                            placeholder="Add notes..."
-                                            rows="2"
-                                            value={notes}
-                                            onChange={this.handleNotesChange}
-                                        ></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Status */}
-                        {cart.length > 0 && (
-                            <div className="card">
-                                <div className="card-body">
-                                    <label className="small font-weight-bold mb-2">
-                                        <i className="fas fa-flag mr-1"></i>Status
-                                    </label>
-                                    <div className="status-selector">
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="radio"
-                                                name="status"
-                                                id="status-pending"
-                                                value="pending"
-                                                checked={status === "pending"}
-                                                onChange={this.handleStatusChange}
-                                            />
-                                            <label className="form-check-label" htmlFor="status-pending">
-                                                <i className="fas fa-clock text-warning mr-1"></i>Pending
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="radio"
-                                                name="status"
-                                                id="status-completed"
-                                                value="completed"
-                                                checked={status === "completed"}
-                                                onChange={this.handleStatusChange}
-                                            />
-                                            <label className="form-check-label" htmlFor="status-completed">
-                                                <i className="fas fa-check-circle text-success mr-1"></i>Completed
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <input
-                                                className="form-check-input"
-                                                type="radio"
-                                                name="status"
-                                                id="status-cancelled"
-                                                value="cancelled"
-                                                checked={status === "cancelled"}
-                                                onChange={this.handleStatusChange}
-                                            />
-                                            <label className="form-check-label" htmlFor="status-cancelled">
-                                                <i className="fas fa-times-circle text-danger mr-1"></i>Cancelled
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Total & Actions */}
-                        {cart.length > 0 && (
-                            <>
-                                <div className="purchase-total text-center">
-                                    <div className="small mb-1">Total Amount</div>
-                                    <div className="amount">{window.APP.currency_symbol} {this.getTotal(cart)}</div>
-                                </div>
-
-                                <div className="purchase-actions">
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <button
-                                                type="button"
-                                                className="btn btn-danger btn-block"
-                                                onClick={this.handleEmptyCart}
-                                            >
-                                                <i className="fas fa-times mr-1"></i>Cancel
-                                            </button>
-                                        </div>
-                                        <div className="col-6">
-                                            <button
-                                                type="button"
-                                                className="btn btn-primary btn-block"
-                                                disabled={!supplier_id}
-                                                onClick={this.handleClickSubmit}
-                                            >
-                                                <i className="fas fa-save mr-1"></i>Save
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </div>
+                    <div className="purchase-items-heading"><h3>Line items</h3><span>{cart.length} products</span></div>
+                    <div className="purchase-line-items">{cart.length ? cart.map(item => <article className="purchase-line-item" key={item.id}><div className="purchase-line-top"><h4>{item.name}</h4><button type="button" className="pos-remove-item" title="Remove" aria-label={`Remove ${item.name}`} onClick={() => this.handleClickDelete(item.id)}><i className="fas fa-times"></i></button></div><div className="purchase-line-fields"><label>Quantity<input type="number" aria-label={`Quantity for ${item.name}`} className="form-control" value={item.pivot.quantity} min="1" onChange={event => this.handleChangeQty(item.id, event.target.value)} /></label><label>Unit cost<input type="number" aria-label={`Purchase price for ${item.name}`} className="form-control" value={item.pivot.purchase_price || 0} min="0" step="0.01" onChange={event => this.handleChangePrice(item.id, event.target.value)} /></label><div><span>Subtotal</span><strong>{currency} {(Number(item.pivot.quantity) * Number(item.pivot.purchase_price || 0)).toFixed(2)}</strong></div></div></article>) : <div className="pos-empty-order"><i className="fas fa-shopping-basket"></i><h3>No stock selected.</h3><p>Add products from the catalog to begin.</p></div>}</div>
+                    {cart.length > 0 && <>
+                        <div className="purchase-form-section purchase-notes"><label htmlFor="purchase-notes">Notes <span>Optional</span></label><textarea id="purchase-notes" className="form-control" placeholder="Add purchase notes…" rows="2" value={notes} onChange={this.handleNotesChange}></textarea></div>
+                        <fieldset className="purchase-status"><legend>Purchase status</legend><div>{[{ value: "pending", label: "Pending", icon: "clock" }, { value: "completed", label: "Completed", icon: "check-circle" }, { value: "cancelled", label: "Cancelled", icon: "times-circle" }].map(option => <label key={option.value} className={status === option.value ? "is-selected" : ""}><input type="radio" name="status" id={`status-${option.value}`} value={option.value} checked={status === option.value} onChange={this.handleStatusChange} /><i className={`fas fa-${option.icon}`}></i><span>{option.label}</span></label>)}</div></fieldset>
+                        <div className="purchase-total"><span>Total amount</span><strong><small>{currency}</small>{this.getTotal(cart)}</strong></div>
+                        <div className="purchase-actions"><button type="button" className="purchase-cancel" onClick={this.handleEmptyCart}><i className="fas fa-times"></i>Cancel</button><button type="button" className="pos-primary-button" disabled={!supplier_id} onClick={this.handleClickSubmit}>Save purchase<i className="fas fa-arrow-right"></i></button></div>
+                    </>}
+                </aside>
             </div>
         );
     }
@@ -602,7 +358,6 @@ class Purchase extends Component {
 
 export default Purchase;
 
-// Render component
 const root = document.getElementById("purchase");
 if (root) {
     const rootInstance = createRoot(root);

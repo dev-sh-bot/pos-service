@@ -8,7 +8,13 @@
     </a>
 @endsection
 
+@section('content-eyebrow', __('Users'))
+
 @section('content')
+<div class="management-page management-page--users management-page--form management-page--wide-form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'users', 'variant' => 'guide'])
+        <div class="management-workspace">
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -17,6 +23,8 @@
                     @csrf
                     @method('PUT')
 
+<div class="management-account-layout">
+<section class="management-account-profile">
                     <div class="snd-form-section-heading">
                         <x-snd-icon name="square-pen" />
                         <div>
@@ -62,7 +70,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>New Password <small style="color:#626b7b;">(leave blank to keep)</small></label>
+                                <label>New Password <small style="color:var(--snd-muted);">(leave blank to keep)</small></label>
                                 <input type="password" name="password"
                                        class="form-control @error('password') is-invalid @enderror"
                                        placeholder="Min. 8 characters">
@@ -86,6 +94,9 @@
                         </label>
                     </div>
 
+
+</section>
+<section class="management-account-access">
                     @can('users.assign-roles')
                     <div class="snd-form-section-heading mt-4">
                         <x-snd-icon name="shield" />
@@ -161,7 +172,7 @@
                                 <div>
                                     <span style="font-weight:600;font-size:0.84rem;color:var(--snd-ink);">{{ $branch->name }}</span>
                                     <code style="background:var(--snd-primary-soft);color:var(--snd-primary-deep);padding:1px 7px;border-radius:4px;font-size:0.74rem;margin-left:6px;">{{ $branch->code }}</code>
-                                    <span style="font-size:0.74rem;color:#626b7b;margin-left:6px;">{{ $branch->counters->count() }} counter(s)</span>
+                                    <span style="font-size:0.74rem;color:var(--snd-muted);margin-left:6px;">{{ $branch->counters->count() }} counter(s)</span>
                                 </div>
                             </label>
                             @endforeach
@@ -178,6 +189,9 @@
                         <div id="counter-list" style="display:flex;flex-direction:column;gap:6px;"></div>
                     </div>
 
+
+</section>
+</div>
                     <div class="snd-form-actions">
                         <button type="submit" class="btn btn-primary">
                             <x-snd-icon name="save" class="mr-1" /> Update User
@@ -185,6 +199,10 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
 </div>

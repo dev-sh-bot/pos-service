@@ -11,8 +11,14 @@
     @endcan
 @endsection
 
+@section('content-eyebrow', __('Roles'))
+
 @section('content')
-<div class="card">
+<div class="management-page management-page--roles management-page--list">
+    @include('management.context', ['module' => 'roles', 'records' => $roles])
+    <div class="management-workspace">
+<div class="card management-records">
+        <div class="management-table-heading"><x-snd-icon name="shield" /><span>{{ __('Roles') }}</span><small>{{ __('Record directory') }}</small></div>
     <div class="card-body">
         <div class="table-responsive snd-table-scroll">
         <table class="table" id="roles-table">
@@ -46,7 +52,7 @@
                     <td>
                         <span class="badge badge-secondary">{{ $role->users_count ?? '—' }}</span>
                     </td>
-                    <td style="font-size:0.82rem;color:#626b7b;">{{ $role->created_at->format('d M Y') }}</td>
+                    <td style="font-size:0.82rem;color:var(--snd-muted);">{{ $role->created_at->format('d M Y') }}</td>
                     <td>
                         @can('roles.edit')
                             <a href="{{ route('roles.edit', $role) }}" class="btn btn-sm btn-primary" title="Edit">
@@ -80,6 +86,9 @@
         </table>
         </div>
         <x-snd-pagination :paginator="$roles" />
+    </div>
+</div>
+
     </div>
 </div>
 @endsection

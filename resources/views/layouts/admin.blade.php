@@ -1,8 +1,3 @@
-@php
-    $brandName = trim(\App\Helpers\CommonHelper::getBrandName());
-    $brandSubtitle = trim(\App\Helpers\CommonHelper::getBrandSubtitle());
-@endphp
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -12,13 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-url" content="{{ url('/') }}">
+    <meta name="color-scheme" content="light dark">
+    @include('layouts.partials.theme-bootstrap')
     @include('layouts.partials.favicon')
 
-    <title>@yield('title', $brandName)</title>
+    <title>@yield('title', 'Knowhere POS')</title>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @include('layouts.partials.icon-fonts')
     @yield('css')
+    @stack('styles')
 
     {{-- Keep this runtime contract stable for Cart.jsx and other page scripts. --}}
     <script>
@@ -52,25 +50,18 @@
     </script>
 </head>
 
-<body class="hold-transition snd-admin">
+<body class="hold-transition snd-admin @yield('body-class')">
+    <a class="snd-skip-link" href="#workspace-content">{{ __('Skip to content') }}</a>
     <div class="snd-app-shell">
             @include('layouts.partials.sidebar')
 
         <div class="snd-mobile-overlay" data-sidebar-overlay></div>
 
         <div class="snd-main">
-            <div class="snd-utility-bar">
-                <span class="snd-utility-brand">
-                    <span class="snd-utility-mark snd-salevince-utility-mark">
-                        <img src="{{ asset('images/snd-brand-mark.png') }}" alt="" aria-hidden="true">
-                    </span>
-                    <span>{{ $brandName }} <small>{{ $brandSubtitle }}</small></span>
-                </span>
-            </div>
-
             @include('layouts.partials.navbar')
 
             <div class="content-wrapper snd-content-wrapper">
+                @if(trim($__env->yieldContent('content-header')) !== '' || trim($__env->yieldContent('content-actions')) !== '')
                 <section class="content-header snd-content-header">
                     <div class="snd-content-header-inner">
                         <div class="snd-page-heading">
@@ -87,12 +78,13 @@
                         <div class="snd-content-actions">@yield('content-actions')</div>
                     </div>
                 </section>
+                @endif
 
-                <section class="content snd-content">
+                <main class="content snd-content" id="workspace-content" tabindex="-1">
                     @include('layouts.partials.alert.success')
                     @include('layouts.partials.alert.error')
                     @yield('content')
-                </section>
+                </main>
             </div>
 
         </div>
@@ -100,6 +92,7 @@
 
     @yield('js')
     @yield('model')
+    @stack('scripts')
 </body>
 
 </html>

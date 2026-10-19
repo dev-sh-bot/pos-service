@@ -1,14 +1,15 @@
 @extends('layouts.auth')
 
-@section('title', 'Register - ' . \App\Helpers\CommonHelper::getBrandName())
+@section('title', 'Register - Knowhere POS')
 
 @section('content')
-    <h2 class="snd-auth-title">Create your account</h2>
-    <p class="snd-auth-subtitle">Set up your workspace access in a few quick details.</p>
+    <span class="snd-auth-form-index">{{ __('Get started') }}</span>
+    <h2 class="snd-auth-title">{{ __('Create account') }}<span>.</span></h2>
+    <p class="snd-auth-subtitle">{{ __('Set up your workspace access in a few quick details.') }}</p>
 
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" class="snd-auth-form">
         @csrf
-        <div class="row">
+        <div class="row snd-auth-name-row">
             <div class="col-sm-6">
                 <div class="snd-auth-field">
                     <label class="snd-auth-label" for="first_name">First name</label>
@@ -53,7 +54,7 @@
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm password">
             </div>
         </div>
-        <button type="submit" class="snd-auth-submit">Create account</button>
+        <button type="submit" class="snd-auth-submit">{{ __('Create account') }} <x-snd-icon name="arrow-up-right" /></button>
     </form>
-    <div class="snd-auth-links"><span style="color:var(--snd-muted);">Already registered?</span><a href="{{ route('login') }}">Sign in</a></div>
+    <div class="snd-auth-links"><span>{{ __('Already registered?') }}</span><a href="{{ route('login') }}">{{ __('Sign in') }} <x-snd-icon name="arrow-up-right" /></a></div>
 @endsection

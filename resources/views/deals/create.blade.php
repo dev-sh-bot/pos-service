@@ -5,70 +5,16 @@
 
 @section('css')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<style>
-.select2-container--default .select2-selection--multiple {
-    border: 1px solid var(--snd-border) !important;
-    border-radius: 10px !important;
-    padding: 6px 10px !important;
-    min-height: 46px !important;
-    background: #fff !important;
-}
-.select2-container--default.select2-container--focus .select2-selection--multiple {
-    border-color: var(--snd-primary) !important;
-    box-shadow: 0 0 0 3px var(--snd-primary-ring) !important;
-}
-.select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background: var(--snd-button-primary) !important;
-    border: none !important;
-    color: #fff !important;
-    font-weight: 600 !important;
-    font-size: 0.8rem !important;
-    border-radius: 8px !important;
-    padding: 3px 10px 3px 22px !important;
-    margin-top: 3px !important;
-    margin-right: 5px !important;
-}
-.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-    color: #fff !important;
-    left: 5px !important;
-    border-right: none !important;
-}
-.select2-dropdown {
-    border: 1px solid var(--snd-border) !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1) !important;
-}
-.select2-results__group {
-    background: var(--snd-surface-soft, #f8fafc) !important;
-    color: var(--snd-ink) !important;
-    font-weight: 700 !important;
-    font-size: 0.8rem !important;
-    padding: 8px 12px !important;
-}
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: var(--snd-button-primary) !important;
-    color: var(--snd-button-primary-text) !important;
-}
-.deal-savings-box {
-    background: var(--snd-success-soft, #eaf9ee);
-    border: 1px solid #bbf7d0;
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-}
-.deal-count-badge {
-    background: var(--snd-primary-soft, #f0edff);
-    color: var(--snd-primary-deep, #6758bd);
-    border: 1px solid var(--snd-border);
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 4px 10px;
-}
-</style>
+
 @endsection
 
+@section('content-eyebrow', __('Deals'))
+
 @section('content')
+<div class="management-page management-page--deals management-page--form management-page--wide-form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'deals', 'variant' => 'guide'])
+        <div class="management-workspace">
 <form action="{{ route('deals.store') }}" method="POST" id="deal-form">
     @csrf
     <div class="row">
@@ -190,7 +136,7 @@
                             <span class="small font-weight-bold">Discount Percentage</span>
                             <span class="badge badge-success" id="live-discount-percent">0% OFF</span>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center mt-2 pt-2" style="border-top: 1px dashed #bbf7d0;">
+                        <div class="d-flex justify-content-between align-items-center mt-2 pt-2" style="border-top: 1px dashed var(--snd-primary-border);">
                             <span class="small text-muted font-weight-bold">Customer Savings</span>
                             <span class="font-weight-bold text-success" id="live-discount-savings">{{ config('settings.currency_symbol') }} 0.00</span>
                         </div>
@@ -212,6 +158,10 @@
         </div>
     </div>
 </form>
+
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('js')

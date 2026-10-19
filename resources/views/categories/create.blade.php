@@ -6,7 +6,13 @@
 <a href="{{ route('categories.index') }}" class="btn btn-secondary"><x-snd-icon name="arrow-left" /> Back</a>
 @endsection
 
+@section('content-eyebrow', __('Categories'))
+
 @section('content')
+<div class="management-page management-page--categories management-page--form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'categories', 'variant' => 'guide'])
+        <div class="management-workspace">
 <div class="card">
     <div class="card-body">
         <form action="{{ route('categories.store') }}" method="POST">
@@ -65,6 +71,10 @@
                 <button class="btn btn-primary" type="submit"><x-snd-icon name="plus" class="mr-1" />Create Category</button>
             </div>
         </form>
+    </div>
+</div>
+
+        </div>
     </div>
 </div>
 @endsection

@@ -10,13 +10,16 @@
     @endcan
 @endsection
 
-@section('content')
-<div class="card">
-    <div class="card-body">
+@section('content-eyebrow', __('Counters'))
 
-        {{-- Branch filter --}}
-        <form method="GET" action="{{ route('counters.index') }}" class="snd-index-filter">
-            <div class="form-group">
+@section('content')
+<div class="management-page management-page--counters management-page--list">
+    @include('management.context', ['module' => 'counters', 'records' => $counters])
+    <div class="management-workspace">
+<x-snd-filter-accordion id="counter-filters" class="snd-counter-filter-card mb-3" :open="request()->filled('branch_id')">
+    <form method="GET" action="{{ route('counters.index') }}" class="snd-order-filter-form">
+        <div class="snd-order-filter-grid">
+            <div class="form-group mb-0">
                 <label for="counter-branch-filter">Branch</label>
                 <select id="counter-branch-filter" name="branch_id" class="form-control">
                     <option value="">All Branches</option>
@@ -25,12 +28,18 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="btn btn-secondary btn-sm">Filter</button>
-            @if(request('branch_id'))
-                <a href="{{ route('counters.index') }}" class="btn btn-secondary btn-sm">Clear</a>
-            @endif
-        </form>
-
+            <div class="snd-order-filter-action">
+                <button type="submit" class="btn btn-secondary btn-sm">Filter</button>
+                @if(request('branch_id'))
+                    <a href="{{ route('counters.index') }}" class="btn btn-secondary btn-sm">Clear</a>
+                @endif
+            </div>
+        </div>
+    </form>
+</x-snd-filter-accordion>
+<div class="card management-records">
+        <div class="management-table-heading"><x-snd-icon name="monitor" /><span>{{ __('Counters') }}</span><small>{{ __('Record directory') }}</small></div>
+    <div class="card-body">
         <div class="table-responsive snd-table-scroll">
         <table class="table">
             <thead>
@@ -101,6 +110,9 @@
         </table>
         </div>
         <x-snd-pagination :paginator="$counters" />
+    </div>
+</div>
+
     </div>
 </div>
 @endsection

@@ -1,150 +1,69 @@
 @php
-    $brandName = trim(\App\Helpers\CommonHelper::getBrandName());
-    $brandSubtitle = trim(\App\Helpers\CommonHelper::getBrandSubtitle());
+    $businessName = trim(\App\Helpers\CommonHelper::getBrandName());
+    $navGroups = [
+        ['label' => __('Overview'), 'items' => [
+            ['route' => 'home', 'active' => 'home', 'icon' => 'dashboard', 'label' => __('dashboard.title'), 'permission' => 'dashboard.view'],
+        ]],
+        ['label' => __('Sales'), 'items' => [
+            ['route' => 'cart.index', 'active' => 'cart.*', 'icon' => 'shopping-cart', 'label' => __('POS'), 'permission' => 'orders.view'],
+            ['route' => 'orders.index', 'active' => 'orders.*', 'icon' => 'receipt', 'label' => __('Order List'), 'permission' => 'orders.view'],
+            ['route' => 'customers.index', 'active' => 'customers.*', 'icon' => 'users', 'label' => __('customer.title'), 'permission' => 'customers.view'],
+        ]],
+        ['label' => __('Catalog'), 'items' => [
+            ['route' => 'products.index', 'active' => 'products.*', 'icon' => 'package', 'label' => __('product.title'), 'permission' => 'products.view'],
+            ['route' => 'categories.index', 'active' => 'categories.*', 'icon' => 'list', 'label' => __('Categories'), 'permission' => 'categories.view'],
+            ['route' => 'services.index', 'active' => 'services.*', 'icon' => 'briefcase', 'label' => __('Services'), 'permission' => 'services.view'],
+            ['route' => 'deals.index', 'active' => 'deals.*', 'icon' => 'tags', 'label' => __('Deals'), 'permission' => null],
+        ]],
+        ['label' => __('Purchases'), 'items' => [
+            ['route' => 'purchases.index', 'active' => 'purchases.*', 'icon' => 'shopping-bag', 'label' => __('Purchases'), 'permission' => 'purchases.view', 'children' => true],
+            ['route' => 'suppliers.index', 'active' => 'suppliers.*', 'icon' => 'truck', 'label' => __('Supplier'), 'permission' => 'suppliers.view'],
+        ]],
+        ['label' => __('Administration'), 'items' => [
+            ['route' => 'branches.index', 'active' => 'branches.*', 'icon' => 'git-branch', 'label' => __('Branches'), 'permission' => 'branches.view'],
+            ['route' => 'counters.index', 'active' => 'counters.*', 'icon' => 'monitor', 'label' => __('Counters'), 'permission' => 'counters.view'],
+            ['route' => 'users.index', 'active' => 'users.*', 'icon' => 'user-cog', 'label' => __('Users'), 'permission' => 'users.view'],
+            ['route' => 'roles.index', 'active' => 'roles.*', 'icon' => 'shield', 'label' => __('Roles'), 'permission' => 'roles.view'],
+            ['route' => 'permissions.index', 'active' => 'permissions.*', 'icon' => 'key', 'label' => __('Permissions'), 'permission' => 'permissions.view'],
+        ]],
+        ['label' => __('System'), 'items' => [
+            ['route' => 'settings.index', 'active' => 'settings.*', 'icon' => 'settings', 'label' => __('settings.title'), 'permission' => 'settings.view'],
+        ]],
+    ];
 @endphp
-
-<aside class="main-sidebar snd-sidebar" id="pos-sidebar" aria-label="Sidebar navigation">
-    <div class="brand-link snd-brand" title="{{ $brandName }}">
-        <a href="{{ route('home') }}" class="snd-brand-home" aria-label="{{ $brandName }}">
-            <span class="snd-brand-mark snd-salevince-mark">
-                <img src="{{ asset('images/snd-brand-mark.png') }}" alt="" aria-hidden="true">
-            </span>
-            <span class="snd-brand-copy">
-                <span class="snd-brand-title">{{ $brandName }}</span>
-                <span class="snd-brand-subtitle">{{ $brandSubtitle }}</span>
-            </span>
+<aside class="main-sidebar snd-sidebar" id="pos-sidebar" aria-label="{{ __('Sidebar navigation') }}">
+    <div class="brand-link snd-brand" title="{{ $businessName }}">
+        <a href="{{ route('home') }}" class="snd-brand-home" aria-label="Knowhere Systems POS" title="Knowhere Systems POS">
+            <span class="snd-brand-mark"><img src="{{ asset('images/knowhere-target.svg') }}" alt="" aria-hidden="true"></span>
+            <span class="snd-brand-copy"><span class="snd-brand-title">Knowhere</span><span class="snd-brand-subtitle">Systems / POS</span></span>
         </a>
-        <button type="button" class="snd-sidebar-close" data-sidebar-close aria-label="Close sidebar">
-            <x-snd-icon name="x" />
-        </button>
+        <button type="button" class="snd-sidebar-close" data-sidebar-close aria-label="{{ __('Close sidebar') }}"><x-snd-icon name="x" /></button>
     </div>
-
     <div class="sidebar snd-sidebar-body">
-        <nav aria-label="Application navigation">
+        <nav aria-label="{{ __('Application navigation') }}">
             <ul class="nav nav-pills nav-sidebar flex-column snd-nav-list" data-widget="treeview" role="menu" data-accordion="false">
-                @can('dashboard.view')
-                    <li class="nav-item" data-label="{{ __('dashboard.title') }}">
-                        <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" data-tooltip="{{ __('dashboard.title') }}" title="{{ __('dashboard.title') }}">
-                            <x-snd-icon name="dashboard" class="nav-icon" /><p>{{ __('dashboard.title') }}</p>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('products.view')
-                    <li class="nav-item" data-label="{{ __('product.title') }}">
-                        <a href="{{ route('products.index') }}" class="nav-link {{ activeSegment('products') }}" data-tooltip="{{ __('product.title') }}" title="{{ __('product.title') }}">
-                            <x-snd-icon name="package" class="nav-icon" /><p>{{ __('product.title') }}</p>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('categories.view')
-                    <li class="nav-item" data-label="Categories">
-                        <a href="{{ route('categories.index') }}" class="nav-link {{ activeSegment('categories') }}" data-tooltip="Categories" title="Categories">
-                            <x-snd-icon name="list" class="nav-icon" /><p>Categories</p>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('services.view')
-                    <li class="nav-item" data-label="Services">
-                        <a href="{{ route('services.index') }}" class="nav-link {{ activeSegment('services') }}" data-tooltip="Services" title="Services">
-                            <x-snd-icon name="briefcase" class="nav-icon" /><p>Services</p>
-                        </a>
-                    </li>
-                @endcan
-
-                <li class="nav-item" data-label="Deals">
-                    <a href="{{ route('deals.index') }}" class="nav-link {{ activeSegment('deals') }}" data-tooltip="Deals" title="Deals">
-                        <x-snd-icon name="tags" class="nav-icon" /><p>Deals</p>
-                    </a>
-                </li>
-
-                @can('orders.view')
-                    <li class="nav-item" data-label="{{ __('POS') }}">
-                        <a href="{{ route('cart.index') }}" class="nav-link {{ activeSegment('cart') }}" data-tooltip="{{ __('POS') }}" title="{{ __('POS') }}">
-                            <x-snd-icon name="shopping-cart" class="nav-icon" /><p>{{ __('POS') }}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item" data-label="{{ __('Order List') }}">
-                        <a href="{{ route('orders.index') }}" class="nav-link {{ activeSegment('orders') }}" data-tooltip="{{ __('Order List') }}" title="{{ __('Order List') }}">
-                            <x-snd-icon name="receipt" class="nav-icon" /><p>{{ __('Order List') }}</p>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('customers.view')
-                    <li class="nav-item" data-label="{{ __('customer.title') }}">
-                        <a href="{{ route('customers.index') }}" class="nav-link {{ activeSegment('customers') }}" data-tooltip="{{ __('customer.title') }}" title="{{ __('customer.title') }}">
-                            <x-snd-icon name="users" class="nav-icon" /><p>{{ __('customer.title') }}</p>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('purchases.view')
-                    <li class="nav-item {{ request()->routeIs('purchases.*') ? 'menu-open' : '' }}" data-label="{{ __('Purchases') }}">
-                        <a href="#" class="nav-link {{ activeSegment('purchases') }}" data-tooltip="{{ __('Purchases') }}" title="{{ __('Purchases') }}" aria-haspopup="true">
-                            <x-snd-icon name="shopping-bag" class="nav-icon" /><p>{{ __('Purchases') }}</p><x-snd-icon name="chevron-down" class="right" />
-                        </a>
-                        <ul class="nav nav-treeview" data-header="{{ __('Purchases') }}">
-                            @can('purchases.create')
-                                <li class="nav-item"><a href="{{ route('purchases.create') }}" class="nav-link {{ request()->routeIs('purchases.create') ? 'active' : '' }}"><x-snd-icon name="plus" class="nav-icon" /><p>{{ __('New Purchase') }}</p></a></li>
-                            @endcan
-                            @can('purchases.view')
-                                <li class="nav-item"><a href="{{ route('purchases.index') }}" class="nav-link {{ request()->routeIs('purchases.index') ? 'active' : '' }}"><x-snd-icon name="list" class="nav-icon" /><p>{{ __('All Purchases') }}</p></a></li>
-                            @endcan
-                        </ul>
-                    </li>
-                @endcan
-
-                @can('suppliers.view')
-                    <li class="nav-item" data-label="{{ __('Supplier') }}">
-                        <a href="{{ route('suppliers.index') }}" class="nav-link {{ activeSegment('suppliers') }}" data-tooltip="{{ __('Supplier') }}" title="{{ __('Supplier') }}">
-                            <x-snd-icon name="truck" class="nav-icon" /><p>{{ __('Supplier') }}</p>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('branches.view')
-                    <li class="nav-item" data-label="{{ __('Branches') }}">
-                        <a href="{{ route('branches.index') }}" class="nav-link {{ activeSegment('branches') }}" data-tooltip="{{ __('Branches') }}" title="{{ __('Branches') }}">
-                            <x-snd-icon name="git-branch" class="nav-icon" /><p>{{ __('Branches') }}</p>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('counters.view')
-                    <li class="nav-item" data-label="{{ __('Counters') }}">
-                        <a href="{{ route('counters.index') }}" class="nav-link {{ activeSegment('counters') }}" data-tooltip="{{ __('Counters') }}" title="{{ __('Counters') }}">
-                            <x-snd-icon name="monitor" class="nav-icon" /><p>{{ __('Counters') }}</p>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('roles.view')
-                    <li class="nav-item" data-label="{{ __('Roles') }}">
-                        <a href="{{ route('roles.index') }}" class="nav-link {{ activeSegment('roles') }}" data-tooltip="{{ __('Roles') }}" title="{{ __('Roles') }}">
-                            <x-snd-icon name="shield" class="nav-icon" /><p>{{ __('Roles') }}</p>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('users.view')
-                    <li class="nav-item" data-label="{{ __('Users') }}">
-                        <a href="{{ route('users.index') }}" class="nav-link {{ activeSegment('users') }}" data-tooltip="{{ __('Users') }}" title="{{ __('Users') }}">
-                            <x-snd-icon name="user-cog" class="nav-icon" /><p>{{ __('Users') }}</p>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('settings.view')
-                    <li class="nav-item" data-label="{{ __('settings.title') }}">
-                        <a href="{{ route('settings.index') }}" class="nav-link {{ activeSegment('settings') }}" data-tooltip="{{ __('settings.title') }}" title="{{ __('settings.title') }}">
-                            <x-snd-icon name="settings" class="nav-icon" /><p>{{ __('settings.title') }}</p>
-                        </a>
-                    </li>
-                @endcan
-
+                @foreach($navGroups as $group)
+                    @php($visibleItems = array_filter($group['items'], fn($item) => !$item['permission'] || auth()->user()->can($item['permission'])))
+                    @if(count($visibleItems))
+                        <li class="nav-header" role="presentation">{{ $group['label'] }}</li>
+                        @foreach($visibleItems as $item)
+                            <li class="nav-item {{ !empty($item['children']) && request()->routeIs($item['active']) ? 'menu-open' : '' }}" data-label="{{ $item['label'] }}">
+                                <a href="{{ !empty($item['children']) ? '#' : route($item['route']) }}" class="nav-link {{ request()->routeIs($item['active']) ? 'active' : '' }}" aria-label="{{ $item['label'] }}" title="{{ $item['label'] }}" data-tooltip="{{ $item['label'] }}" @if(!empty($item['children'])) aria-haspopup="true" aria-expanded="{{ request()->routeIs($item['active']) ? 'true' : 'false' }}" @elseif(request()->routeIs($item['active'])) aria-current="page" @endif>
+                                    <x-snd-icon :name="$item['icon']" class="nav-icon" /><p>{{ $item['label'] }}</p>
+                                    @if(!empty($item['children']))<x-snd-icon name="chevron-down" class="right" />@endif
+                                </a>
+                                @if(!empty($item['children']))
+                                    <ul class="nav nav-treeview" data-header="{{ __('Purchases') }}">
+                                        @can('purchases.create')
+                                            <li class="nav-item"><a href="{{ route('purchases.create') }}" class="nav-link {{ request()->routeIs('purchases.create') ? 'active' : '' }}" aria-label="{{ __('New Purchase') }}" title="{{ __('New Purchase') }}"><x-snd-icon name="plus" class="nav-icon" /><p>{{ __('New Purchase') }}</p></a></li>
+                                        @endcan
+                                        <li class="nav-item"><a href="{{ route('purchases.index') }}" class="nav-link {{ request()->routeIs('purchases.index') ? 'active' : '' }}" aria-label="{{ __('All Purchases') }}" title="{{ __('All Purchases') }}"><x-snd-icon name="list" class="nav-icon" /><p>{{ __('All Purchases') }}</p></a></li>
+                                    </ul>
+                                @endif
+                            </li>
+                        @endforeach
+                    @endif
+                @endforeach
             </ul>
         </nav>
     </div>

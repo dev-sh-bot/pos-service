@@ -8,7 +8,13 @@
     </a>
 @endsection
 
+@section('content-eyebrow', __('Branches'))
+
 @section('content')
+<div class="management-page management-page--branches management-page--form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'branches', 'variant' => 'guide'])
+        <div class="management-workspace">
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -129,6 +135,10 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
 </div>

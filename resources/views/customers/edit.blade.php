@@ -3,9 +3,15 @@
 @section('title', __('customer.Update_Customer'))
 @section('content-header', __('customer.Update_Customer'))
 
+@section('content-eyebrow', __('Customers'))
+
 @section('content')
 
-    <div class="card">
+    <div class="management-page management-page--customers management-page--form">
+    <div class="management-form-layout">
+        @include('management.context', ['module' => 'customers', 'variant' => 'guide'])
+        <div class="management-workspace">
+<div class="card">
         <div class="card-body">
 
             <form action="{{ route('customers.update', $customer) }}" method="POST" enctype="multipart/form-data">
@@ -79,6 +85,10 @@
             </form>
         </div>
     </div>
+
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('js')

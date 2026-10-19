@@ -1,2 +1,2 @@
-<link rel="icon" type="image/svg+xml" href="{{ asset('salevince-favicon.svg') }}?v=2" sizes="any">
-<link rel="alternate icon" type="image/svg+xml" href="{{ asset('salevince-favicon.svg') }}?v=2">
+<link rel="icon" type="image/svg+xml" href="{{ asset('images/knowhere-target.svg') }}?v=1" sizes="any">
+<link rel="alternate icon" type="image/svg+xml" href="{{ asset('images/knowhere-target.svg') }}?v=1">

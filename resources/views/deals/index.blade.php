@@ -8,17 +8,16 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
-<style>
-.badge-discount { background: var(--snd-success-soft, #eaf9ee); color: #15803d; font-weight: 700; font-size: 0.78rem; padding: 4px 10px; border-radius: 20px; }
-.badge-service-chip { background: var(--snd-primary-soft, #f0edff); color: var(--snd-primary-deep, #6758bd); border: 1px solid var(--snd-border); font-size: 0.73rem; font-weight: 600; border-radius: 12px; padding: 2px 8px; margin: 2px; display: inline-block; }
-.original-price { text-decoration: line-through; color: var(--snd-muted); font-weight: 600; font-size: 0.85rem; margin-right: 6px; }
-.discounted-price { color: var(--snd-primary-deep, #6758bd); font-weight: 800; font-size: 1rem; }
-</style>
+
 @endsection
 
+@section('content-eyebrow', __('Deals'))
+
 @section('content')
-<div class="card snd-order-filter-card snd-filter-card-compact mb-3">
-    <div class="card-body">
+<div class="management-page management-page--deals management-page--list">
+    @include('management.context', ['module' => 'deals', 'records' => $deals])
+    <div class="management-workspace">
+<x-snd-filter-accordion id="deal-filters" class="snd-filter-card-compact mb-3" :open="request()->filled('search')">
         <form method="GET" action="{{ route('deals.index') }}" class="snd-order-filter-form">
             <div class="snd-order-filter-grid">
                 <div class="form-group mb-0">
@@ -33,10 +32,10 @@
                 </div>
             </div>
         </form>
-    </div>
-</div>
+</x-snd-filter-accordion>
 
-<div class="card">
+<div class="card management-records">
+        <div class="management-table-heading"><x-snd-icon name="tags" /><span>{{ __('Deals') }}</span><small>{{ __('Record directory') }}</small></div>
     <div class="card-body">
         <div class="table-responsive snd-table-scroll">
             <table class="table">
@@ -106,6 +105,9 @@
             </table>
         </div>
         <x-snd-pagination :paginator="$deals" />
+    </div>
+</div>
+
     </div>
 </div>
 @endsection

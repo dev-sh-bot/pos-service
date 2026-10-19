@@ -5,15 +5,14 @@
 @section('content-actions')
     <a href="{{route('cart.index')}}" class="btn btn-primary">{{ __('cart.title') }}</a>
 @endsection
+@section('content-eyebrow', __('Orders'))
+
 @section('content')
 
-    <div class="card snd-order-filter-card">
-        <div class="card-header">
-            <h3 class="card-title">
-                <x-snd-icon name="filter" class="mr-1" /> {{ __('Filters') }}
-            </h3>
-        </div>
-        <div class="card-body">
+    <div class="management-page management-page--orders management-page--list">
+    @include('management.context', ['module' => 'orders', 'records' => $orders])
+    <div class="management-workspace">
+<x-snd-filter-accordion id="order-filters" class="snd-order-filter-card" :open="request()->filled('start_date') || request()->filled('end_date')">
             <form action="{{ route('orders.index') }}" class="snd-order-filter-form">
                 <div class="snd-order-filter-grid">
                     <div class="form-group">
@@ -31,13 +30,13 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
+</x-snd-filter-accordion>
 
-    <div class="card">
+    <div class="card management-records">
+        <div class="management-table-heading"><x-snd-icon name="receipt" /><span>{{ __('Orders') }}</span><small>{{ __('Record directory') }}</small></div>
     <div class="card-body">
         <div class="table-responsive snd-table-scroll">
-            <table class="table">
+            <table class="table snd-orders-table">
                 <thead>
                 <tr>
                     <th>{{ __('order.ID') }}</th>
@@ -201,6 +200,9 @@
         </div>
     </div>
 
+
+    </div>
+</div>
 @endsection
 
 @section('model')
