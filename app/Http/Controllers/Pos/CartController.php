@@ -27,8 +27,12 @@ class CartController extends Controller
     /**
      * Display the cart.
      */
-    public function index(Request $request): View|JsonResponse
+    public function index(Request $request): View|JsonResponse|\Illuminate\Http\RedirectResponse
     {
+        if ($request->filled('return_order_id')) {
+            return redirect()->route('sale-returns.pos', $request->return_order_id);
+        }
+
         if ($request->wantsJson()) {
             return response()->json($this->cartItems($request->user()->id));
         }
@@ -52,9 +56,17 @@ class CartController extends Controller
      */
     public function store(AddToCartRequest $request): JsonResponse
     {
-        $product = Product::where('barcode', $request->barcode)->first();
-        $service = Service::where('barcode', $request->barcode)->first();
-        $deal = Deal::where('barcode', $request->barcode)->where('status', true)->first();
+        $product = null;
+        $service = null;
+        $deal = null;
+
+        if ($request->filled('product_id')) {
+            $product = Product::find($request->product_id);
+        } elseif ($request->filled('barcode')) {
+            $product = Product::where('barcode', $request->barcode)->first();
+            $service = Service::where('barcode', $request->barcode)->first();
+            $deal = Deal::where('barcode', $request->barcode)->where('status', true)->first();
+        }
 
         $item = $product ?? $service ?? $deal;
         if (! $item) {
@@ -153,7 +165,18 @@ class CartController extends Controller
             ], 400);
         }
 
-        DB::table('user_cart')->where('user_id', request()->user()->id)->where('item_id', $cartItem->item_id)->where('item_type', $cartItem->item_type)->increment('quantity');
+        DB::table('user_cart')
+            ->where('user_id', request()->user()->id)
+            ->where('item_id', $cartItem->item_id)
+            ->where('item_type', $cartItem->item_type)
+            ->delete();
+
+        DB::table('user_cart')->insert([
+            'user_id' => request()->user()->id,
+            'item_id' => $cartItem->item_id,
+            'item_type' => $cartItem->item_type,
+            'quantity' => $cartItem->quantity + 1,
+        ]);
 
         return response()->json(['success' => true]);
     }
@@ -198,7 +221,7 @@ class CartController extends Controller
 
     private function cartItems(int $userId): Collection
     {
-        return DB::table('user_cart')->where('user_id', $userId)->get()->map(function ($row) {
+        return DB::table('user_cart')->where('user_id', $userId)->get()->reverse()->map(function ($row) {
             $item = null;
             $typeStr = 'product';
             if ((int) $row->item_type === 1) {

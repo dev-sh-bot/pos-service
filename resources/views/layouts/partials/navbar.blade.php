@@ -3,9 +3,8 @@
         <x-snd-icon name="menu" />
     </button>
 
-    <div class="snd-search d-none d-md-block">
-        <x-snd-icon name="search" />
-        <input type="search" aria-label="Search" placeholder="Search products, orders or customers…">
+    <div id="navbar-search-section" class="snd-search-host d-none d-md-block">
+        @include('layouts.partials.global_search')
     </div>
 
     <div class="snd-topbar-actions">

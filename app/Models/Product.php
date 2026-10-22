@@ -52,14 +52,26 @@ class Product extends Model
     use ProductScopes;
 
     protected $fillable = [
+        'category_id',
         'name',
         'description',
         'image',
         'barcode',
         'price',
+        'purchase_price',
         'quantity',
         'status'
     ];
+
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function stocks(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Stock::class, 'item_id');
+    }
 
     protected $casts = [
         'price' => 'decimal:2',

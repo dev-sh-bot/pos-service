@@ -118,4 +118,47 @@ class OrderItem extends Model
     {
         return $this->quantity > 0 ? $this->price / $this->quantity : 0;
     }
+
+    /**
+     * Get sale return items for this order item.
+     */
+    public function returnItems(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(SaleReturnItem::class, 'order_item_id', 'id');
+    }
+
+    /**
+     * Total returned quantity for this order item.
+     */
+    public function getReturnedQuantity(): int
+    {
+        if ($this->relationLoaded('returnItems')) {
+            return (int) $this->returnItems->sum('quantity');
+        }
+
+        if ($this->relationLoaded('order') && $this->order->relationLoaded('saleReturns')) {
+            return (int) $this->order->saleReturns->flatMap(function ($sr) {
+                return $sr->relationLoaded('items') ? $sr->items : $sr->items()->get();
+            })->where('order_item_id', $this->id)->sum('quantity');
+        }
+
+        return (int) SaleReturnItem::where('order_item_id', $this->id)->sum('quantity');
+    }
+
+    /**
+     * Remaining returnable quantity.
+     */
+    public function getRemainingQuantity(): int
+    {
+        return max(0, (int) $this->quantity - $this->getReturnedQuantity());
+    }
+
+    /**
+     * Check if this item is 100% returned.
+     */
+    public function isFullyReturned(): bool
+    {
+        $purchased = max(1, (int) $this->quantity);
+        return $this->getReturnedQuantity() >= $purchased;
+    }
 }

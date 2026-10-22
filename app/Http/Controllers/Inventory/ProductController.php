@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Inventory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\ProductStoreRequest;
 use App\Http\Requests\Product\ProductUpdateRequest;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Stock;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -30,10 +32,17 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::query()
+        $query = Product::query()->with('category');
+
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->category_id);
+        }
+
+        $perPage = $request->wantsJson() ? (int) $request->get('per_page', 250) : 10;
+        $products = $query
             ->search($request->search)
             ->latest()
-            ->paginate(10);
+            ->paginate($perPage);
 
         return $request->wantsJson()
             ? response()->json($products)
@@ -46,7 +55,9 @@ class ProductController extends Controller
      */
     public function create(): View|Factory
     {
-        return view('products.create');
+        $categories = Category::where('status', true)->orderBy('name')->get();
+
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -60,6 +71,11 @@ class ProductController extends Controller
 
         if ($request->hasFile('image')) {
             $productData['image'] = $request->file('image')->store('products', 'public');
+        }
+
+        $productData['quantity'] = isset($productData['quantity']) ? (int) $productData['quantity'] : 0;
+        if (empty($productData['barcode'])) {
+            $productData['barcode'] = null;
         }
 
         Product::create($productData);
@@ -83,7 +99,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit')->with('product', $product);
+        $categories = Category::where('status', true)->orderBy('name')->get();
+
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -100,6 +118,10 @@ class ProductController extends Controller
                 Storage::disk('public')->delete($product->image);
             }
             $productData['image'] = $request->file('image')->store('products', 'public');
+        }
+
+        if (array_key_exists('barcode', $productData) && empty($productData['barcode'])) {
+            $productData['barcode'] = null;
         }
 
         $product->update($productData);

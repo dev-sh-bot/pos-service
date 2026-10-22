@@ -84,17 +84,15 @@
                     <div class="col-md-12">
                         <div class="form-group mb-0">
                             <label>{{ __('Search') }}</label>
-                            <div class="input-group">
+                            <div class="snd-search-control">
                                 <input type="text"
                                        x-model="filters.search"
                                        @input.debounce.500ms="applyFilters()"
                                        class="form-control"
                                        placeholder="{{ __('Search by ID or notes...') }}">
-                                <div class="input-group-append">
-                                <span class="input-group-text">
+                                <button type="button" class="btn btn-primary snd-search-action" @click="applyFilters()" aria-label="{{ __('Search purchases') }}" title="{{ __('Search purchases') }}">
                                     <x-snd-icon name="search" />
-                                </span>
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -166,13 +164,16 @@
                                     </td>
                                     <td>
                                         <div class="btn-group btn-group-sm snd-table-actions">
-                                            <a :href="`/admin/purchases/${purchase.id}`" class="btn btn-info" title="{{ __('View') }}">
+                                            <a :href="`/admin/purchases/${purchase.id}`" class="btn btn-info snd-table-action" title="{{ __('View') }}">
                                                 <x-snd-icon name="eye" />
                                             </a>
-                                            <a :href="`/admin/purchases/${purchase.id}/receipt`" class="btn btn-success" title="{{ __('Print Receipt') }}" target="_blank">
+                                            <a :href="`/admin/purchases/${purchase.id}/receipt`" class="btn btn-success snd-table-action" title="{{ __('Print Receipt') }}" target="_blank">
                                                 <x-snd-icon name="printer" />
                                             </a>
-                                            <button @click="deletePurchase(purchase.id)" class="btn btn-danger" title="{{ __('Delete') }}">
+                                            <a :href="`/admin/purchases/${purchase.id}/return`" class="btn btn-warning snd-table-action" title="{{ __('Purchase Return') }}">
+                                                <x-snd-icon name="rotate-ccw" />
+                                            </a>
+                                            <button @click="deletePurchase(purchase.id)" class="btn btn-danger snd-table-action snd-table-action--danger" title="{{ __('Delete') }}">
                                                 <x-snd-icon name="trash" />
                                             </button>
                                         </div>

@@ -172,22 +172,32 @@
 <!-- Purchase Info -->
 <div class="section">
     <div class="info-row">
-        <span class="info-label">Receipt #:</span>
-        <span class="info-value">{{ str_pad($purchase->id, 6, '0', STR_PAD_LEFT) }}</span>
+        <span class="info-label">Voucher / Ref #:</span>
+        <span class="info-value">{{ $purchase->purchase_no ?: ('PUR-' . str_pad($purchase->id, 5, '0', STR_PAD_LEFT)) }}</span>
     </div>
+    @if($purchase->branch)
+    <div class="info-row">
+        <span class="info-label">Branch:</span>
+        <span class="info-value">{{ $purchase->branch->name }}</span>
+    </div>
+    @endif
     <div class="info-row">
         <span class="info-label">Date:</span>
-        <span class="info-value">{{ $purchase->purchase_date->format('d/m/Y H:i') }}</span>
+        <span class="info-value">{{ $purchase->purchase_date ? $purchase->purchase_date->format('d/m/Y') : now()->format('d/m/Y') }}</span>
     </div>
     <div class="info-row">
         <span class="info-label">Status:</span>
         <span class="info-value">
-                <span class="status-badge">{{ strtoupper($purchase->status) }}</span>
-            </span>
+            <span class="status-badge">{{ strtoupper($purchase->status) }}</span>
+        </span>
+    </div>
+    <div class="info-row">
+        <span class="info-label">Payment:</span>
+        <span class="info-value">{{ ucfirst($purchase->payment_method ?? 'Cash') }}</span>
     </div>
     <div class="info-row">
         <span class="info-label">Created By:</span>
-        <span class="info-value">{{ $purchase->user->name }}</span>
+        <span class="info-value">{{ $purchase->user->name ?? 'Admin' }}</span>
     </div>
 </div>
 
@@ -196,15 +206,15 @@
     <div class="section-title">Supplier Information</div>
     <div class="info-row">
         <span class="info-label">Name:</span>
-        <span class="info-value">{{ $purchase->supplier->first_name }} {{ $purchase->supplier->last_name }}</span>
+        <span class="info-value">{{ $purchase->supplier->first_name ?? '' }} {{ $purchase->supplier->last_name ?? '' }}</span>
     </div>
-    @if($purchase->supplier->phone)
+    @if(optional($purchase->supplier)->phone)
         <div class="info-row">
             <span class="info-label">Phone:</span>
             <span class="info-value">{{ $purchase->supplier->phone }}</span>
         </div>
     @endif
-    @if($purchase->supplier->email)
+    @if(optional($purchase->supplier)->email)
         <div class="info-row">
             <span class="info-label">Email:</span>
             <span class="info-value">{{ $purchase->supplier->email }}</span>
@@ -220,18 +230,21 @@
         <tr>
             <th class="item-name">Item</th>
             <th class="item-qty">Qty</th>
-            <th class="item-price">Price</th>
+            <th class="item-price">Rate / Total</th>
         </tr>
         </thead>
         <tbody>
         @foreach($purchase->items as $item)
             <tr>
                 <td class="item-name">
-                    {{ $item->product->name }}<br>
-                    <small style="font-size: 9px;">{{ $item->product->barcode }}</small>
+                    {{ $item->product->name ?? 'Item' }}<br>
+                    <small style="font-size: 8px;">{{ $item->product->barcode ?? '' }}</small>
                 </td>
-                <td class="item-qty">{{ $item->quantity }}</td>
-                <td class="item-price">{{ config('settings.currency_symbol') }}{{ number_format($item->subtotal, 2) }}</td>
+                <td class="item-qty">{{ (float)$item->quantity }}</td>
+                <td class="item-price">
+                    {{ config('settings.currency_symbol') }}{{ number_format($item->purchase_price, 2) }}<br>
+                    <strong>{{ config('settings.currency_symbol') }}{{ number_format($item->quantity * $item->purchase_price, 2) }}</strong>
+                </td>
             </tr>
         @endforeach
         </tbody>
@@ -242,15 +255,27 @@
 <div class="total-section">
     <div class="total-row">
         <span>Subtotal:</span>
-        <span>{{ config('settings.currency_symbol') }}{{ number_format($purchase->total_amount, 2) }}</span>
+        <span>{{ config('settings.currency_symbol') }}{{ number_format($purchase->subtotal ?: $purchase->total_amount, 2) }}</span>
     </div>
+    @if((float) $purchase->tax_amount > 0)
+    <div class="total-row">
+        <span>Tax ({{ (float)$purchase->tax_percent }}%):</span>
+        <span>+{{ config('settings.currency_symbol') }}{{ number_format($purchase->tax_amount, 2) }}</span>
+    </div>
+    @endif
+    @if((float) $purchase->discount_amount > 0)
+    <div class="total-row">
+        <span>Discount ({{ (float)$purchase->discount_percent }}%):</span>
+        <span>-{{ config('settings.currency_symbol') }}{{ number_format($purchase->discount_amount, 2) }}</span>
+    </div>
+    @endif
     <div class="total-row grand-total">
-        <span>TOTAL:</span>
+        <span>NET TOTAL:</span>
         <span>{{ config('settings.currency_symbol') }}{{ number_format($purchase->total_amount, 2) }}</span>
     </div>
     <div class="info-row" style="margin-top: 10px;">
         <span class="info-label">Total Items:</span>
-        <span class="info-value">{{ $purchase->items->sum('quantity') }} pcs</span>
+        <span class="info-value">{{ (float)$purchase->items->sum('quantity') }} pcs</span>
     </div>
 </div>
 

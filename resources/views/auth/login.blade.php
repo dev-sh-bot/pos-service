@@ -48,5 +48,40 @@ function togglePwd() {
         ? '<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/>'
         : '<path d="M10.733 5.076a10.744 10.744 0 0 1 9.208 6.58 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-4.7 5.395"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/>';
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.getElementById('login-form');
+    const loginBtn = document.getElementById('login-btn');
+
+    // Trigger Login button whenever Enter key is pressed anywhere on login page
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            // Allow normal click if user is focused on a hyperlink (e.g. Forgot Password)
+            if (document.activeElement && document.activeElement.tagName === 'A') {
+                return;
+            }
+
+            e.preventDefault();
+
+            if (loginBtn) {
+                // Visual button press animation effect
+                loginBtn.style.transform = 'translateY(2px) scale(0.98)';
+                loginBtn.style.boxShadow = '0 1px 4px rgba(103, 88, 189, 0.3)';
+                loginBtn.style.opacity = '0.9';
+
+                setTimeout(function () {
+                    loginBtn.click();
+                    setTimeout(function () {
+                        loginBtn.style.transform = '';
+                        loginBtn.style.boxShadow = '';
+                        loginBtn.style.opacity = '';
+                    }, 200);
+                }, 80);
+            } else if (loginForm) {
+                loginForm.submit();
+            }
+        }
+    });
+});
 </script>
 @endsection

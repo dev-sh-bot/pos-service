@@ -53,11 +53,25 @@ class Order extends Model
         'discount_percent',
         'discount_amount',
         'total_amount',
+        'payment_method',
+        'card_holder_name',
+        'card_last_four',
+        'receiving_account_id',
         'srb_invoice_id',
         'srb_qr_code_link',
         'srb_status',
         'srb_response',
+        'created_at',
     ];
+
+    protected static function booted(): void
+    {
+        static::creating(function (Order $order): void {
+            if (empty($order->created_at)) {
+                $order->created_at = Carbon::now('Asia/Karachi');
+            }
+        });
+    }
 
     protected $casts = [
         'subtotal' => 'float',
@@ -70,7 +84,12 @@ class Order extends Model
 
     public function getInvoiceNumber(): string
     {
-        return $this->invoice_no ?: 'POS-' . str_pad((string) $this->id, 4, '0', STR_PAD_LEFT);
+        if ($this->invoice_no) {
+            return $this->invoice_no;
+        }
+
+        $branchCode = $this->branch?->code ?? 'BR01';
+        return 'INV-' . strtoupper(trim($branchCode)) . '-' . str_pad((string) $this->id, 3, '0', STR_PAD_LEFT);
     }
 
     public function branch(): BelongsTo
@@ -81,6 +100,11 @@ class Order extends Model
     public function counter(): BelongsTo
     {
         return $this->belongsTo(Counter::class);
+    }
+
+    public function receivingAccount(): BelongsTo
+    {
+        return $this->belongsTo(PaymentMethod::class, 'receiving_account_id');
     }
 
     /**
@@ -97,6 +121,85 @@ class Order extends Model
     public function payments(): HasMany
     {
         return $this->hasMany(Payment::class, 'order_id', 'id');
+    }
+
+    /**
+     * Get the sale returns for this order.
+     */
+    public function saleReturns(): HasMany
+    {
+        return $this->hasMany(SaleReturn::class, 'order_id', 'id');
+    }
+
+    /**
+     * Get all SRB logs for this order.
+     */
+    public function srbLogs(): HasMany
+    {
+        return $this->hasMany(SrbLog::class, 'order_id', 'id');
+    }
+
+    /**
+     * Calculate total purchased item quantity across all order items.
+     */
+    public function totalPurchasedQuantity(): int
+    {
+        if ($this->relationLoaded('items')) {
+            return (int) $this->items->sum('quantity');
+        }
+        return (int) $this->items()->sum('quantity');
+    }
+
+    /**
+     * Calculate total returned item quantity across all returns.
+     */
+    public function totalReturnedQuantity(): int
+    {
+        if ($this->relationLoaded('saleReturns')) {
+            return (int) $this->saleReturns->flatMap(function ($sr) {
+                return $sr->relationLoaded('items') ? $sr->items : $sr->items()->get();
+            })->sum('quantity');
+        }
+
+        return (int) SaleReturnItem::whereHas('saleReturn', function ($q) {
+            $q->where('order_id', $this->id);
+        })->sum('quantity');
+    }
+
+    /**
+     * Determine return status: 'none', 'partial', 'full'
+     */
+    public function getReturnStatus(): string
+    {
+        $purchased = $this->totalPurchasedQuantity();
+        if ($purchased <= 0) {
+            return 'none';
+        }
+
+        $returned = $this->totalReturnedQuantity();
+        if ($returned >= $purchased) {
+            return 'full';
+        }
+        if ($returned > 0) {
+            return 'partial';
+        }
+        return 'none';
+    }
+
+    /**
+     * Check if order is 100% returned.
+     */
+    public function isFullyReturned(): bool
+    {
+        return $this->getReturnStatus() === 'full';
+    }
+
+    /**
+     * Check if order is partially returned.
+     */
+    public function isPartiallyReturned(): bool
+    {
+        return $this->getReturnStatus() === 'partial';
     }
 
     /**
@@ -196,5 +299,67 @@ class Order extends Model
     public function scopeDateRange($query, $startDate, string $endDate)
     {
         return $query->whereBetween('created_at', [$startDate, $endDate . ' 23:59:59']);
+    }
+
+    /**
+     * Get order type information (Deal Package, Service, Product, Mixed).
+     */
+    public function getOrderTypeInfo(): array
+    {
+        $types = $this->items->map(function ($item) {
+            return match ((int) $item->item_type) {
+                2 => 'deal',
+                1 => 'service',
+                default => 'product',
+            };
+        })->unique();
+
+        if ($types->count() > 1) {
+            $hasDeal = $types->contains('deal');
+            $hasService = $types->contains('service');
+            $hasProduct = $types->contains('product');
+            $label = 'Mixed Order';
+            if ($hasDeal && $hasService) $label = 'Deal + Service';
+            elseif ($hasDeal && $hasProduct) $label = 'Deal + Product';
+            elseif ($hasService && $hasProduct) $label = 'Service + Product';
+            return [
+                'type' => 'mixed',
+                'label' => $label,
+                'bg' => '#fef3c7',
+                'color' => '#92400e',
+                'border' => '#fde68a',
+                'icon' => 'fas fa-layer-group'
+            ];
+        }
+
+        $type = $types->first() ?: 'service';
+        if ($type === 'deal') {
+            return [
+                'type' => 'deal',
+                'label' => 'Deal Package',
+                'bg' => '#f3e8ff',
+                'color' => '#6b21a8',
+                'border' => '#e9d5ff',
+                'icon' => 'fas fa-tags'
+            ];
+        }
+        if ($type === 'service') {
+            return [
+                'type' => 'service',
+                'label' => 'Service',
+                'bg' => '#ccfbf1',
+                'color' => '#0f766e',
+                'border' => '#99f6e4',
+                'icon' => 'fas fa-spa'
+            ];
+        }
+        return [
+            'type' => 'product',
+            'label' => 'Product',
+            'bg' => '#dbeafe',
+            'color' => '#1e40af',
+            'border' => '#bfdbfe',
+            'icon' => 'fas fa-box-open'
+        ];
     }
 }

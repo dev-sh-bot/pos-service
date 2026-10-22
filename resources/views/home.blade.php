@@ -800,6 +800,8 @@
         </div>
     </section>
 
+    @include('admin.partials.staff_counter_sales', ['tableBranchId' => null])
+
     </div>
 
     {{-- ''�''�� 4. Real-time Operations Row ''�''�� --}}
@@ -897,8 +899,8 @@
                 @if($low_stock_products->isNotEmpty())
                     <div class="p-3 border-top" style="background: var(--snd-primary-soft);">
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span style="font-size: 0.82rem; font-weight: 600; color: #dc2626;"><x-snd-icon name="triangle-alert" class="mr-1" /> Low Stock Alert</span>
-                            <a href="{{ route('products.index') }}" class="small" style="color: #dc2626; font-weight: 600;">Manage Inventory</a>
+                        <span style="font-size: 0.82rem; font-weight: 600; color: #c9342d;"><x-snd-icon name="triangle-alert" class="mr-1" /> Low Stock Alert</span>
+                            <a href="{{ route('products.index') }}" class="small" style="color: #c9342d; font-weight: 600;">Manage Inventory</a>
                         </div>
                         <div class="d-flex flex-wrap gap-2">
                             @foreach($low_stock_products as $lsp)
@@ -1157,6 +1159,68 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    }
+});
+</script>
+<script>
+function filterStaffMatrixTable(tableId) {
+    const table = document.getElementById(tableId);
+    if (!table) return;
+
+    const suffix = tableId.replace('staffSalesTable_', '');
+    const searchInput = document.getElementById('staffSearch_' + suffix);
+    const branchSelect = document.getElementById('staffBranchSelect_' + suffix);
+    const quickGroup = document.getElementById('quickFilters_' + suffix);
+    const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const branchFilter = branchSelect ? branchSelect.value.toLowerCase().trim() : '';
+    const activeButton = quickGroup?.querySelector('.staff-filter-btn.active');
+    const activeFilter = activeButton?.getAttribute('data-filter') || 'all';
+    const rows = table.querySelectorAll('tbody tr.staff-row');
+    let visibleCount = 0;
+
+    rows.forEach((row) => {
+        const values = ['user-name', 'user-email', 'branch-name', 'branch-code', 'counter-name', 'counter-code']
+            .map((key) => row.getAttribute('data-' + key) || '');
+        const matchesSearch = !term || values.some((value) => value.includes(term));
+        const matchesBranch = !branchFilter || (row.getAttribute('data-branch-name') || '').includes(branchFilter);
+        const matchesQuick = activeFilter === 'all'
+            || (activeFilter === 'today' && row.getAttribute('data-has-today') === '1')
+            || (activeFilter === 'me' && row.getAttribute('data-is-me') === '1')
+            || (activeFilter === 'returns' && row.getAttribute('data-has-returns') === '1');
+
+        row.style.display = matchesSearch && matchesBranch && matchesQuick ? '' : 'none';
+        if (row.style.display !== 'none') visibleCount++;
+    });
+
+    const countBadge = document.getElementById('staffRowCount_' + suffix);
+    if (countBadge) countBadge.textContent = visibleCount;
+    const noMatchRow = document.getElementById('noMatchRow_' + tableId);
+    if (noMatchRow) noMatchRow.style.display = visibleCount === 0 && rows.length > 0 ? '' : 'none';
+}
+
+function setStaffQuickFilter(tableId, filterType, button) {
+    const suffix = tableId.replace('staffSalesTable_', '');
+    const quickGroup = document.getElementById('quickFilters_' + suffix);
+    if (quickGroup) {
+        quickGroup.querySelectorAll('.staff-filter-btn').forEach((item) => item.classList.remove('active'));
+        if (button) button.classList.add('active');
+    }
+    filterStaffMatrixTable(tableId);
+}
+
+function resetStaffFilters(tableId) {
+    const suffix = tableId.replace('staffSalesTable_', '');
+    const searchInput = document.getElementById('staffSearch_' + suffix);
+    const branchSelect = document.getElementById('staffBranchSelect_' + suffix);
+    if (searchInput) searchInput.value = '';
+    if (branchSelect) branchSelect.value = '';
+    const allButton = document.querySelector('#quickFilters_' + suffix + ' .staff-filter-btn[data-filter="all"]');
+    setStaffQuickFilter(tableId, 'all', allButton);
+}
+
+document.addEventListener('change', (event) => {
+    if (event.target.matches('.staff-branch-select2')) {
+        filterStaffMatrixTable(event.target.getAttribute('data-table-id'));
     }
 });
 </script>

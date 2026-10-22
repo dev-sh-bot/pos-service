@@ -29,11 +29,18 @@ class ServiceController extends Controller
     {
         $query = Service::query()
             ->with('category')
-            ->when($request->search, fn ($query, $term) => $query->where('name', 'like', "%{$term}%"))
+            ->when($request->search, function ($query, $term) {
+                $term = trim($term);
+                $query->where(function ($q) use ($term) {
+                    $q->where('name', 'like', "%{$term}%")
+                      ->orWhere('barcode', 'like', "%{$term}%")
+                      ->orWhere('id', $term);
+                });
+            })
             ->when($request->category_id, fn ($query, $categoryId) => $query->where('category_id', $categoryId))
             ->latest();
 
-        if ($request->wantsJson()) {
+        if ($request->wantsJson() && !$request->has('ajax_table')) {
             if ($request->boolean('all')) {
                 return response()->json(['data' => $query->get()]);
             }
@@ -41,9 +48,19 @@ class ServiceController extends Controller
             return response()->json($query->paginate(10));
         }
 
+        $services = $query->paginate(10)->withQueryString();
+
+        if ($request->ajax() || $request->has('ajax_table')) {
+            return view('services.partials.table', [
+                'services' => $services,
+            ]);
+        }
+
         return view('services.index', [
-            'services' => $query->paginate(10)->withQueryString(),
-            'categories' => Category::orderBy('sort_order')->orderBy('name')->get(),
+            'services' => $services,
+            'categories' => Category::withCount('services')->orderBy('sort_order')->orderBy('name')->get(),
+            'totalServicesCount' => Service::count(),
+            'activeServicesCount' => Service::where('status', true)->count(),
         ]);
     }
 

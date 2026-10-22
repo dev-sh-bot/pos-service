@@ -31,6 +31,10 @@ class Payment extends Model
 {
     protected $fillable = [
         'amount',
+        'payment_method',
+        'card_holder_name',
+        'card_last_four',
+        'receiving_account_id',
         'order_id',
         'user_id',
     ];
@@ -47,6 +51,11 @@ class Payment extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function receivingAccount(): BelongsTo
+    {
+        return $this->belongsTo(PaymentMethod::class, 'receiving_account_id');
     }
 
     public function formattedAmount(): string

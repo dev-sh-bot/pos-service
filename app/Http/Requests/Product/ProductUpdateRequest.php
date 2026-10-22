@@ -15,17 +15,19 @@ class ProductUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'category_id' => ['nullable', 'exists:categories,id'],
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'image' => ['nullable', 'image', 'max:2048'], // 2MB max
             'barcode' => [
-                'required',
+                'nullable',
                 'string',
                 'max:50',
                 Rule::unique('products', 'barcode')->ignore($this->product)
             ],
             'price' => ['required', 'numeric', 'min:0', 'decimal:0,2'],
-            'quantity' => ['required', 'integer', 'min:0'],
+            'purchase_price' => ['nullable', 'numeric', 'min:0'],
+            'quantity' => ['nullable', 'integer', 'min:0'],
             'status' => ['required', 'boolean'],
         ];
     }

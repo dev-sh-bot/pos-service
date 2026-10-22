@@ -73,6 +73,21 @@
                     </li>
                 @endcan
 
+                @can('sale_returns.view')
+                    <li class="nav-item" data-label="Sale Returns">
+                        <a href="{{ route('sale-returns.index') }}" class="nav-link {{ request()->routeIs('sale-returns.index', 'sale-returns.pos') ? 'active' : '' }}" data-tooltip="Sale Returns" title="Sale Returns">
+                            <x-snd-icon name="rotate-ccw" class="nav-icon" /><p>Sale Returns</p>
+                        </a>
+                    </li>
+                @endcan
+                @can('sale_returns.list')
+                    <li class="nav-item" data-label="Return List">
+                        <a href="{{ route('sale-returns.list') }}" class="nav-link {{ request()->routeIs('sale-returns.list') ? 'active' : '' }}" data-tooltip="Return List" title="Return List">
+                            <x-snd-icon name="file-text" class="nav-icon" /><p>Return List</p>
+                        </a>
+                    </li>
+                @endcan
+
                 @can('customers.view')
                     <li class="nav-item" data-label="{{ __('customer.title') }}">
                         <a href="{{ route('customers.index') }}" class="nav-link {{ activeSegment('customers') }}" data-tooltip="{{ __('customer.title') }}" title="{{ __('customer.title') }}">
@@ -92,7 +107,19 @@
                             @endcan
                             @can('purchases.view')
                                 <li class="nav-item"><a href="{{ route('purchases.index') }}" class="nav-link {{ request()->routeIs('purchases.index') ? 'active' : '' }}"><x-snd-icon name="list" class="nav-icon" /><p>{{ __('All Purchases') }}</p></a></li>
+                                <li class="nav-item"><a href="{{ route('purchases.returns') }}" class="nav-link {{ request()->routeIs('purchases.returns') ? 'active' : '' }}"><x-snd-icon name="rotate-ccw" class="nav-icon" /><p>{{ __('Purchase Returns') }}</p></a></li>
                             @endcan
+                        </ul>
+                    </li>
+
+                    <li class="nav-item {{ request()->routeIs('stocks.*') || request()->routeIs('stock-transfers.*') || request()->routeIs('opening-stocks.*') ? 'menu-open' : '' }}" data-label="Inventory & Stock">
+                        <a href="#" class="nav-link {{ request()->routeIs('stocks.*') || request()->routeIs('stock-transfers.*') || request()->routeIs('opening-stocks.*') ? 'active' : '' }}" data-tooltip="Inventory & Stock" title="Inventory & Stock" aria-haspopup="true">
+                            <x-snd-icon name="package" class="nav-icon" /><p>Inventory & Stock</p><x-snd-icon name="chevron-down" class="right" />
+                        </a>
+                        <ul class="nav nav-treeview" data-header="Inventory & Stock">
+                            <li class="nav-item"><a href="{{ route('opening-stocks.index') }}" class="nav-link {{ request()->routeIs('opening-stocks.*') ? 'active' : '' }}"><x-snd-icon name="box" class="nav-icon" /><p>Opening Inventory</p></a></li>
+                            <li class="nav-item"><a href="{{ route('stocks.index') }}" class="nav-link {{ request()->routeIs('stocks.*') ? 'active' : '' }}"><x-snd-icon name="table" class="nav-icon" /><p>Stock Ledger</p></a></li>
+                            <li class="nav-item"><a href="{{ route('stock-transfers.index') }}" class="nav-link {{ request()->routeIs('stock-transfers.*') ? 'active' : '' }}"><x-snd-icon name="arrow-right-left" class="nav-icon" /><p>Stock Transfers</p></a></li>
                         </ul>
                     </li>
                 @endcan
@@ -117,6 +144,14 @@
                     <li class="nav-item" data-label="{{ __('Counters') }}">
                         <a href="{{ route('counters.index') }}" class="nav-link {{ activeSegment('counters') }}" data-tooltip="{{ __('Counters') }}" title="{{ __('Counters') }}">
                             <x-snd-icon name="monitor" class="nav-icon" /><p>{{ __('Counters') }}</p>
+                        </a>
+                    </li>
+                @endcan
+
+                @can('payment_methods.view')
+                    <li class="nav-item" data-label="Payment Methods">
+                        <a href="{{ route('payment-methods.index') }}" class="nav-link {{ activeSegment('payment-methods') }}" data-tooltip="Payment Methods" title="Payment Methods">
+                            <x-snd-icon name="wallet" class="nav-icon" /><p>Payment Methods</p>
                         </a>
                     </li>
                 @endcan

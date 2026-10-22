@@ -26,12 +26,19 @@ class CategoryController extends Controller
     {
         $categories = Category::query()
             ->withCount('services')
-            ->when($request->search, fn ($query, $term) => $query->where('name', 'like', "%{$term}%"))
+            ->when($request->search, function ($query, $term) {
+                $term = trim($term);
+                $query->where(function ($q) use ($term) {
+                    $q->where('name', 'like', "%{$term}%")
+                      ->orWhere('slug', 'like', "%{$term}%")
+                      ->orWhere('id', $term);
+                });
+            })
             ->orderBy('sort_order')
             ->orderBy('name')
             ->paginate(10);
 
-        if ($request->wantsJson()) {
+        if ($request->wantsJson() && !$request->has('ajax_table')) {
             $list = Category::query()
                 ->where('status', true)
                 ->orderBy('sort_order')
@@ -39,6 +46,12 @@ class CategoryController extends Controller
                 ->get(['id', 'name', 'slug', 'sort_order']);
 
             return response()->json(['data' => $list]);
+        }
+
+        if ($request->ajax() || $request->has('ajax_table')) {
+            return view('categories.partials.table', [
+                'categories' => $categories,
+            ]);
         }
 
         return view('categories.index', ['categories' => $categories]);

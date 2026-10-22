@@ -1,4 +1,5 @@
 {
+    "Product": "Producto",
     "customer.working": "Trabajando...",
     "product.error_creating": "Error al crear el producto",
     "product.success_creating": "Producto creado exitosamente",

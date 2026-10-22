@@ -43,7 +43,14 @@ class SupplierController extends Controller
             $supplierData['avatar'] = $request->file('avatar')->store('suppliers', 'public');
         }
 
-        Supplier::create($supplierData);
+        $supplier = Supplier::create($supplierData);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'supplier' => $supplier,
+            ]);
+        }
 
         return redirect()->route('suppliers.index')
             ->with('success', __('supplier.success_creating'));

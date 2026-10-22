@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\GlobalSearchController;
 use App\Http\Controllers\Inventory\ProductController;
 use App\Http\Controllers\Inventory\PurchaseCartController;
 use App\Http\Controllers\Inventory\PurchaseController;
@@ -14,9 +15,11 @@ use App\Http\Controllers\Management\SupplierController;
 use App\Http\Controllers\Management\CategoryController;
 use App\Http\Controllers\Management\ServiceController;
 use App\Http\Controllers\Management\DealController;
+use App\Http\Controllers\Management\PaymentMethodController;
 use App\Http\Controllers\Pos\BranchAccessController;
 use App\Http\Controllers\Pos\CartController;
 use App\Http\Controllers\Pos\OrderController;
+use App\Http\Controllers\Pos\SaleReturnController;
 use App\Http\Controllers\Settings\SettingController;
 use App\Http\Controllers\Settings\SrbPayloadController;
 use Illuminate\Http\RedirectResponse;
@@ -43,6 +46,7 @@ Auth::routes();
 
 Route::prefix('admin')->middleware(['auth', 'locale'])->group(function (): void {
     Route::get('/', HomeController::class)->name('home');
+    Route::get('/global-search', [GlobalSearchController::class, 'search'])->name('admin.global-search');
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
 
@@ -64,13 +68,29 @@ Route::prefix('admin')->middleware(['auth', 'locale'])->group(function (): void 
     Route::resource('deals', DealController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     Route::post('deals/{deal}/toggle-status', [DealController::class, 'toggleStatus'])->name('deals.toggle-status');
     Route::resource('customers', CustomerController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('payment-methods', PaymentMethodController::class);
+    Route::post('payment-methods/{payment_method}/toggle-status', [PaymentMethodController::class, 'toggleStatus'])->name('payment-methods.toggle-status');
     Route::resource('orders', OrderController::class)->only(['index', 'store']);
     Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::get('/sale-returns', [SaleReturnController::class, 'index'])->name('sale-returns.index');
+    Route::get('/sale-returns/list', [SaleReturnController::class, 'returnList'])->name('sale-returns.list');
+    Route::get('/sale-returns/pos/{order}', [SaleReturnController::class, 'posReturn'])->name('sale-returns.pos');
+    Route::post('/sale-returns/process', [SaleReturnController::class, 'processReturn'])->name('sale-returns.process');
     Route::resource('suppliers', SupplierController::class)->only(['index', 'create', 'store', 'update', 'destroy']);
 
     // POS Cart
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::get('/cart/categories', [CartController::class, 'categories'])->name('cart.categories');
+    Route::get('/cart/payment-accounts', function () {
+        return response()->json(
+            \App\Models\PaymentMethod::where('status', true)
+                ->where(function ($query) {
+                    $query->whereNull('type')->orWhere('type', '!=', 'cash');
+                })
+                ->orderBy('name')
+                ->get(['id', 'name', 'bank_name', 'account_title', 'account_number', 'type'])
+        );
+    })->name('cart.payment-accounts');
     Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
     Route::post('/cart/change-qty', [CartController::class, 'changeQty']);
     Route::delete('/cart/delete', [CartController::class, 'delete']);
@@ -87,8 +107,19 @@ Route::prefix('admin')->middleware(['auth', 'locale'])->group(function (): void 
     });
 
     Route::get('/purchases/data', [PurchaseController::class, 'data'])->name('purchases.data');
+    Route::get('/purchases/returns', [PurchaseController::class, 'returnsList'])->name('purchases.returns');
     Route::get('/purchases/{purchase}/receipt', [PurchaseController::class, 'receipt'])->name('purchases.receipt');
+    Route::get('/purchases/{purchase}/return', [PurchaseController::class, 'showReturn'])->name('purchases.return');
+    Route::post('/purchases/{purchase}/return', [PurchaseController::class, 'processReturn'])->name('purchases.process-return');
+    Route::get('/purchase-returns/{purchaseReturn}/receipt', [PurchaseController::class, 'returnReceipt'])->name('purchases.return-receipt');
     Route::resource('purchases', PurchaseController::class)->only(['index', 'create', 'store', 'show', 'update', 'destroy']);
+
+    Route::get('/stocks/data', [\App\Http\Controllers\Inventory\StockController::class, 'data'])->name('stocks.data');
+    Route::get('/stocks/{product}/ledger', [\App\Http\Controllers\Inventory\StockController::class, 'ledger'])->name('stocks.ledger');
+    Route::get('/stocks', [\App\Http\Controllers\Inventory\StockController::class, 'index'])->name('stocks.index');
+    Route::resource('stock-transfers', \App\Http\Controllers\Inventory\StockTransferController::class)->only(['index', 'create', 'store']);
+    Route::get('/opening-stocks/data', [\App\Http\Controllers\Inventory\OpeningStockController::class, 'data'])->name('opening-stocks.data');
+    Route::resource('opening-stocks', \App\Http\Controllers\Inventory\OpeningStockController::class)->only(['index', 'create', 'store', 'show']);
 
     // Purchase Cart API
     Route::prefix('purchase-cart')->name('purchase-cart.')->group(function (): void {

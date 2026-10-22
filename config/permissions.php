@@ -65,6 +65,11 @@ return [
         'orders.edit',
         'orders.delete',
     ],
+    'sale_returns' => [
+        'sale_returns.view',
+        'sale_returns.create',
+        'sale_returns.list',
+    ],
     'purchases' => [
         'purchases.view',
         'purchases.create',
@@ -94,5 +99,10 @@ return [
         'counters.create',
         'counters.edit',
         'counters.delete',
+    ],
+    'payment_methods' => [
+        'payment_methods.view',
+        'payment_methods.edit',
+        'payment_methods.delete',
     ],
 ];

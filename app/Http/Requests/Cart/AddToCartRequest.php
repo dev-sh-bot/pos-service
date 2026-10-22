@@ -16,26 +16,17 @@ class AddToCartRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'barcode' => [
-                'required',
-                'string',
-                function ($attribute, $value, $fail) {
-                    $existsInProducts = Product::where('barcode', $value)->exists();
-                    $existsInServices = Service::where('barcode', $value)->exists();
-                    $existsInDeals = \App\Models\Deal::where('barcode', $value)->where('status', true)->exists();
-
-                    if (! $existsInProducts && ! $existsInServices && ! $existsInDeals) {
-                        $fail(__('cart.validation.barcode_not_found'));
-                    }
-                },
-            ],
+            'barcode' => ['nullable', 'string'],
+            'product_id' => ['nullable', 'integer', 'exists:products,id'],
         ];
     }
 
-    public function messages(): array
+    public function withValidator($validator)
     {
-        return [
-            'barcode.required' => __('cart.validation.barcode_required'),
-        ];
+        $validator->after(function ($validator) {
+            if (! $this->filled('barcode') && ! $this->filled('product_id')) {
+                $validator->errors()->add('barcode', __('cart.validation.barcode_required'));
+            }
+        });
     }
 }

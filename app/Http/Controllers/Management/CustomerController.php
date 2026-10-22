@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,15 +27,43 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response|View
+    public function index(Request $request): Response|View|JsonResponse
     {
-        if (request()->wantsJson()) {
-            return response(
-                Customer::all()
+        $query = Customer::query()
+            ->when($request->search, function ($query, $term) {
+                $term = trim($term);
+                $query->where(function ($q) use ($term) {
+                    $q->where('first_name', 'like', "%{$term}%")
+                      ->orWhere('last_name', 'like', "%{$term}%")
+                      ->orWhereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ["%{$term}%"])
+                      ->orWhere('email', 'like', "%{$term}%")
+                      ->orWhere('phone', 'like', "%{$term}%")
+                      ->orWhere('address', 'like', "%{$term}%")
+                      ->orWhere('id', $term);
+                });
+            })
+            ->latest();
+
+        if ($request->wantsJson() && !$request->has('ajax_table')) {
+            return response()->json(
+                $request->has('search') ? $query->get() : Customer::all()
             );
         }
-        $customers = Customer::latest()->paginate(10);
-        return view('customers.index')->with('customers', $customers);
+
+        $customers = $query->paginate(10)->withQueryString();
+
+        if ($request->ajax() || $request->has('ajax_table')) {
+            return view('customers.partials.table', [
+                'customers' => $customers,
+            ]);
+        }
+
+        return view('customers.index', [
+            'customers' => $customers,
+            'totalCustomersCount' => Customer::count(),
+            'withPhoneCount' => Customer::whereNotNull('phone')->where('phone', '!=', '')->count(),
+            'withEmailCount' => Customer::whereNotNull('email')->where('email', '!=', '')->count(),
+        ]);
     }
 
     /**
@@ -54,6 +83,7 @@ class CustomerController extends Controller
     {
         $customerData = $request->validated();
         $customerData['user_id'] = $request->user()->id;
+        $customerData['last_name'] = $customerData['last_name'] ?? '';
 
         if ($request->hasFile('avatar')) {
             $customerData['avatar'] = $request->file('avatar')->store('customers', 'public');
@@ -89,6 +119,9 @@ class CustomerController extends Controller
     public function update(CustomerUpdateRequest $request, Customer $customer)
     {
         $customerData = $request->validated();
+        if (array_key_exists('last_name', $customerData)) {
+            $customerData['last_name'] = $customerData['last_name'] ?? '';
+        }
 
         if ($request->hasFile('avatar')) {
             if ($customer->avatar) {

@@ -14,12 +14,16 @@ return new class extends Migration
         });
 
         DB::statement("UPDATE order_items SET item_type = CASE WHEN item_type = 'service' OR item_type = '1' THEN 1 ELSE 0 END");
-        DB::statement("ALTER TABLE order_items MODIFY item_type TINYINT UNSIGNED NOT NULL DEFAULT 0");
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement("ALTER TABLE order_items MODIFY item_type TINYINT UNSIGNED NOT NULL DEFAULT 0");
+        }
     }
 
     public function down(): void
     {
-        DB::statement("ALTER TABLE order_items MODIFY item_type VARCHAR(20) NOT NULL DEFAULT 'product'");
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement("ALTER TABLE order_items MODIFY item_type VARCHAR(20) NOT NULL DEFAULT 'product'");
+        }
         DB::statement("UPDATE order_items SET item_type = CASE WHEN item_type = '1' THEN 'service' ELSE 'product' END");
 
         Schema::table('orders', function (Blueprint $table): void {

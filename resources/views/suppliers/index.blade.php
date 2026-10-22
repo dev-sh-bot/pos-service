@@ -40,7 +40,6 @@
                     <td>{{$supplier->address}}</td>
                     <td>{{$supplier->created_at}}</td>
                     <td>
-                        <!-- <a href="{{ route('suppliers.edit', $supplier) }}" class="btn btn-primary"><x-snd-icon name="square-pen" /></a> -->
                         <button class="btn btn-danger btn-delete" data-url="{{route('suppliers.destroy', $supplier)}}"><x-snd-icon name="trash" /></button>
                     </td>
                 </tr>

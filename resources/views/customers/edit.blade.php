@@ -23,15 +23,15 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="first_name">{{ __('customer.First_Name') }}</label>
+                            <label for="first_name">{{ __('customer.First_Name') }} <span class="text-danger">*</span></label>
                             <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror"
-                                   id="first_name" placeholder="{{ __('customer.First_Name') }}" value="{{ old('first_name', $customer->first_name) }}">
+                                   id="first_name" placeholder="{{ __('customer.First_Name') }}" value="{{ old('first_name', $customer->first_name) }}" required>
                             @error('first_name')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="last_name">{{ __('customer.Last_Name') }}</label>
+                            <label for="last_name">{{ __('customer.Last_Name') }} <small class="text-muted">(Optional)</small></label>
                             <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror"
                                    id="last_name" placeholder="{{ __('customer.Last_Name') }}" value="{{ old('last_name', $customer->last_name) }}">
                             @error('last_name')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="email">{{ __('customer.Email') }}</label>
+                            <label for="email">{{ __('customer.Email') }} <small class="text-muted">(Optional)</small></label>
                             <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email"
                                    placeholder="{{ __('customer.Email') }}" value="{{ old('email', $customer->email) }}">
                             @error('email')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
@@ -47,9 +47,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="phone">{{ __('customer.Phone') }}</label>
+                            <label for="phone">{{ __('customer.Phone') }} <span class="text-danger">*</span></label>
                             <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" id="phone"
-                                   placeholder="{{ __('customer.Phone') }}" value="{{ old('phone', $customer->phone) }}">
+                                   placeholder="{{ __('customer.Phone') }}" value="{{ old('phone', $customer->phone) }}" required>
                             @error('phone')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                         </div>
                     </div>

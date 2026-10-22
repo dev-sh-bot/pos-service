@@ -51,10 +51,19 @@ class Purchase extends Model
     use PurchaseScopes;
 
     protected $fillable = [
+        'purchase_no',
         'supplier_id',
         'user_id',
+        'branch_id',
+        'counter_id',
         'purchase_date',
+        'subtotal',
+        'tax_percent',
+        'tax_amount',
+        'discount_percent',
+        'discount_amount',
         'total_amount',
+        'payment_method',
         'status',
         'notes',
     ];
@@ -62,6 +71,11 @@ class Purchase extends Model
     protected function casts(): array
     {
         return [
+            'subtotal' => 'decimal:2',
+            'tax_percent' => 'decimal:2',
+            'tax_amount' => 'decimal:2',
+            'discount_percent' => 'decimal:2',
+            'discount_amount' => 'decimal:2',
             'total_amount' => 'decimal:2',
             'purchase_date' => 'date',
         ];
@@ -78,8 +92,23 @@ class Purchase extends Model
         return $this->belongsTo(related: Supplier::class, foreignKey: 'supplier_id');
     }
 
+    public function branch(): BelongsTo
+    {
+        return $this->belongsTo(related: Branch::class, foreignKey: 'branch_id');
+    }
+
+    public function counter(): BelongsTo
+    {
+        return $this->belongsTo(related: Counter::class, foreignKey: 'counter_id');
+    }
+
     public function items(): HasMany
     {
         return $this->hasMany(related: PurchaseItem::class, foreignKey: 'purchase_id');
+    }
+
+    public function returns(): HasMany
+    {
+        return $this->hasMany(related: PurchaseReturn::class, foreignKey: 'purchase_id');
     }
 }

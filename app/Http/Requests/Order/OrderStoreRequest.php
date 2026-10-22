@@ -21,9 +21,14 @@ class OrderStoreRequest extends FormRequest
             'subtotal' => ['required', 'numeric', 'min:0'],
             'tax_percent' => ['nullable', 'numeric', 'min:0'],
             'tax_amount' => ['nullable', 'numeric', 'min:0'],
-            'discount_percent' => ['nullable', 'numeric', 'min:0'],
+            'discount_percent' => ['nullable', 'numeric', 'min:0', 'max:100'],
             'discount_amount' => ['nullable', 'numeric', 'min:0'],
+            'payment_method' => ['nullable', 'string', 'in:cash,card'],
+            'card_holder_name' => ['nullable', 'string', 'max:255'],
+            'card_last_four' => ['nullable', 'string', 'max:4'],
+            'receiving_account_id' => ['nullable', 'integer', 'exists:payment_methods,id'],
             'item_rates' => ['nullable', 'array'],
+            'submission_id' => ['nullable', 'string', 'max:100'],
         ];
     }
 

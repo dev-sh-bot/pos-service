@@ -15,6 +15,14 @@ use Illuminate\Support\Str;
 
 class DealController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:deals.view')->only(['index']);
+        $this->middleware('can:deals.create')->only(['create', 'store']);
+        $this->middleware('can:deals.edit')->only(['edit', 'update', 'toggleStatus']);
+        $this->middleware('can:deals.delete')->only(['destroy']);
+    }
+
     public function index(Request $request): View|Factory|JsonResponse
     {
         $query = Deal::query()

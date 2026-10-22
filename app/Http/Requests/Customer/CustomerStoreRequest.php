@@ -17,7 +17,7 @@ class CustomerStoreRequest extends FormRequest
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['nullable', 'string', 'max:50'],
             'email' => ['nullable', 'email', 'max:255'],
-            'phone' => ['nullable', 'string', 'max:20'],
+            'phone' => ['required', 'string', 'max:20'],
             'address' => ['nullable', 'string', 'max:500'],
             'avatar' => ['nullable', 'image', 'max:2048'],
         ];
@@ -28,10 +28,10 @@ class CustomerStoreRequest extends FormRequest
         return [
             'first_name.required' => __('customer.validation.first_name_required'),
             'first_name.max' => __('customer.validation.first_name_max'),
-            'last_name.required' => __('customer.validation.last_name_required'),
             'last_name.max' => __('customer.validation.last_name_max'),
-            'email.email' => __('customer.validation.email_invalid'),
+            'phone.required' => 'Mobile / Phone Number is required.',
             'phone.max' => __('customer.validation.phone_max'),
+            'email.email' => __('customer.validation.email_invalid'),
             'avatar.image' => __('customer.validation.avatar_image'),
             'avatar.max' => __('customer.validation.avatar_max'),
         ];

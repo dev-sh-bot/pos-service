@@ -44,10 +44,36 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
+                        <label for="category_id">Category</label>
+                        <select name="category_id" class="form-control @error('category_id') is-invalid @enderror" id="category_id">
+                            <option value="">Uncategorized</option>
+                            @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" {{ (string) old('category_id') === (string) $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
                         <label for="price">{{ __('product.Price') }}</label>
                         <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" id="price"
                             placeholder="{{ __('product.Price') }}" value="{{ old('price') }}">
                         @error('price')
+                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="purchase_price">Purchase Price</label>
+                        <input type="number" min="0" step="0.01" name="purchase_price" class="form-control @error('purchase_price') is-invalid @enderror"
+                            id="purchase_price" placeholder="Purchase Price" value="{{ old('purchase_price') }}">
+                        @error('purchase_price')
                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                         @enderror
                     </div>
@@ -68,8 +94,8 @@
                     <div class="form-group">
                         <label for="status">{{ __('product.Status') }}</label>
                         <select name="status" class="form-control @error('status') is-invalid @enderror" id="status">
-                            <option value="1" {{ old('status') === 1 ? 'selected' : ''}}>{{ __('common.Active') }}</option>
-                            <option value="0" {{ old('status') === 0 ? 'selected' : ''}}>{{ __('common.Inactive') }}</option>
+                            <option value="1" {{ (string) old('status', '1') === '1' ? 'selected' : ''}}>{{ __('common.Active') }}</option>
+                            <option value="0" {{ (string) old('status', '1') === '0' ? 'selected' : ''}}>{{ __('common.Inactive') }}</option>
                         </select>
                         @error('status')
                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>

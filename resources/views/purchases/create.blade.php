@@ -9,12 +9,10 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div id="purchase"></div>
-    </div>
+    <div id="purchase"></div>
 @endsection
 
-@push('styles')
+@section('css')
     <style>
         /* Purchase Page Custom Styles */
         .purchase-container {
@@ -121,7 +119,7 @@
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 15px;
-            box-shadow: 0 4px 8px rgba(103,88,189,.24);
+            box-shadow: 0 4px 8px var(--snd-primary-ring);
         }
 
         .purchase-total .amount {
@@ -154,7 +152,7 @@
 
         .product-search input:focus {
             border-color: var(--snd-button-primary);
-            box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.15);
+            box-shadow: 0 0 0 3px var(--snd-primary-ring);
         }
 
         /* Cart Card */
@@ -198,4 +196,20 @@
             }
         }
     </style>
-@endpush
+@endsection
+
+@section('js')
+<script>
+    window.APP = window.APP || {};
+    window.APP.branches = @json($branches);
+    window.APP.session_branch_id = {{ session('pos_branch_id') ? session('pos_branch_id') : 'null' }};
+    window.APP.session_counter_id = {{ session('pos_counter_id') ? session('pos_counter_id') : 'null' }};
+    window.APP.currency_symbol = "{{ config('settings.currency_symbol', 'Rs.') }}";
+
+    document.addEventListener('DOMContentLoaded', function () {
+        if (!document.body.classList.contains('sidebar-collapse')) {
+            document.body.classList.add('sidebar-collapse');
+        }
+    });
+</script>
+@endsection

@@ -26,7 +26,7 @@ class PurchaseCartController extends Controller
         /** @var User $user */
         $user = $request->user();
 
-        $cart = $user->purchaseCart()->get();
+        $cart = $user->purchaseCart()->with('category')->get();
 
         $formattedCart = $cart->map(function ($item): array {
             assert($item instanceof Product);
@@ -36,9 +36,12 @@ class PurchaseCartController extends Controller
                 'name' => $item->name,
                 'barcode' => $item->barcode,
                 'image_url' => $item->image_url,
+                'stock' => (float) $item->quantity,
+                'quantity' => (float) $item->quantity,
+                'category_name' => $item->category?->name ?? 'General',
                 'pivot' => [
-                    'quantity' => $item->pivot->quantity,
-                    'purchase_price' => $item->pivot->purchase_price,
+                    'quantity' => (float) $item->pivot->quantity,
+                    'purchase_price' => (float) $item->pivot->purchase_price,
                     'product_id' => $item->id,
                     'user_id' => $item->pivot->user_id,
                 ],
@@ -53,7 +56,12 @@ class PurchaseCartController extends Controller
      */
     public function store(AddToPurchaseCartRequest $request): JsonResponse
     {
-        $product = Product::where('barcode', $request->input('barcode'))->first();
+        $product = null;
+        if ($request->filled('product_id')) {
+            $product = Product::find($request->product_id);
+        } elseif ($request->filled('barcode')) {
+            $product = Product::where('barcode', $request->input('barcode'))->first();
+        }
 
         if (!$product) {
             return response()->json([
@@ -70,15 +78,16 @@ class PurchaseCartController extends Controller
 
         if ($cartItem !== null) {
             // Update existing cart item
-            $currentQuantity = (int) $cartItem->pivot->quantity;
+            $currentQuantity = (float) $cartItem->pivot->quantity;
             $user->purchaseCart()->updateExistingPivot($product->id, [
                 'quantity' => $currentQuantity + 1,
             ]);
         } else {
             // Add new item to cart
+            $price = !empty($product->purchase_price) ? (float) $product->purchase_price : (!empty($product->price) ? (float) $product->price : 0);
             $user->purchaseCart()->attach($product->id, [
                 'quantity' => 1,
-                'purchase_price' => $product->purchase_price ?? 0
+                'purchase_price' => $price,
             ]);
         }
 

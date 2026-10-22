@@ -25,10 +25,12 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="btn btn-secondary btn-sm">Filter</button>
-            @if(request('branch_id'))
-                <a href="{{ route('counters.index') }}" class="btn btn-secondary btn-sm">Clear</a>
-            @endif
+            <div class="snd-index-filter-actions">
+                <button type="submit" class="btn btn-secondary btn-sm">Filter</button>
+                @if(request('branch_id'))
+                    <a href="{{ route('counters.index') }}" class="btn btn-secondary btn-sm">Clear</a>
+                @endif
+            </div>
         </form>
 
         <div class="table-responsive snd-table-scroll">

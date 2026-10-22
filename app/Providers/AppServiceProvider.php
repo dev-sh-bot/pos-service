@@ -46,6 +46,18 @@ class AppServiceProvider extends ServiceProvider
                 return true;
             }
 
+            if (str_starts_with($ability, 'banks.')) {
+                $action = substr($ability, 6);
+                if ($user->hasPermission('banks.' . $action) || $user->hasPermission('payment_methods.' . $action)) {
+                    return true;
+                }
+            } elseif (str_starts_with($ability, 'payment_methods.')) {
+                $action = substr($ability, 16);
+                if ($user->hasPermission('payment_methods.' . $action) || $user->hasPermission('banks.' . $action)) {
+                    return true;
+                }
+            }
+
             return $user->hasPermission($ability) ? true : null;
         });
 
